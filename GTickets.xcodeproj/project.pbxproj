@@ -7,20 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EDC16E7E70298B7DF22E194 /* libPods-GTickets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D809556A346556EDFA5D8C2D /* libPods-GTickets.a */; };
 		F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */; };
-		F94A7AEB1E768D2B004ED5FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A7AEA1E768D2B004ED5FD /* ViewController.swift */; };
-		F94A7AEE1E768D2B004ED5FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AEC1E768D2B004ED5FD /* Main.storyboard */; };
 		F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */; };
-		F94A7AF31E768D2B004ED5FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AF11E768D2B004ED5FD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.debug.xcconfig"; sourceTree = "<group>"; };
+		D809556A346556EDFA5D8C2D /* libPods-GTickets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GTickets.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.release.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.release.xcconfig"; sourceTree = "<group>"; };
 		F94A7AE51E768D2B004ED5FD /* GTickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F94A7AEA1E768D2B004ED5FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F94A7AED1E768D2B004ED5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F94A7AF21E768D2B004ED5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F94A7AF41E768D2B004ED5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -29,17 +27,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDC16E7E70298B7DF22E194 /* libPods-GTickets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		197A16BB94E63FD6BFC9784E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D809556A346556EDFA5D8C2D /* libPods-GTickets.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61F472C4C6475E9C56237A60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */,
+				E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F94A7ADC1E768D2A004ED5FD = {
 			isa = PBXGroup;
 			children = (
 				F94A7AE71E768D2B004ED5FD /* GTickets */,
 				F94A7AE61E768D2B004ED5FD /* Products */,
+				61F472C4C6475E9C56237A60 /* Pods */,
+				197A16BB94E63FD6BFC9784E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +72,51 @@
 		F94A7AE71E768D2B004ED5FD /* GTickets */ = {
 			isa = PBXGroup;
 			children = (
+				F94A7B011E76932A004ED5FD /* Fonts */,
+				F94A7AFD1E769274004ED5FD /* Helpers */,
+				F94A7AFA1E769197004ED5FD /* Controller */,
+				F94A7AFB1E769197004ED5FD /* Model */,
+				F94A7AFC1E769197004ED5FD /* View */,
 				F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */,
-				F94A7AEA1E768D2B004ED5FD /* ViewController.swift */,
-				F94A7AEC1E768D2B004ED5FD /* Main.storyboard */,
 				F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */,
-				F94A7AF11E768D2B004ED5FD /* LaunchScreen.storyboard */,
 				F94A7AF41E768D2B004ED5FD /* Info.plist */,
 			);
 			path = GTickets;
+			sourceTree = "<group>";
+		};
+		F94A7AFA1E769197004ED5FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F94A7AFB1E769197004ED5FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F94A7AFC1E769197004ED5FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F94A7AFD1E769274004ED5FD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F94A7B011E76932A004ED5FD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F94A7AF71E768D2B004ED5FD /* Build configuration list for PBXNativeTarget "GTickets" */;
 			buildPhases = (
+				5024554845F099CC2FE2E2E8 /* [CP] Check Pods Manifest.lock */,
 				F94A7AE11E768D2B004ED5FD /* Sources */,
 				F94A7AE21E768D2B004ED5FD /* Frameworks */,
 				F94A7AE31E768D2B004ED5FD /* Resources */,
+				EA8B44D0B67F4CC18BDC0771 /* [CP] Embed Pods Frameworks */,
+				BB011423DC7EF1D8804FFF5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,44 +181,70 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94A7AF31E768D2B004ED5FD /* LaunchScreen.storyboard in Resources */,
 				F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */,
-				F94A7AEE1E768D2B004ED5FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5024554845F099CC2FE2E2E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB011423DC7EF1D8804FFF5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GTickets/Pods-GTickets-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA8B44D0B67F4CC18BDC0771 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GTickets/Pods-GTickets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F94A7AE11E768D2B004ED5FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94A7AEB1E768D2B004ED5FD /* ViewController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F94A7AEC1E768D2B004ED5FD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F94A7AED1E768D2B004ED5FD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F94A7AF11E768D2B004ED5FD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F94A7AF21E768D2B004ED5FD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F94A7AF51E768D2B004ED5FD /* Debug */ = {
@@ -256,6 +340,7 @@
 		};
 		F94A7AF81E768D2B004ED5FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GTickets/Info.plist;
@@ -268,6 +353,7 @@
 		};
 		F94A7AF91E768D2B004ED5FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GTickets/Info.plist;
