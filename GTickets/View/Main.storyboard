@@ -47,14 +47,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rfj-0p-vxo">
-                                <rect key="frame" x="20" y="20" width="135" height="100"/>
+                                <rect key="frame" x="20" y="20" width="135.5" height="100"/>
                                 <color key="backgroundColor" red="0.40784313725490196" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="hOQ-pP-qFN"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-JH-NVk">
-                                <rect key="frame" x="165" y="40" width="45" height="21"/>
+                                <rect key="frame" x="165.5" y="40" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="GKT-NA-11L"/>
                                 </constraints>
@@ -63,7 +63,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66f-lc-Pch">
-                                <rect key="frame" x="165" y="70" width="80" height="21"/>
+                                <rect key="frame" x="165.5" y="70" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ASy-hx-ESg"/>
                                     <constraint firstAttribute="width" constant="80" id="ezQ-Uh-RbT"/>
