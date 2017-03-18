@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		99BF73E424B1BADBA5B397B6 /* Pods_GTickets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */; };
+		F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52D1E7DC34200911C67 /* MasterViewController.swift */; };
+		F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */; };
+		F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5311E7DDEE400911C67 /* OrderViewController.swift */; };
+		F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5331E7DF74D00911C67 /* ProfileViewController.swift */; };
 		F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */; };
 		F9189D311E7BEEE100C6F7D5 /* LeftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */; };
 		F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */; };
@@ -22,11 +26,15 @@
 		CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.debug.xcconfig"; sourceTree = "<group>"; };
 		D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GTickets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.release.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.release.xcconfig"; sourceTree = "<group>"; };
+		F904A52D1E7DC34200911C67 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchViewController.swift; sourceTree = "<group>"; };
+		F904A5311E7DDEE400911C67 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		F904A5331E7DF74D00911C67 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuCell.xib; sourceTree = "<group>"; };
 		F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F94A7AE51E768D2B004ED5FD /* GTickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +79,9 @@
 				61F472C4C6475E9C56237A60 /* Pods */,
 				197A16BB94E63FD6BFC9784E /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		F94A7AE61E768D2B004ED5FD /* Products */ = {
 			isa = PBXGroup;
@@ -101,6 +111,10 @@
 			children = (
 				F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */,
 				F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */,
+				F904A52D1E7DC34200911C67 /* MasterViewController.swift */,
+				F904A5331E7DF74D00911C67 /* ProfileViewController.swift */,
+				F904A5311E7DDEE400911C67 /* OrderViewController.swift */,
+				F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,10 +129,10 @@
 		F94A7AFC1E769197004ED5FD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */,
-				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
-				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */,
+				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
+				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
+				F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,9 +276,13 @@
 			files = (
 				F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
+				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
 				F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */,
+				F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */,
 				F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */,
+				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
+				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

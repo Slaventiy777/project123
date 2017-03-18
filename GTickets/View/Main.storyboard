@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="900" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Master View Controller-->
         <scene sceneID="O3y-bt-ZTr">
             <objects>
-                <viewController id="PNC-De-29x" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="masterViewController" id="PNC-De-29x" customClass="MasterViewController" customModule="GTickets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4fI-fT-fFF"/>
                         <viewControllerLayoutGuide type="bottom" id="Ibd-6M-zZl"/>
@@ -179,6 +179,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4J-Qa-4fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1800" y="0.0"/>
+        </scene>
+        <!--Поиск авиабилетов-->
+        <scene sceneID="vBJ-Xd-so3">
+            <objects>
+                <viewController storyboardIdentifier="airticketSearchViewController" title="Поиск авиабилетов" id="rPf-lb-I1Z" customClass="AirticketSearchViewController" customModule="GTickets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rRO-B8-b1y"/>
+                        <viewControllerLayoutGuide type="bottom" id="m5l-mh-rFl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h0y-CK-SQx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eX-Sd-lA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3527" y="0.0"/>
+        </scene>
+        <!--Мои заказы-->
+        <scene sceneID="l3Z-SB-MSr">
+            <objects>
+                <viewController storyboardIdentifier="orderViewController" title="Мои заказы" id="8S8-fy-phW" customClass="OrderViewController" customModule="GTickets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VDF-YC-qJS"/>
+                        <viewControllerLayoutGuide type="bottom" id="PSH-Z7-Cap"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M8Z-go-Vq8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.30748155381944442" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4v-QB-x7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="693"/>
+        </scene>
+        <!--Мой профиль-->
+        <scene sceneID="DEa-40-Za7">
+            <objects>
+                <viewController storyboardIdentifier="profileViewController" title="Мой профиль" id="jTv-da-2uG" customClass="ProfileViewController" customModule="GTickets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kC-hy-gWD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xft-As-fwU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uLV-mH-9Ev">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.52574327256944442" green="0.96156141493055558" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wXW-nz-Ad5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="0.0"/>
         </scene>
     </scenes>
 </document>

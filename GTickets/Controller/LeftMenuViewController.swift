@@ -9,10 +9,11 @@
 import UIKit
 
 enum ItemLeftMenu: String {
-  case Profile = "Мой профиль"
-  case Order = "Мои заказы"
+  case profile = "Мой профиль"
+  case order = "Мои заказы"
+  case airticketSearch = "Поиск авиабилетов"
   
-  static let allValues = [Profile, Order]
+  static let allValues = [profile, order, airticketSearch]
   
   var index : Int {
     return ItemLeftMenu.allValues.index(of: self)!
@@ -20,9 +21,11 @@ enum ItemLeftMenu: String {
   
   var image: UIImage? {
     switch self {
-    case .Profile:
+    case .profile:
       return UIImage()
-    case .Order:
+    case .order:
+      return UIImage()
+    case .airticketSearch:
       return UIImage()
     }
   }
@@ -45,43 +48,19 @@ class LeftMenuViewController: UIViewController {
 extension LeftMenuViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let mainViewController = sideMenuController!
-//    
-//    if indexPath.row == 0 {
-//      if mainViewController.isLeftViewAlwaysVisibleForCurrentOrientation {
-//        mainViewController.showRightView(animated: true, completionHandler: nil)
-//      }
-//      else {
-//        mainViewController.hideLeftView(animated: true, completionHandler: {
-//          mainViewController.showRightView(animated: true, completionHandler: nil)
-//        })
-//      }
-//    }
-//    else if indexPath.row == 2 {
-//      let navigationController = mainViewController.rootViewController as! NavigationController
-//      let viewController: UIViewController!
-//      
-//      if navigationController.viewControllers.first is ViewController {
-//        viewController = self.storyboard!.instantiateViewController(withIdentifier: "OtherViewController")
-//      }
-//      else {
-//        viewController = self.storyboard!.instantiateViewController(withIdentifier: "ViewController")
-//      }
-//      
-//      navigationController.setViewControllers([viewController], animated: false)
-//      
-//      mainViewController.hideLeftView(animated: true, completionHandler: nil)
-//    }
-//    else {
-//      let viewController = UIViewController()
-//      viewController.view.backgroundColor = .white
-//      viewController.title = "Test \(titlesArray[indexPath.row])"
-//      
-//      let navigationController = mainViewController.rootViewController as! NavigationController
-//      navigationController.pushViewController(viewController, animated: true)
-//      
-//      mainViewController.hideLeftView(animated: true, completionHandler: nil)
-//    }
+    let mainViewController = sideMenuController!
+    let navigationController = mainViewController.rootViewController as! UINavigationController
+    let viewController: UIViewController!
+    
+    if navigationController.viewControllers.first is MasterViewController {
+      viewController = navigationController.viewControllers.first
+    } else {
+      viewController = storyboard!.instantiateViewController(withIdentifier: "masterViewController")
+      navigationController.setViewControllers([viewController], animated: false)
+    }
+    
+    (viewController as! MasterViewController).setupViewController(for: ItemLeftMenu.allValues[indexPath.row])
+    mainViewController.hideLeftView(animated: true, completionHandler: nil)
   }
   
 }
