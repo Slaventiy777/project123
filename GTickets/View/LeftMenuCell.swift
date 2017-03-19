@@ -15,7 +15,9 @@ class LeftMenuCell: UITableViewCell {
   
   func update(image: UIImage?, name: String?) {
     itemImageView.image = image
+    
     itemName.text = name
+    itemName.sizeToFit()
   }
   
 }

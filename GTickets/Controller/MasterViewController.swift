@@ -27,17 +27,7 @@ class MasterViewController: UIViewController {
       return
     }
     
-    let viewController: UIViewController!
-    switch key {
-    case .profile:
-      viewController = storyboard?.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
-    case .order:
-      viewController = storyboard?.instantiateViewController(withIdentifier: "orderViewController") as! OrderViewController
-    case .airticketSearch:
-      viewController = storyboard?.instantiateViewController(withIdentifier: "airticketSearchViewController") as! AirticketSearchViewController
-    }
-    
-    if let viewController = viewController {
+    if let viewController = key.viewController {
       listViewControllers.updateValue(viewController, forKey: key)
     }
   }

@@ -12,8 +12,22 @@ enum ItemLeftMenu: String {
   case profile = "Мой профиль"
   case order = "Мои заказы"
   case airticketSearch = "Поиск авиабилетов"
+  case buyingTips = "Советы по покупке билетов"
+  case contacts = "Контакты"
+  case feedback = "Оставить отзыв"
+  case share = "Поделится с друзьями"
+  case settings = "Настройки"
+  case exit = "Выйти"
   
-  static let allValues = [profile, order, airticketSearch]
+  static let allValues = [profile,
+                          order,
+                          airticketSearch,
+                          buyingTips,
+                          contacts,
+                          feedback,
+                          share,
+                          settings,
+                          exit]
   
   var index : Int {
     return ItemLeftMenu.allValues.index(of: self)!
@@ -27,9 +41,46 @@ enum ItemLeftMenu: String {
       return UIImage()
     case .airticketSearch:
       return UIImage()
+    case .buyingTips:
+      return UIImage()
+    case .contacts:
+      return UIImage()
+    case .feedback:
+      return UIImage()
+    case .share:
+      return UIImage()
+    case .settings:
+      return UIImage()
+    case .exit:
+      return UIImage()
     }
   }
   
+  var viewController: UIViewController? {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    switch self {
+    case .profile:
+      return storyboard.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
+    case .order:
+      return storyboard.instantiateViewController(withIdentifier: "orderViewController") as! OrderViewController
+    case .airticketSearch:
+      return storyboard.instantiateViewController(withIdentifier: "airticketSearchViewController") as! AirticketSearchViewController
+    case .buyingTips:
+      return storyboard.instantiateViewController(withIdentifier: "buyingTipsViewController") as! BuyingTipsViewController
+    case .contacts:
+      return storyboard.instantiateViewController(withIdentifier: "contactsViewController") as! ContactsViewController
+    case .feedback:
+      return storyboard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
+    case .share:
+      return storyboard.instantiateViewController(withIdentifier: "shareViewController") as! ShareViewController
+    case .settings:
+      return storyboard.instantiateViewController(withIdentifier: "settingsViewController") as! SettingsViewController
+    default:
+      return nil;
+    }
+  }
+
 }
 
 class LeftMenuViewController: UIViewController {
@@ -40,12 +91,41 @@ class LeftMenuViewController: UIViewController {
     super.viewDidLoad()
     
     leftMenuView.tableView.register(UINib(nibName: "LeftMenuCell", bundle: nil), forCellReuseIdentifier: "CellLeftMenu")
+    leftMenuView.tableView.tableFooterView = UIView()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
   }
   
 }
 
 // MARK: - UITableViewDelegate
 extension LeftMenuViewController: UITableViewDelegate {
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 1.0 / UIScreen.main.scale
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    // There is to add separator line above first cell in section
+    let frameHeaderView = CGRect(x: 0,
+                                 y: 0,
+                                 width: tableView.frame.width,
+                                 height: 1 / UIScreen.main.scale)
+    let headerView = UIView(frame: frameHeaderView)
+    
+    let frameTopSeparator = CGRect(x: tableView.separatorInset.left,
+                                   y: 0,
+                                   width: tableView.frame.size.width - tableView.separatorInset.left - tableView.separatorInset.right,
+                                   height: 1 / UIScreen.main.scale)
+    let topSeparator = UIView(frame: frameTopSeparator)
+    topSeparator.backgroundColor = tableView.separatorColor
+    
+    headerView.addSubview(topSeparator)
+    
+    return headerView
+  }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let mainViewController = sideMenuController!
@@ -78,6 +158,10 @@ extension LeftMenuViewController: UITableViewDataSource {
     
     let item = ItemLeftMenu.allValues[indexPath.row]
     cell.update(image: item.image, name: item.rawValue)
+    
+    if indexPath.row == ItemLeftMenu.allValues.count - 1 {
+      cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, tableView.bounds.width);
+    }
     
     return cell
   }

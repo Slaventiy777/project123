@@ -20,6 +20,11 @@
 		F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */; };
 		F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */; };
 		F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */; };
+		F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */; };
+		F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD31E7F293F0064D071 /* ContactsViewController.swift */; };
+		F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD51E7F29650064D071 /* FeedbackViewController.swift */; };
+		F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD71E7F29850064D071 /* ShareViewController.swift */; };
+		F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD91E7F29C60064D071 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,11 @@
 		F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F94A7AF41E768D2B004ED5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyingTipsViewController.swift; sourceTree = "<group>"; };
+		F9508CD31E7F293F0064D071 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		F9508CD51E7F29650064D071 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		F9508CD71E7F29850064D071 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F9508CD91E7F29C60064D071 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +125,11 @@
 				F904A5331E7DF74D00911C67 /* ProfileViewController.swift */,
 				F904A5311E7DDEE400911C67 /* OrderViewController.swift */,
 				F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */,
+				F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */,
+				F9508CD31E7F293F0064D071 /* ContactsViewController.swift */,
+				F9508CD51E7F29650064D071 /* FeedbackViewController.swift */,
+				F9508CD71E7F29850064D071 /* ShareViewController.swift */,
+				F9508CD91E7F29C60064D071 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,13 +290,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */,
+				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
 				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
+				F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */,
 				F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */,
 				F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */,
 				F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */,
+				F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */,
+				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
+				F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */,
 				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

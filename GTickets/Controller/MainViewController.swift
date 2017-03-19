@@ -20,7 +20,7 @@ class MainViewController: LGSideMenuController {
     let leftViewController = self.storyboard?.instantiateViewController(withIdentifier: "leftMenuViewController") as! LeftMenuViewController
     
     self.leftViewController = leftViewController
-    self.leftViewWidth = 250.0
+    //self.leftViewWidth = 250.0
     self.leftViewPresentationStyle = .slideAbove
   }
     
