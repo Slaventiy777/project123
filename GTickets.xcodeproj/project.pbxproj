@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
+		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
+		5C8E29641E80777D00206EF0 /* FuturaPTBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */; };
+		5C8E29651E80777D00206EF0 /* FuturaPTBoldOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E294F1E80777D00206EF0 /* FuturaPTBoldOblique.otf */; };
+		5C8E29661E80777D00206EF0 /* FuturaPTBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29501E80777D00206EF0 /* FuturaPTBook.otf */; };
+		5C8E29671E80777D00206EF0 /* FuturaPTBookOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29511E80777D00206EF0 /* FuturaPTBookOblique.otf */; };
+		5C8E29681E80777D00206EF0 /* FuturaPTCondBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29521E80777D00206EF0 /* FuturaPTCondBold.otf */; };
+		5C8E29691E80777D00206EF0 /* FuturaPTCondBoldOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29531E80777D00206EF0 /* FuturaPTCondBoldOblique.otf */; };
+		5C8E296A1E80777D00206EF0 /* FuturaPTCondBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29541E80777D00206EF0 /* FuturaPTCondBook.otf */; };
+		5C8E296B1E80777D00206EF0 /* FuturaPTCondBookOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29551E80777D00206EF0 /* FuturaPTCondBookOblique.otf */; };
+		5C8E296C1E80777D00206EF0 /* FuturaPTCondExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29561E80777D00206EF0 /* FuturaPTCondExtraBold.otf */; };
+		5C8E296D1E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29571E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf */; };
+		5C8E296E1E80777D00206EF0 /* FuturaPTCondMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29581E80777D00206EF0 /* FuturaPTCondMedium.otf */; };
+		5C8E296F1E80777D00206EF0 /* FuturaPTCondMediumOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29591E80777D00206EF0 /* FuturaPTCondMediumOblique.otf */; };
+		5C8E29701E80777D00206EF0 /* FuturaPTDemi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295A1E80777D00206EF0 /* FuturaPTDemi.otf */; };
+		5C8E29711E80777D00206EF0 /* FuturaPTDemiOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295B1E80777D00206EF0 /* FuturaPTDemiOblique.otf */; };
+		5C8E29721E80777D00206EF0 /* FuturaPTExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295C1E80777D00206EF0 /* FuturaPTExtraBold.otf */; };
+		5C8E29731E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295D1E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf */; };
+		5C8E29741E80777D00206EF0 /* FuturaPTHeavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295E1E80777D00206EF0 /* FuturaPTHeavy.otf */; };
+		5C8E29751E80777D00206EF0 /* FuturaPTHeavyOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E295F1E80777D00206EF0 /* FuturaPTHeavyOblique.otf */; };
+		5C8E29761E80777D00206EF0 /* FuturaPTLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29601E80777D00206EF0 /* FuturaPTLight.otf */; };
+		5C8E29771E80777D00206EF0 /* FuturaPTLightOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29611E80777D00206EF0 /* FuturaPTLightOblique.otf */; };
+		5C8E29781E80777D00206EF0 /* FuturaPTMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29621E80777D00206EF0 /* FuturaPTMedium.otf */; };
+		5C8E29791E80777D00206EF0 /* FuturaPTMediumOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29631E80777D00206EF0 /* FuturaPTMediumOblique.otf */; };
 		99BF73E424B1BADBA5B397B6 /* Pods_GTickets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */; };
 		F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52D1E7DC34200911C67 /* MasterViewController.swift */; };
 		F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */; };
@@ -28,6 +52,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBold.otf; sourceTree = "<group>"; };
+		5C8E294F1E80777D00206EF0 /* FuturaPTBoldOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBoldOblique.otf; sourceTree = "<group>"; };
+		5C8E29501E80777D00206EF0 /* FuturaPTBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBook.otf; sourceTree = "<group>"; };
+		5C8E29511E80777D00206EF0 /* FuturaPTBookOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBookOblique.otf; sourceTree = "<group>"; };
+		5C8E29521E80777D00206EF0 /* FuturaPTCondBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondBold.otf; sourceTree = "<group>"; };
+		5C8E29531E80777D00206EF0 /* FuturaPTCondBoldOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondBoldOblique.otf; sourceTree = "<group>"; };
+		5C8E29541E80777D00206EF0 /* FuturaPTCondBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondBook.otf; sourceTree = "<group>"; };
+		5C8E29551E80777D00206EF0 /* FuturaPTCondBookOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondBookOblique.otf; sourceTree = "<group>"; };
+		5C8E29561E80777D00206EF0 /* FuturaPTCondExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondExtraBold.otf; sourceTree = "<group>"; };
+		5C8E29571E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondExtraBoldOblique.otf; sourceTree = "<group>"; };
+		5C8E29581E80777D00206EF0 /* FuturaPTCondMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondMedium.otf; sourceTree = "<group>"; };
+		5C8E29591E80777D00206EF0 /* FuturaPTCondMediumOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTCondMediumOblique.otf; sourceTree = "<group>"; };
+		5C8E295A1E80777D00206EF0 /* FuturaPTDemi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTDemi.otf; sourceTree = "<group>"; };
+		5C8E295B1E80777D00206EF0 /* FuturaPTDemiOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTDemiOblique.otf; sourceTree = "<group>"; };
+		5C8E295C1E80777D00206EF0 /* FuturaPTExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTExtraBold.otf; sourceTree = "<group>"; };
+		5C8E295D1E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTExtraBoldOblique.otf; sourceTree = "<group>"; };
+		5C8E295E1E80777D00206EF0 /* FuturaPTHeavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTHeavy.otf; sourceTree = "<group>"; };
+		5C8E295F1E80777D00206EF0 /* FuturaPTHeavyOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTHeavyOblique.otf; sourceTree = "<group>"; };
+		5C8E29601E80777D00206EF0 /* FuturaPTLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTLight.otf; sourceTree = "<group>"; };
+		5C8E29611E80777D00206EF0 /* FuturaPTLightOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTLightOblique.otf; sourceTree = "<group>"; };
+		5C8E29621E80777D00206EF0 /* FuturaPTMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTMedium.otf; sourceTree = "<group>"; };
+		5C8E29631E80777D00206EF0 /* FuturaPTMediumOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTMediumOblique.otf; sourceTree = "<group>"; };
 		CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.debug.xcconfig"; sourceTree = "<group>"; };
 		D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GTickets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.release.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +192,7 @@
 		F94A7AFC1E769197004ED5FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C8E294C1E80748200206EF0 /* AlertView.swift */,
 				F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */,
 				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
@@ -155,6 +204,7 @@
 		F94A7AFD1E769274004ED5FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5C8E294A1E80747800206EF0 /* GradientView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -162,6 +212,28 @@
 		F94A7B011E76932A004ED5FD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */,
+				5C8E294F1E80777D00206EF0 /* FuturaPTBoldOblique.otf */,
+				5C8E29501E80777D00206EF0 /* FuturaPTBook.otf */,
+				5C8E29511E80777D00206EF0 /* FuturaPTBookOblique.otf */,
+				5C8E29521E80777D00206EF0 /* FuturaPTCondBold.otf */,
+				5C8E29531E80777D00206EF0 /* FuturaPTCondBoldOblique.otf */,
+				5C8E29541E80777D00206EF0 /* FuturaPTCondBook.otf */,
+				5C8E29551E80777D00206EF0 /* FuturaPTCondBookOblique.otf */,
+				5C8E29561E80777D00206EF0 /* FuturaPTCondExtraBold.otf */,
+				5C8E29571E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf */,
+				5C8E29581E80777D00206EF0 /* FuturaPTCondMedium.otf */,
+				5C8E29591E80777D00206EF0 /* FuturaPTCondMediumOblique.otf */,
+				5C8E295A1E80777D00206EF0 /* FuturaPTDemi.otf */,
+				5C8E295B1E80777D00206EF0 /* FuturaPTDemiOblique.otf */,
+				5C8E295C1E80777D00206EF0 /* FuturaPTExtraBold.otf */,
+				5C8E295D1E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf */,
+				5C8E295E1E80777D00206EF0 /* FuturaPTHeavy.otf */,
+				5C8E295F1E80777D00206EF0 /* FuturaPTHeavyOblique.otf */,
+				5C8E29601E80777D00206EF0 /* FuturaPTLight.otf */,
+				5C8E29611E80777D00206EF0 /* FuturaPTLightOblique.otf */,
+				5C8E29621E80777D00206EF0 /* FuturaPTMedium.otf */,
+				5C8E29631E80777D00206EF0 /* FuturaPTMediumOblique.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -228,9 +300,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8E29751E80777D00206EF0 /* FuturaPTHeavyOblique.otf in Resources */,
+				5C8E296C1E80777D00206EF0 /* FuturaPTCondExtraBold.otf in Resources */,
+				5C8E29701E80777D00206EF0 /* FuturaPTDemi.otf in Resources */,
 				F9189D331E7BEEE100C6F7D5 /* Main.storyboard in Resources */,
+				5C8E29671E80777D00206EF0 /* FuturaPTBookOblique.otf in Resources */,
+				5C8E29691E80777D00206EF0 /* FuturaPTCondBoldOblique.otf in Resources */,
+				5C8E29651E80777D00206EF0 /* FuturaPTBoldOblique.otf in Resources */,
+				5C8E29711E80777D00206EF0 /* FuturaPTDemiOblique.otf in Resources */,
+				5C8E29681E80777D00206EF0 /* FuturaPTCondBold.otf in Resources */,
+				5C8E29771E80777D00206EF0 /* FuturaPTLightOblique.otf in Resources */,
+				5C8E296D1E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf in Resources */,
+				5C8E296B1E80777D00206EF0 /* FuturaPTCondBookOblique.otf in Resources */,
 				F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */,
+				5C8E29731E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf in Resources */,
+				5C8E29661E80777D00206EF0 /* FuturaPTBook.otf in Resources */,
 				F9189D311E7BEEE100C6F7D5 /* LeftMenuCell.xib in Resources */,
+				5C8E29761E80777D00206EF0 /* FuturaPTLight.otf in Resources */,
+				5C8E29791E80777D00206EF0 /* FuturaPTMediumOblique.otf in Resources */,
+				5C8E296F1E80777D00206EF0 /* FuturaPTCondMediumOblique.otf in Resources */,
+				5C8E29721E80777D00206EF0 /* FuturaPTExtraBold.otf in Resources */,
+				5C8E29741E80777D00206EF0 /* FuturaPTHeavy.otf in Resources */,
+				5C8E296E1E80777D00206EF0 /* FuturaPTCondMedium.otf in Resources */,
+				5C8E29781E80777D00206EF0 /* FuturaPTMedium.otf in Resources */,
+				5C8E29641E80777D00206EF0 /* FuturaPTBold.otf in Resources */,
+				5C8E296A1E80777D00206EF0 /* FuturaPTCondBook.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +385,7 @@
 			files = (
 				F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */,
 				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
+				5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
 				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
 				F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */,
@@ -301,6 +396,7 @@
 				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
+				5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */,
 				F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */,
 				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,
 			);
@@ -406,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GTickets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.GTickets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,6 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GTickets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.GTickets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
