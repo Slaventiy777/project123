@@ -12,12 +12,17 @@
 		F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */; };
 		F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5311E7DDEE400911C67 /* OrderViewController.swift */; };
 		F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5331E7DF74D00911C67 /* ProfileViewController.swift */; };
+		F904B7BD1E807A6E00F6297E /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904B7BC1E807A6E00F6297E /* MasterView.swift */; };
 		F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */; };
 		F9189D311E7BEEE100C6F7D5 /* LeftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */; };
 		F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */; };
-		F9189D331E7BEEE100C6F7D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */; };
 		F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */; };
 		F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */; };
+		F94A6CEC1E87ABA500F84525 /* FindTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A6CEB1E87ABA500F84525 /* FindTextField.swift */; };
+		F94A6CEE1E88531D00F84525 /* AirticketSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */; };
+		F94A6CF01E88547400F84525 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A6CEF1E88547400F84525 /* UIViewController+StoryboardInstance.swift */; };
+		F94A6CF11E88564C00F84525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */; };
+		F94A6CF31E885FB600F84525 /* AirticketSearchViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */; };
 		F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */; };
 		F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */; };
 		F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */; };
@@ -35,12 +40,17 @@
 		F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchViewController.swift; sourceTree = "<group>"; };
 		F904A5311E7DDEE400911C67 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		F904A5331E7DF74D00911C67 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F904B7BC1E807A6E00F6297E /* MasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuCell.xib; sourceTree = "<group>"; };
 		F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F94A6CEB1E87ABA500F84525 /* FindTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTextField.swift; sourceTree = "<group>"; };
+		F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AirticketSearchViewController.storyboard; sourceTree = "<group>"; };
+		F94A6CEF1E88547400F84525 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
+		F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AirticketSearchViewContent.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F94A7AE51E768D2B004ED5FD /* GTickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,9 +155,13 @@
 			isa = PBXGroup;
 			children = (
 				F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */,
+				F904B7BC1E807A6E00F6297E /* MasterView.swift */,
 				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
 				F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */,
+				F94A6CEB1E87ABA500F84525 /* FindTextField.swift */,
+				F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */,
+				F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +169,7 @@
 		F94A7AFD1E769274004ED5FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F94A6CEF1E88547400F84525 /* UIViewController+StoryboardInstance.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -228,9 +243,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9189D331E7BEEE100C6F7D5 /* Main.storyboard in Resources */,
+				F94A6CEE1E88531D00F84525 /* AirticketSearchViewController.storyboard in Resources */,
 				F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */,
 				F9189D311E7BEEE100C6F7D5 /* LeftMenuCell.xib in Resources */,
+				F94A6CF11E88564C00F84525 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,11 +308,15 @@
 				F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */,
 				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
+				F904B7BD1E807A6E00F6297E /* MasterView.swift in Sources */,
 				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
 				F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */,
+				F94A6CF31E885FB600F84525 /* AirticketSearchViewContent.swift in Sources */,
 				F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */,
 				F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */,
+				F94A6CEC1E87ABA500F84525 /* FindTextField.swift in Sources */,
 				F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */,
+				F94A6CF01E88547400F84525 /* UIViewController+StoryboardInstance.swift in Sources */,
 				F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */,
 				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
@@ -405,7 +425,9 @@
 			baseConfigurationReference = CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GTickets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.GTickets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,7 +440,9 @@
 			baseConfigurationReference = E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GTickets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.GTickets;
 				PRODUCT_NAME = "$(TARGET_NAME)";

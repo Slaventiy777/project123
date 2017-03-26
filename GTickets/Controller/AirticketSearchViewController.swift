@@ -10,10 +10,13 @@ import UIKit
 
 class AirticketSearchViewController: UIViewController {
   
+  @IBOutlet weak var viewContent: AirticketSearchViewContent!
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
+    viewContent.update()
+    
   }
   
 }

@@ -65,7 +65,7 @@ enum ItemLeftMenu: String {
     case .order:
       return storyboard.instantiateViewController(withIdentifier: "orderViewController") as! OrderViewController
     case .airticketSearch:
-      return storyboard.instantiateViewController(withIdentifier: "airticketSearchViewController") as! AirticketSearchViewController
+      return AirticketSearchViewController.storyboardInstance() //storyboard.instantiateViewController(withIdentifier: "airticketSearchViewController") as! AirticketSearchViewController
     case .buyingTips:
       return storyboard.instantiateViewController(withIdentifier: "buyingTipsViewController") as! BuyingTipsViewController
     case .contacts:
