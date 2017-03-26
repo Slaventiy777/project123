@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JVl-pI-y24">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="LcJ-qF-S2l">
+            <objects>
+                <viewController id="JVl-pI-y24" customClass="SearchViewController" customModule="GTickets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sYf-A3-MtY"/>
+                        <viewControllerLayoutGuide type="bottom" id="T3f-aK-U7o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ecC-6P-5LH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mAa-fG-wt1">
+                                <rect key="frame" x="10" y="60" width="350" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer._borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing:" destination="JVl-pI-y24" eventType="editingDidBegin" id="vo2-K6-DMb"/>
+                                    <action selector="textFieldDidChange:" destination="JVl-pI-y24" eventType="editingChanged" id="Ynv-xH-ZuC"/>
+                                    <action selector="textFieldDidEndEditing:" destination="JVl-pI-y24" eventType="editingDidEnd" id="Qlg-Ux-AIO"/>
+                                    <outlet property="delegate" destination="JVl-pI-y24" id="hnn-KS-w7l"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r2d-QC-Mcw">
+                                <rect key="frame" x="10" y="120" width="350" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" id="fZA-lm-WSD" customClass="SearchViewCell" customModule="GTickets" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="350" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fZA-lm-WSD" id="NLb-OY-tfd">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEq-tf-B3y">
+                                                    <rect key="frame" x="10" y="6" width="330" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="airport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK3-7X-vOM">
+                                                    <rect key="frame" x="10" y="31" width="330" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="QK3-7X-vOM" secondAttribute="trailing" constant="10" id="1YI-Bl-3hW"/>
+                                                <constraint firstAttribute="trailing" secondItem="dEq-tf-B3y" secondAttribute="trailing" constant="10" id="6Kr-uH-Ylf"/>
+                                                <constraint firstItem="QK3-7X-vOM" firstAttribute="top" secondItem="dEq-tf-B3y" secondAttribute="bottom" constant="4" id="Dy6-8V-mm8"/>
+                                                <constraint firstItem="QK3-7X-vOM" firstAttribute="leading" secondItem="NLb-OY-tfd" secondAttribute="leading" constant="10" id="aCu-jC-OlM"/>
+                                                <constraint firstAttribute="bottom" secondItem="QK3-7X-vOM" secondAttribute="bottom" priority="250" constant="5" id="r3C-VS-8mD"/>
+                                                <constraint firstItem="dEq-tf-B3y" firstAttribute="leading" secondItem="NLb-OY-tfd" secondAttribute="leading" constant="10" id="tfT-Ac-Dd9"/>
+                                                <constraint firstItem="dEq-tf-B3y" firstAttribute="top" secondItem="NLb-OY-tfd" secondAttribute="top" constant="6" id="uS8-K4-ZEV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="airport" destination="QK3-7X-vOM" id="dfj-Zb-Br3"/>
+                                            <outlet property="country" destination="dEq-tf-B3y" id="rZV-zO-MTt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer._borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="JVl-pI-y24" id="Rsd-ej-V9F"/>
+                                    <outlet property="delegate" destination="JVl-pI-y24" id="oO6-KU-p56"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="r2d-QC-Mcw" id="Lqm-e1-bmf"/>
+                        <outlet property="textField" destination="mAa-fG-wt1" id="s74-PI-YWW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUT-sO-khi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26" y="157"/>
+        </scene>
+    </scenes>
+</document>

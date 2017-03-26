@@ -5,6 +5,7 @@ use_frameworks!
 
 def default_pods
 pod 'LGSideMenuController'
+pod 'Alamofire', '~> 4.4.0'
 end
 
 target 'GTickets' do

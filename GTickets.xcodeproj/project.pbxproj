@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C17971B1E87FA6200751910 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17971A1E87FA6200751910 /* RequestManager.swift */; };
+		5C17971D1E87FBCF00751910 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C17971C1E87FBCF00751910 /* Search.storyboard */; };
+		5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17971F1E87FD7800751910 /* SearchViewCell.swift */; };
+		5C1797221E87FE7B00751910 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797211E87FE7B00751910 /* SearchViewController.swift */; };
+		5C1797241E8800BA00751910 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797231E8800BA00751910 /* SearchData.swift */; };
+		5C1797261E8833F000751910 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797251E8833F000751910 /* UIManager.swift */; };
 		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
 		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
 		5C8E29641E80777D00206EF0 /* FuturaPTBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */; };
@@ -52,6 +58,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C17971A1E87FA6200751910 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		5C17971C1E87FBCF00751910 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		5C17971F1E87FD7800751910 /* SearchViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		5C1797211E87FE7B00751910 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		5C1797231E8800BA00751910 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		5C1797251E8833F000751910 /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBold.otf; sourceTree = "<group>"; };
@@ -120,6 +132,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5C17971E1E87FD5600751910 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5C17971F1E87FD7800751910 /* SearchViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		61F472C4C6475E9C56237A60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +198,7 @@
 				F9508CD51E7F29650064D071 /* FeedbackViewController.swift */,
 				F9508CD71E7F29850064D071 /* ShareViewController.swift */,
 				F9508CD91E7F29C60064D071 /* SettingsViewController.swift */,
+				5C1797211E87FE7B00751910 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +206,7 @@
 		F94A7AFB1E769197004ED5FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5C1797231E8800BA00751910 /* SearchData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,11 +214,13 @@
 		F94A7AFC1E769197004ED5FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C17971E1E87FD5600751910 /* Cells */,
 				5C8E294C1E80748200206EF0 /* AlertView.swift */,
 				F9189D2F1E7BEEE100C6F7D5 /* Main.storyboard */,
 				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
 				F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */,
+				5C17971C1E87FBCF00751910 /* Search.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,7 +228,9 @@
 		F94A7AFD1E769274004ED5FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5C1797251E8833F000751910 /* UIManager.swift */,
 				5C8E294A1E80747800206EF0 /* GradientView.swift */,
+				5C17971A1E87FA6200751910 /* RequestManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,6 +299,7 @@
 				TargetAttributes = {
 					F94A7AE41E768D2B004ED5FD = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = F9BXSP7VLT;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -312,6 +339,7 @@
 				5C8E29771E80777D00206EF0 /* FuturaPTLightOblique.otf in Resources */,
 				5C8E296D1E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf in Resources */,
 				5C8E296B1E80777D00206EF0 /* FuturaPTCondBookOblique.otf in Resources */,
+				5C17971D1E87FBCF00751910 /* Search.storyboard in Resources */,
 				F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */,
 				5C8E29731E80777D00206EF0 /* FuturaPTExtraBoldOblique.otf in Resources */,
 				5C8E29661E80777D00206EF0 /* FuturaPTBook.otf in Resources */,
@@ -383,9 +411,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C17971B1E87FA6200751910 /* RequestManager.swift in Sources */,
 				F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */,
 				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
+				5C1797241E8800BA00751910 /* SearchData.swift in Sources */,
 				5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */,
+				5C1797221E87FE7B00751910 /* SearchViewController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
 				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
 				F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */,
@@ -394,6 +425,8 @@
 				F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */,
 				F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */,
 				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
+				5C1797261E8833F000751910 /* UIManager.swift in Sources */,
+				5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
 				5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */,
@@ -501,6 +534,7 @@
 			baseConfigurationReference = CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F9BXSP7VLT;
 				INFOPLIST_FILE = GTickets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,6 +549,7 @@
 			baseConfigurationReference = E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F9BXSP7VLT;
 				INFOPLIST_FILE = GTickets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
