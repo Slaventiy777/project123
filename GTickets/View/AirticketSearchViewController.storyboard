@@ -78,7 +78,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="0RD-Zo-KZN"/>
-                                                            <constraint firstAttribute="width" secondItem="Jl8-SK-F1b" secondAttribute="height" multiplier="138:55" id="d0r-NH-IfX"/>
                                                             <constraint firstAttribute="width" secondItem="Jl8-SK-F1b" secondAttribute="height" multiplier="138:55" id="jll-kA-f05"/>
                                                         </constraints>
                                                         <state key="normal" title="Туда">
@@ -117,6 +116,12 @@
                                                     <constraint firstItem="Jl8-SK-F1b" firstAttribute="leading" secondItem="Swc-Mf-6s7" secondAttribute="leading" id="wos-oj-Lhv"/>
                                                 </constraints>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="change_direct_active" translatesAutoresizingMaskIntoConstraints="NO" id="odx-Gr-f4y">
+                                                <rect key="frame" x="171" y="209" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="odx-Gr-f4y" secondAttribute="height" id="L4t-xs-yIk"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -127,9 +132,13 @@
                                             <constraint firstItem="L9h-cY-2tY" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="CAA-Va-Jer"/>
                                             <constraint firstItem="Swc-Mf-6s7" firstAttribute="top" secondItem="mOK-VX-fQF" secondAttribute="bottom" constant="372" id="FSX-u5-pLr"/>
                                             <constraint firstItem="L9h-cY-2tY" firstAttribute="top" secondItem="mOK-VX-fQF" secondAttribute="bottom" constant="7" id="FXw-QQ-YwE"/>
+                                            <constraint firstItem="odx-Gr-f4y" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="Fd3-Rl-CBm"/>
+                                            <constraint firstItem="odx-Gr-f4y" firstAttribute="top" secondItem="DHU-WA-HKE" secondAttribute="bottom" constant="96" id="Ipg-wb-3z7"/>
+                                            <constraint firstAttribute="trailing" secondItem="odx-Gr-f4y" secondAttribute="trailing" constant="172" id="NhT-Bk-SXC"/>
                                             <constraint firstItem="mOK-VX-fQF" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="QMf-y7-5CE"/>
                                             <constraint firstAttribute="trailing" secondItem="qvt-GY-GXH" secondAttribute="trailing" constant="34" id="VVg-i3-3a5"/>
                                             <constraint firstItem="qvt-GY-GXH" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="X1i-gC-5Xo"/>
+                                            <constraint firstAttribute="bottom" secondItem="Swc-Mf-6s7" secondAttribute="bottom" constant="131" id="ard-qH-lIM"/>
                                             <constraint firstItem="qvt-GY-GXH" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="cW3-jQ-lqf"/>
                                             <constraint firstAttribute="trailing" secondItem="mOK-VX-fQF" secondAttribute="trailing" constant="34" id="d2h-kR-298"/>
                                             <constraint firstItem="Swc-Mf-6s7" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="doF-BI-7Bb"/>
@@ -138,19 +147,12 @@
                                             <constraint firstItem="PSc-tn-uaa" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="j8X-N8-l0E"/>
                                             <constraint firstItem="L9h-cY-2tY" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="k8h-rz-m8q"/>
                                             <constraint firstItem="DHU-WA-HKE" firstAttribute="width" secondItem="cc5-Ha-BZm" secondAttribute="width" multiplier="0.322667" id="kCe-Hs-MJu"/>
-                                            <constraint firstAttribute="bottom" secondItem="mOK-VX-fQF" secondAttribute="bottom" constant="372" id="kIw-Tq-4KZ"/>
+                                            <constraint firstItem="odx-Gr-f4y" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="171" id="p7J-JU-5Dd"/>
                                             <constraint firstItem="PSc-tn-uaa" firstAttribute="top" secondItem="DHU-WA-HKE" secondAttribute="bottom" constant="43" id="q6e-lF-RXA"/>
-                                            <constraint firstAttribute="height" constant="667" id="roz-oh-ueL"/>
                                             <constraint firstItem="DHU-WA-HKE" firstAttribute="top" secondItem="cc5-Ha-BZm" secondAttribute="top" constant="42" id="s0X-zb-B4u"/>
                                             <constraint firstItem="PSc-tn-uaa" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="ty8-00-5E1"/>
                                             <constraint firstItem="mOK-VX-fQF" firstAttribute="top" secondItem="PSc-tn-uaa" secondAttribute="bottom" constant="372" id="z6g-z5-nyg"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="roz-oh-ueL"/>
-                                                <exclude reference="kIw-Tq-4KZ"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
                                             <outlet property="fromField" destination="PSc-tn-uaa" id="qCT-jW-eKm"/>
                                             <outlet property="fromSearchResultView" destination="qvt-GY-GXH" id="pC1-AT-TBT"/>
@@ -161,7 +163,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cc5-Ha-BZm" secondAttribute="trailing" id="VEZ-o2-WUg"/>
-                                    <constraint firstItem="cc5-Ha-BZm" firstAttribute="height" secondItem="pTf-h5-uqx" secondAttribute="height" id="dyF-h7-DIC"/>
                                     <constraint firstItem="cc5-Ha-BZm" firstAttribute="top" secondItem="pTf-h5-uqx" secondAttribute="top" id="eSb-oh-ot6"/>
                                     <constraint firstItem="cc5-Ha-BZm" firstAttribute="leading" secondItem="pTf-h5-uqx" secondAttribute="leading" id="fgc-Uu-yGY"/>
                                     <constraint firstAttribute="bottom" secondItem="cc5-Ha-BZm" secondAttribute="bottom" id="jFH-r7-xOw"/>
@@ -194,6 +195,10 @@
         <scene sceneID="Glf-T1-Bwz">
             <objects>
                 <viewController id="MkJ-fd-FB3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tBe-k8-4XG"/>
+                        <viewControllerLayoutGuide type="bottom" id="fzi-35-HFY"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JI7-Em-Xx8">
                         <rect key="frame" x="0.0" y="0.0" width="307" height="340"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,6 +223,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="change_direct_active" width="40" height="40"/>
         <image name="logo" width="109" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>

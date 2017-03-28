@@ -21,7 +21,7 @@ class AirticketSearchViewContent: UIView {
     fromField.updateField()
     toField.updateField()
     
-    setTopOffsetToField(isDefault: false)
+    setTopOffsetToField(isDefault: true)
   }
   
   func setTopOffsetToField(isDefault: Bool) {
