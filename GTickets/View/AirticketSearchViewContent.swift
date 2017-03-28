@@ -16,12 +16,12 @@ class AirticketSearchViewContent: UIView {
   @IBOutlet weak var toSearchResultView: UIView!
   
   @IBOutlet weak var toFieldTopOffset: NSLayoutConstraint!
-  
+    
   func update() {
     fromField.updateField()
     toField.updateField()
     
-    setTopOffsetToField(isDefault: true)
+    setTopOffsetToField(isDefault: false)
   }
   
   func setTopOffsetToField(isDefault: Bool) {
@@ -41,5 +41,41 @@ class AirticketSearchViewContent: UIView {
                                   fromSearchResultOffset
     }
   }
+
+  
+  //MARK: - UITextFieldDelegate
+  
+  @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
+    if !(textField.text?.isEmpty)! {
+      //updateDataSource()
+    }
+    //showTableView(alpha: 1)
+  }
+  
+  @IBAction func textFieldDidEndEditing(_ textField: UITextField) {
+    //showTableView(alpha: 0)
+  }
+  
+  @IBAction func textFieldDidChange(_ textField: UITextField) {
+    //updateDataSource()
+  }
+  
+  
+  //MARK: - UIViewController
+  
+  func addGestureRecognizerDismissKeyboard() {
+    //Looks for single or multiple taps.
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+    //tap.cancelsTouchesInView = false
+    addGestureRecognizer(tap)
+  }
+  
+  //Calls this function when the tap is recognized.
+  func dismissKeyboard() {
+    //Causes the view (or one of its embedded text fields) to resign the first responder status.
+    endEditing(true)
+  }
   
 }
+
