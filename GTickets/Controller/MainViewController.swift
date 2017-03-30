@@ -14,13 +14,12 @@ class MainViewController: LGSideMenuController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let navigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "navigationViewController")
+    let navigationViewController =  MasterNavigationController.storyboardInstance()
     self.rootViewController = navigationViewController
     
-    let leftViewController = self.storyboard?.instantiateViewController(withIdentifier: "leftMenuViewController") as! LeftMenuViewController
+    let leftViewController = LeftMenuViewController.storyboardInstance()
     
     self.leftViewController = leftViewController
-    //self.leftViewWidth = 250.0
     self.leftViewPresentationStyle = .slideAbove
   }
     
