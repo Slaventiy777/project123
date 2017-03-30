@@ -2,7 +2,7 @@
 //  RequestManager.swift
 //  GTickets
 //
-//  Created by Marharyta Lytvynenko on 3/26/17.
+//  Created by Slava on 3/30/17.
 //  Copyright © 2017 none. All rights reserved.
 //
 
