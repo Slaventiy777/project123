@@ -26,28 +26,7 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var fromSearchResultContainerHeight: NSLayoutConstraint!
   @IBOutlet weak var toSearchResultContainerHeight: NSLayoutConstraint!
 
-  var isCityResultHidden: Bool = true {
-    didSet {
-      
-      if isCityResultHidden {
-        //    guard swapCityTextFieldsButton.alpha == 0 else {
-        //      return
-        //    }
-        
-        UIView.animate(withDuration: 0.2,
-                       animations: {
-                        self.swapCityTextFieldsButton.alpha = 1
-        })
-      } else {
-        UIView.animate(withDuration: 0.2,
-                       animations: {
-                        self.swapCityTextFieldsButton.alpha = 0
-        })
-      }
-      
-
-    }
-  }
+  var isCityResultHidden: Bool = true
   
   var fromSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
@@ -101,6 +80,16 @@ class AirticketSearchView: UIView {
     delegate.swapCityTextFieldsAction()
     endEditing(true)
   }
+  
+  func showCityTextFieldsButton() {
+    let show = fromSearchResultContainerHeight.constant == 0 ? 1 : 0
+    
+    UIView.animate(withDuration: 0.2,
+                   animations: {
+                    self.swapCityTextFieldsButton.alpha = CGFloat(show)
+    })
+
+  }
 
   //MARK: - UITextFieldDelegate
   
@@ -111,6 +100,7 @@ class AirticketSearchView: UIView {
       toSearchResultContainerHeight.constant = toSearchResultContainerContentHeight
     } else if textField == fromTextField {
       fromSearchResultContainerHeight.constant = fromSearchResultContainerContentHeight
+      showCityTextFieldsButton()
     }
   }
   
@@ -123,6 +113,7 @@ class AirticketSearchView: UIView {
       toSearchCityText = toTextField.text!
     } else if textField == fromTextField {
       fromSearchCityText = fromTextField.text!
+      showCityTextFieldsButton()
     }
   }
 
@@ -133,6 +124,7 @@ class AirticketSearchView: UIView {
     } else if textField == fromTextField {
       fromSearchResultContainerHeight.constant = 0
       animateConstraintChanging()
+      showCityTextFieldsButton()
     }
     isCityResultHidden = true
 
