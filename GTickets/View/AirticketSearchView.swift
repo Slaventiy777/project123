@@ -15,6 +15,8 @@ class AirticketSearchView: UIView {
     }
   }
   
+  @IBOutlet weak var swapCityTextFieldsButton: UIButton!
+  
   @IBOutlet weak var fromTextField: UITextField!
   @IBOutlet weak var toTextField: UITextField!
 
@@ -23,15 +25,67 @@ class AirticketSearchView: UIView {
   
   @IBOutlet weak var fromSearchResultContainerHeight: NSLayoutConstraint!
   @IBOutlet weak var toSearchResultContainerHeight: NSLayoutConstraint!
+
+  var isCityResultHidden: Bool = true {
+    didSet {
+      
+      if isCityResultHidden {
+        //    guard swapCityTextFieldsButton.alpha == 0 else {
+        //      return
+        //    }
+        
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        self.swapCityTextFieldsButton.alpha = 1
+        })
+      } else {
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        self.swapCityTextFieldsButton.alpha = 0
+        })
+      }
+      
+
+    }
+  }
+  
   var fromSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
+      if isCityResultHidden {
+        return
+      }
+      
       fromSearchResultContainerHeight.constant = fromSearchResultContainerContentHeight
     }
   }
   
   var toSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
+      if isCityResultHidden {
+        return
+      }
+
       toSearchResultContainerHeight.constant = toSearchResultContainerContentHeight
+    }
+  }
+  
+  var fromSearchCityText: String {
+    set {
+      fromTextField.text = newValue
+      delegate.fromTextFieldDidChange()
+    }
+    get {
+      return fromTextField.text!
+    }
+  }
+
+  var toSearchCityText: String {
+    set {
+      toTextField.text = newValue
+      delegate.toTextFieldDidChange()
+    }
+    get {
+      return toTextField.text!
     }
   }
   
@@ -39,31 +93,36 @@ class AirticketSearchView: UIView {
     addGestureRecognizerDismissKeyboard()
   }
   
+  
+  @IBAction func swapCityTextFieldsAction(_ button: UIButton) {
+    isCityResultHidden = true
+    toSearchResultContainerHeight.constant = 0
+    fromSearchResultContainerHeight.constant = 0
+    delegate.swapCityTextFieldsAction()
+    endEditing(true)
+  }
+
   //MARK: - UITextFieldDelegate
   
   @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
-    //guard let text = textField.text else {
-    //  return
-    //}
+    isCityResultHidden = false
 
     if textField == toTextField {
       toSearchResultContainerHeight.constant = toSearchResultContainerContentHeight
-      //delegate.toTextFieldDidChange(text)
     } else if textField == fromTextField {
       fromSearchResultContainerHeight.constant = fromSearchResultContainerContentHeight
-      //delegate.fromTextFieldDidChange(text)
     }
   }
   
   @IBAction func textFieldDidChange(_ textField: UITextField) {
-    guard let text = textField.text else {
+    guard textField.text != nil else {
       return
     }
 
     if textField == toTextField {
-      delegate.toTextFieldDidChange(text)
+      toSearchCityText = toTextField.text!
     } else if textField == fromTextField {
-      delegate.fromTextFieldDidChange(text)
+      fromSearchCityText = fromTextField.text!
     }
   }
 
@@ -75,6 +134,8 @@ class AirticketSearchView: UIView {
       fromSearchResultContainerHeight.constant = 0
       animateConstraintChanging()
     }
+    isCityResultHidden = true
+
   }
   
   private func animateConstraintChanging() {
@@ -88,6 +149,8 @@ class AirticketSearchView: UIView {
   //MARK: - UIViewController
   
   func addGestureRecognizerDismissKeyboard() {
+    //return  //конфликтует с didSelectRowAt в AirticketSearchCityResultList
+    
     //Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     //Uncomment the line below if you want the tap not not interfere and cancel other interactions.

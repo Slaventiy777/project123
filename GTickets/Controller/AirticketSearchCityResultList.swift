@@ -14,6 +14,8 @@ class AirticketSearchCityResultList: UIViewController {
   fileprivate var dataSource: [SearchCityData] = []
   fileprivate var city: String! = ""
   
+  var delegate: SearchCityViewDelegate?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     makeDataSource(city: "", callback: {})
@@ -76,10 +78,7 @@ class AirticketSearchCityResultList: UIViewController {
 
 //MARK: - UITableViewDelegate
 
-extension AirticketSearchCityResultList: UITableViewDelegate {
-}
-
-extension AirticketSearchCityResultList: UITableViewDataSource {
+extension AirticketSearchCityResultList: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -94,5 +93,10 @@ extension AirticketSearchCityResultList: UITableViewDataSource {
     cell.model = dataSource[indexPath.row]
     return cell
   }
-  
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let model = dataSource[indexPath.row]
+    delegate?.cityChosed(text: model.city, from: self)
+  }
+
 }

@@ -81,12 +81,16 @@
                                                     <constraint firstAttribute="height" id="B6t-kr-Ubx"/>
                                                 </constraints>
                                             </containerView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="change_direct_active" translatesAutoresizingMaskIntoConstraints="NO" id="odx-Gr-f4y">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-68-gGn">
                                                 <rect key="frame" x="171" y="209" width="32" height="32"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="odx-Gr-f4y" secondAttribute="height" id="L4t-xs-yIk"/>
+                                                    <constraint firstAttribute="width" secondItem="Jaq-68-gGn" secondAttribute="height" multiplier="1:1" id="OYB-Aq-Idb"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" backgroundImage="change_direct_active"/>
+                                                <connections>
+                                                    <action selector="swapCityTextFieldsAction:" destination="cc5-Ha-BZm" eventType="touchUpInside" id="CjW-0p-MCL"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swc-Mf-6s7">
                                                 <rect key="frame" x="34" y="674" width="307" height="55"/>
                                                 <subviews>
@@ -174,14 +178,14 @@
                                             <constraint firstAttribute="trailing" secondItem="PSc-tn-uaa" secondAttribute="trailing" constant="34" id="2Nk-re-0rR"/>
                                             <constraint firstItem="iQC-D2-0dy" firstAttribute="top" secondItem="4f4-wg-0qd" secondAttribute="bottom" constant="22" id="62d-fF-AgP"/>
                                             <constraint firstItem="DHU-WA-HKE" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="671-91-7jm"/>
+                                            <constraint firstItem="Jaq-68-gGn" firstAttribute="top" secondItem="DHU-WA-HKE" secondAttribute="bottom" constant="96" id="Ab4-0z-gg6"/>
                                             <constraint firstItem="mOK-VX-fQF" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="Adb-Od-vjT"/>
                                             <constraint firstItem="BZu-vh-XhD" firstAttribute="top" secondItem="iQC-D2-0dy" secondAttribute="bottom" constant="53" id="B5D-0z-85D"/>
                                             <constraint firstItem="L9h-cY-2tY" firstAttribute="leading" secondItem="cc5-Ha-BZm" secondAttribute="leading" constant="34" id="CAA-Va-Jer"/>
                                             <constraint firstItem="Swc-Mf-6s7" firstAttribute="top" secondItem="mOK-VX-fQF" secondAttribute="bottom" constant="372" id="FSX-u5-pLr"/>
                                             <constraint firstItem="L9h-cY-2tY" firstAttribute="top" secondItem="mOK-VX-fQF" secondAttribute="bottom" constant="7" id="FXw-QQ-YwE"/>
-                                            <constraint firstItem="odx-Gr-f4y" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="Fd3-Rl-CBm"/>
+                                            <constraint firstItem="Jaq-68-gGn" firstAttribute="centerX" secondItem="cc5-Ha-BZm" secondAttribute="centerX" id="Fzf-om-RYx"/>
                                             <constraint firstItem="TYY-2f-3sj" firstAttribute="width" secondItem="cc5-Ha-BZm" secondAttribute="width" multiplier="19:375" id="GPI-QK-rMa"/>
-                                            <constraint firstItem="odx-Gr-f4y" firstAttribute="top" secondItem="DHU-WA-HKE" secondAttribute="bottom" constant="96" id="Ipg-wb-3z7"/>
                                             <constraint firstItem="BZu-vh-XhD" firstAttribute="width" secondItem="cc5-Ha-BZm" secondAttribute="width" multiplier="139:375" id="JgD-UD-faz"/>
                                             <constraint firstItem="iQC-D2-0dy" firstAttribute="width" secondItem="cc5-Ha-BZm" secondAttribute="width" id="K6l-rl-71z"/>
                                             <constraint firstItem="BZu-vh-XhD" firstAttribute="top" secondItem="4f4-wg-0qd" secondAttribute="bottom" constant="635" id="Kh5-fJ-l9K"/>
@@ -229,6 +233,7 @@
                                             <outlet property="fromSearchResultContainer" destination="qvt-GY-GXH" id="NR3-Ty-uSg"/>
                                             <outlet property="fromSearchResultContainerHeight" destination="pKQ-AI-nnA" id="zih-HL-dY8"/>
                                             <outlet property="fromTextField" destination="PSc-tn-uaa" id="2zB-IE-jIp"/>
+                                            <outlet property="swapCityTextFieldsButton" destination="Jaq-68-gGn" id="Ter-mp-asx"/>
                                             <outlet property="toSearchResultContainer" destination="L9h-cY-2tY" id="spf-GM-WEf"/>
                                             <outlet property="toSearchResultContainerHeight" destination="B6t-kr-Ubx" id="9vp-aE-KQF"/>
                                             <outlet property="toTextField" destination="mOK-VX-fQF" id="A1e-YW-fKc"/>
@@ -240,9 +245,9 @@
                                     <constraint firstAttribute="trailing" secondItem="cc5-Ha-BZm" secondAttribute="trailing" id="VEZ-o2-WUg"/>
                                     <constraint firstItem="cc5-Ha-BZm" firstAttribute="top" secondItem="pTf-h5-uqx" secondAttribute="top" id="eSb-oh-ot6"/>
                                     <constraint firstItem="cc5-Ha-BZm" firstAttribute="leading" secondItem="pTf-h5-uqx" secondAttribute="leading" id="fgc-Uu-yGY"/>
-                                    <constraint firstItem="odx-Gr-f4y" firstAttribute="width" secondItem="pTf-h5-uqx" secondAttribute="width" multiplier="32:375" id="hAt-m5-SGX"/>
                                     <constraint firstAttribute="bottom" secondItem="cc5-Ha-BZm" secondAttribute="bottom" id="jFH-r7-xOw"/>
                                     <constraint firstItem="cc5-Ha-BZm" firstAttribute="centerX" secondItem="pTf-h5-uqx" secondAttribute="centerX" id="utj-Cu-jMC"/>
+                                    <constraint firstItem="Jaq-68-gGn" firstAttribute="width" secondItem="pTf-h5-uqx" secondAttribute="width" multiplier="32:375" id="vXM-el-04r"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -288,7 +293,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ITEM" id="86F-SY-OAZ" customClass="SearchCityViewCell" customModule="GTickets" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ITEM" id="86F-SY-OAZ" customClass="SearchCityViewCell" customModule="GTickets" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="86F-SY-OAZ" id="oMr-Ip-7Kj">

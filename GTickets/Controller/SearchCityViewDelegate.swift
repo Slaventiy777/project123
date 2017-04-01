@@ -6,11 +6,15 @@
 //  Copyright © 2017 none. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SearchCityViewDelegate {
   //дописывать методы IBAction с вьюхи
-  func fromTextFieldDidChange(_ text: String)
-  func toTextFieldDidChange(_ text: String)
+  func fromTextFieldDidChange()
+  func toTextFieldDidChange()
+
+  func swapCityTextFieldsAction()
+
+  func cityChosed(text: String, from: UIViewController)
   
 }
