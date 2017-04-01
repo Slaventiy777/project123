@@ -10,24 +10,43 @@ import UIKit
 
 class AirticketSearchViewController: UIViewController {
   
-  @IBOutlet weak var viewContent: AirticketSearchViewContent!
+  @IBOutlet weak var viewContent: AirticketSearchView!
   
-  private var fromSearchCity: SearchCityViewController!
-  private var toSearchCity: SearchCityViewController!
+  fileprivate var fromSearchCity: AirticketSearchCityResultList!
+  fileprivate var toSearchCity: AirticketSearchCityResultList!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    viewContent.update()
-    
+    viewContent.delegate = self
+    makeSearchCityControllers()
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "FromSearchCityIdentifier" {
-      fromSearchCity = segue.destination as? SearchCityViewController
-    } else if segue.identifier == "ToSearchCityIdentifier" {
-      toSearchCity = segue.destination as? SearchCityViewController
-    }
+  func makeSearchCityControllers() {
+    fromSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
+    fromSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.fromSearchResultContainer.frame.width, height: viewContent.fromSearchResultContainer.frame.height)
+    viewContent.fromSearchResultContainer.addSubview(fromSearchCity.view)
+    addChildViewController(fromSearchCity)
+    
+    toSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
+    toSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.toSearchResultContainer.frame.width, height: viewContent.toSearchResultContainer.frame.height)
+    viewContent.toSearchResultContainer.addSubview(toSearchCity.view)
+    addChildViewController(toSearchCity)
   }
   
+}
+
+extension AirticketSearchViewController: SearchCityViewDelegate {
+  
+  func fromTextFieldDidChange(_ text: String) {
+    fromSearchCity.makeDataSource(city: text, callback: {
+      viewContent.fromSearchResultContainerContentHeight = fromSearchCity.tableView.contentSize.height
+    })
+  }
+  
+  func toTextFieldDidChange(_ text: String) {
+    toSearchCity.makeDataSource(city: text, callback: {
+      viewContent.toSearchResultContainerContentHeight = toSearchCity.tableView.contentSize.height
+    })
+  }
+
 }
