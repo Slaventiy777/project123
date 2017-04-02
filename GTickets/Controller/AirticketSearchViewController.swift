@@ -10,23 +10,64 @@ import UIKit
 
 class AirticketSearchViewController: UIViewController {
   
-  @IBOutlet weak var viewContent: AirticketSearchViewContent!
+  @IBOutlet weak var viewContent: AirticketSearchView!
   
-  private var fromSearchCity: SearchCityViewController!
-  private var toSearchCity: SearchCityViewController!
+  fileprivate var fromSearchCity: AirticketSearchCityResultList!
+  fileprivate var toSearchCity: AirticketSearchCityResultList!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    viewContent.delegate = self
+    makeSearchCityControllers()
+  }
+  
+  func makeSearchCityControllers() {
+    fromSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
+    fromSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.fromSearchResultContainer.frame.width, height: viewContent.fromSearchResultContainer.frame.height)
+    viewContent.fromSearchResultContainer.addSubview(fromSearchCity.view)
+    addChildViewController(fromSearchCity)
+    fromSearchCity.delegate = self
     
-    viewContent.update()
+    toSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
+    toSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.toSearchResultContainer.frame.width, height: viewContent.toSearchResultContainer.frame.height)
+    viewContent.toSearchResultContainer.addSubview(toSearchCity.view)
+    addChildViewController(toSearchCity)
+    toSearchCity.delegate = self
     
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "FromSearchCityIdentifier" {
-      fromSearchCity = segue.destination as? SearchCityViewController
-    } else if segue.identifier == "ToSearchCityIdentifier" {
-      toSearchCity = segue.destination as? SearchCityViewController
+}
+
+extension AirticketSearchViewController: SearchCityViewDelegate {
+  
+  func fromTextFieldDidChange() {
+    fromSearchCity.makeDataSource(city: viewContent.fromSearchCityText, callback: {
+      viewContent.fromSearchResultContainerContentHeight = fromSearchCity.tableView.contentSize.height
+    })
+  }
+  
+  func toTextFieldDidChange() {
+    toSearchCity.makeDataSource(city: viewContent.toSearchCityText, callback: {
+      viewContent.toSearchResultContainerContentHeight = toSearchCity.tableView.contentSize.height
+    })
+  }
+
+  func swapCityTextFieldsAction() {
+    let fromSearchCityText = viewContent.fromSearchCityText
+    let toSearchCityText = viewContent.toSearchCityText
+
+    viewContent.fromSearchCityText = toSearchCityText
+    viewContent.toSearchCityText = fromSearchCityText
+    
+    fromTextFieldDidChange()
+    toTextFieldDidChange()
+  }
+  
+  func cityChosed(text: String, from: UIViewController) {
+    if from == fromSearchCity {
+      viewContent.fromSearchCityText = text
+    } else if from == toSearchCity {
+      viewContent.toSearchCityText = text
     }
   }
   

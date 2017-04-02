@@ -9,12 +9,12 @@
 import UIKit
 
 class SearchCityViewCell: UITableViewCell {
-  @IBOutlet weak var country: UILabel!
+  @IBOutlet weak var city: UILabel!
   @IBOutlet weak var airport: UILabel!
   
   public var model: SearchCityData! {
     didSet {
-      country.text = model.country
+      city.text = model.city
       airport.text = model.airport
     }
   }

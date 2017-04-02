@@ -8,21 +8,25 @@
 
 import UIKit
 
-class SearchCityViewController: UIViewController {
+class AirticketSearchCityResultList: UIViewController {
   @IBOutlet weak var tableView: UITableView!
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      updateDataSource()
-
-        // Do any additional setup after loading the view.
-    }
 
   fileprivate var dataSource: [SearchCityData] = []
-  fileprivate let cellHeight: CGFloat = 60
+  fileprivate var city: String! = ""
   
-  fileprivate var query: String?
- 
+  var delegate: SearchCityViewDelegate?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    makeDataSource(city: "", callback: {})
+    
+    tableView.layer.cornerRadius = LAYER_CORNER_RADIUS
+    tableView.layer.borderWidth = LAYER_BORDER_WIDTH
+    tableView.layer.borderColor = LAYER_BORDER_COLOR
+
+    // Do any additional setup after loading the view.
+  }
+  
   private func makeDataSource(_ array: [Dictionary<String, String>]) {
     var buffer: [SearchCityData] = []
     array.forEach { item in
@@ -31,33 +35,34 @@ class SearchCityViewController: UIViewController {
     }
     dataSource = buffer
   }
-
-  private func updateDataSource() { //место для запроса
+  
+  func makeDataSource(city: String, callback: ()->()) { //место для запроса
     //fill table
+    self.city = city
     
     let data: [Dictionary<String, String>] = [
       [
-        "country": "Киев Украина",
+        "city": "Киев Украина",
         "airport": "Все фэропорты"
       ],
       [
-        "country": "Киш Айленд Иран",
+        "city": "Киш Айленд Иран",
         "airport": "Киш Айленд"
       ],
       [
-        "country": "Key West",
+        "city": "Key West",
         "airport": "International"
       ],
       [
-        "country": "Рам-Ки Багамы",
+        "city": "Рам-Ки Багамы",
         "airport": "Рам-Ки"
       ],
       [
-        "country": "Мангрове Кей Багамы",
+        "city": "Мангрове Кей Багамы",
         "airport": "Мангров-Ки"
       ],
       [
-        "country": "Киев Украина",
+        "city": "Киев Украина",
         "airport": "Все фэропорты"
       ],
       ]
@@ -66,24 +71,21 @@ class SearchCityViewController: UIViewController {
     tableView.reloadData()
     tableView.layoutIfNeeded()
     
-    //tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: CGFloat(Float(cellHeight) * tableView.numberOfRows(inSection: 0)))
+    callback()
+    
   }
 }
 
 //MARK: - UITableViewDelegate
 
-extension SearchCityViewController: UITableViewDelegate {
+extension AirticketSearchCityResultList: UITableViewDelegate, UITableViewDataSource {
   
-  public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return cellHeight
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
   }
   
-}
-
-extension SearchCityViewController: UITableViewDataSource {
-  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return min(city.characters.count, dataSource.count) //temporary desision (dataSource.count)
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,5 +93,10 @@ extension SearchCityViewController: UITableViewDataSource {
     cell.model = dataSource[indexPath.row]
     return cell
   }
-  
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let model = dataSource[indexPath.row]
+    delegate?.cityChosed(text: model.city, from: self)
+  }
+
 }

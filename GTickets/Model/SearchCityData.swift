@@ -9,11 +9,11 @@
 import UIKit
 
 class SearchCityData {
-  let country: String!  //private?
+  let city: String!  //private?
   let airport: String!
   
   init(_ dictionary: Dictionary<String, String>!) {
-    country = dictionary["country"] as String!
+    city = dictionary["city"] as String!
     airport = dictionary["airport"] as String!
   }
   

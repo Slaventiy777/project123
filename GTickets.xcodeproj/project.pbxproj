@@ -37,6 +37,11 @@
 		5C8E29771E80777D00206EF0 /* FuturaPTLightOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29611E80777D00206EF0 /* FuturaPTLightOblique.otf */; };
 		5C8E29781E80777D00206EF0 /* FuturaPTMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29621E80777D00206EF0 /* FuturaPTMedium.otf */; };
 		5C8E29791E80777D00206EF0 /* FuturaPTMediumOblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E29631E80777D00206EF0 /* FuturaPTMediumOblique.otf */; };
+		5C9754561E9162430073D282 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754541E9162430073D282 /* TextField.swift */; };
+		5C9754571E9162430073D282 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754551E9162430073D282 /* UIConstants.swift */; };
+		5C97545A1E9162530073D282 /* AirticketSearchCityResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */; };
+		5C97545B1E9162530073D282 /* SearchCityViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */; };
+		5C97545D1E91646D0073D282 /* AirticketSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97545C1E91646D0073D282 /* AirticketSearchView.swift */; };
 		99BF73E424B1BADBA5B397B6 /* Pods_GTickets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */; };
 		F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52D1E7DC34200911C67 /* MasterViewController.swift */; };
 		F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */; };
@@ -48,9 +53,7 @@
 		F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */; };
 		F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */; };
 		F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */; };
-		F94A6CEC1E87ABA500F84525 /* FindTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A6CEB1E87ABA500F84525 /* FindTextField.swift */; };
 		F94A6CEE1E88531D00F84525 /* AirticketSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */; };
-		F94A6CF31E885FB600F84525 /* AirticketSearchViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */; };
 		F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */; };
 		F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */; };
 		F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */; };
@@ -72,7 +75,6 @@
 		F957FBDE1E8CF46D006B6825 /* MasterNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957FBDD1E8CF46D006B6825 /* MasterNavigationController.swift */; };
 		F957FBE01E8CF4BC006B6825 /* MasterNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F957FBDF1E8CF4BC006B6825 /* MasterNavigationController.storyboard */; };
 		F9A3BA791E8CFFE000A95CC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A3BA781E8CFFE000A95CC6 /* Main.storyboard */; };
-		F9B619451E8ABAAA000D3157 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B619441E8ABAAA000D3157 /* SearchCityViewController.swift */; };
 		F9B619471E8ABBF7000D3157 /* SearchCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B619461E8ABBF7000D3157 /* SearchCityData.swift */; };
 		F9B619491E8ABCCB000D3157 /* SearchCityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B619481E8ABCCB000D3157 /* SearchCityViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +110,11 @@
 		5C8E29611E80777D00206EF0 /* FuturaPTLightOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTLightOblique.otf; sourceTree = "<group>"; };
 		5C8E29621E80777D00206EF0 /* FuturaPTMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTMedium.otf; sourceTree = "<group>"; };
 		5C8E29631E80777D00206EF0 /* FuturaPTMediumOblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTMediumOblique.otf; sourceTree = "<group>"; };
+		5C9754541E9162430073D282 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5C9754551E9162430073D282 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchCityResultList.swift; sourceTree = "<group>"; };
+		5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityViewDelegate.swift; sourceTree = "<group>"; };
+		5C97545C1E91646D0073D282 /* AirticketSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchView.swift; sourceTree = "<group>"; };
 		CF7329BF0525D8F725DF307D /* Pods-GTickets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.debug.xcconfig"; sourceTree = "<group>"; };
 		D3FD796CA1B0F6240F274551 /* Pods_GTickets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GTickets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E006CA98414570E04008AB26 /* Pods-GTickets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTickets.release.xcconfig"; path = "Pods/Target Support Files/Pods-GTickets/Pods-GTickets.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,9 +128,7 @@
 		F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F94A6CEB1E87ABA500F84525 /* FindTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTextField.swift; sourceTree = "<group>"; };
 		F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AirticketSearchViewController.storyboard; sourceTree = "<group>"; };
-		F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AirticketSearchViewContent.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F94A7AE51E768D2B004ED5FD /* GTickets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTickets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94A7AE81E768D2B004ED5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F94A7AEF1E768D2B004ED5FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,7 +152,6 @@
 		F957FBDD1E8CF46D006B6825 /* MasterNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterNavigationController.swift; sourceTree = "<group>"; };
 		F957FBDF1E8CF4BC006B6825 /* MasterNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MasterNavigationController.storyboard; sourceTree = "<group>"; };
 		F9A3BA781E8CFFE000A95CC6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F9B619441E8ABAAA000D3157 /* SearchCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		F9B619461E8ABBF7000D3157 /* SearchCityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityData.swift; sourceTree = "<group>"; };
 		F9B619481E8ABCCB000D3157 /* SearchCityViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +182,14 @@
 				5C17971F1E87FD7800751910 /* SearchViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5C9754531E9162430073D282 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				5C9754541E9162430073D282 /* TextField.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		61F472C4C6475E9C56237A60 /* Pods */ = {
@@ -235,14 +247,15 @@
 				F904A52D1E7DC34200911C67 /* MasterViewController.swift */,
 				F904A5331E7DF74D00911C67 /* ProfileViewController.swift */,
 				F904A5311E7DDEE400911C67 /* OrderViewController.swift */,
-				F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */,
 				F9508CD11E7F28FC0064D071 /* BuyingTipsViewController.swift */,
 				F9508CD31E7F293F0064D071 /* ContactsViewController.swift */,
 				F9508CD51E7F29650064D071 /* FeedbackViewController.swift */,
 				F9508CD71E7F29850064D071 /* ShareViewController.swift */,
 				F9508CD91E7F29C60064D071 /* SettingsViewController.swift */,
 				5C1797211E87FE7B00751910 /* SearchViewController.swift */,
-				F9B619441E8ABAAA000D3157 /* SearchCityViewController.swift */,
+				F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */,
+				5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */,
+				5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +272,7 @@
 		F94A7AFC1E769197004ED5FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C97545C1E91646D0073D282 /* AirticketSearchView.swift */,
 				F9A3BA781E8CFFE000A95CC6 /* Main.storyboard */,
 				5C17971E1E87FD5600751910 /* Cells */,
 				5C8E294C1E80748200206EF0 /* AlertView.swift */,
@@ -268,8 +282,6 @@
 				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
 				F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */,
-				F94A6CEB1E87ABA500F84525 /* FindTextField.swift */,
-				F94A6CF21E885FB600F84525 /* AirticketSearchViewContent.swift */,
 				F9B619481E8ABCCB000D3157 /* SearchCityViewCell.swift */,
 				F957FBDF1E8CF4BC006B6825 /* MasterNavigationController.storyboard */,
 				F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */,
@@ -334,6 +346,8 @@
 		F957FBD41E8CF26F006B6825 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5C9754531E9162430073D282 /* Extention */,
+				5C9754551E9162430073D282 /* UIConstants.swift */,
 				F957FBD51E8CF26F006B6825 /* Managers */,
 				F957FBD91E8CF2CC006B6825 /* Constants.swift */,
 			);
@@ -510,23 +524,24 @@
 				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
 				5C1797241E8800BA00751910 /* SearchData.swift in Sources */,
 				5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */,
+				5C97545D1E91646D0073D282 /* AirticketSearchView.swift in Sources */,
 				5C1797221E87FE7B00751910 /* SearchViewController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
+				5C9754571E9162430073D282 /* UIConstants.swift in Sources */,
+				5C97545A1E9162530073D282 /* AirticketSearchCityResultList.swift in Sources */,
 				F904B7BD1E807A6E00F6297E /* MasterView.swift in Sources */,
 				F904A52E1E7DC34200911C67 /* MasterViewController.swift in Sources */,
 				F957FBDE1E8CF46D006B6825 /* MasterNavigationController.swift in Sources */,
 				F9508CD81E7F29850064D071 /* ShareViewController.swift in Sources */,
-				F94A6CF31E885FB600F84525 /* AirticketSearchViewContent.swift in Sources */,
 				F9B619491E8ABCCB000D3157 /* SearchCityViewCell.swift in Sources */,
 				F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */,
 				F904A5301E7DDE8700911C67 /* AirticketSearchViewController.swift in Sources */,
-				F94A6CEC1E87ABA500F84525 /* FindTextField.swift in Sources */,
 				F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */,
 				F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */,
 				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
 				5C1797261E8833F000751910 /* UIManager.swift in Sources */,
 				5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */,
-				F9B619451E8ABAAA000D3157 /* SearchCityViewController.swift in Sources */,
+				5C9754561E9162430073D282 /* TextField.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9B619471E8ABBF7000D3157 /* SearchCityData.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
@@ -535,6 +550,7 @@
 				F957FBD71E8CF26F006B6825 /* UIViewControllerExtension.swift in Sources */,
 				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,
 				F957FBDC1E8CF3BE006B6825 /* RequestManager.swift in Sources */,
+				5C97545B1E9162530073D282 /* SearchCityViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
