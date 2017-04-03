@@ -9,6 +9,7 @@
 import UIKit
 
 class AirticketSearchView: UIView {
+  
   var delegate: SearchCityViewDelegate! {
     didSet {
       update()
@@ -26,7 +27,14 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var fromSearchResultContainerHeight: NSLayoutConstraint!
   @IBOutlet weak var toSearchResultContainerHeight: NSLayoutConstraint!
 
-  var isCityResultHidden: Bool = true
+  @IBOutlet weak var hideAdditionalInfoButton: UIButton!
+  @IBOutlet weak var showAdditionalInfoButton: UIButton!
+  
+  @IBOutlet weak var additionalInfoHeight: NSLayoutConstraint!
+  
+  private var previousAditionalInfoHeight: CGFloat = 560
+  
+  var isCityResultHidden = true
   
   var fromSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
@@ -156,7 +164,26 @@ class AirticketSearchView: UIView {
     endEditing(true)
   }
   
+  // MARK: - Hide / Show additional info
   
+  @IBAction func hideAdditionalInfo() {
+    makeAdditionalInfo(isVisible: false)
+  }
+  
+  @IBAction func showAdditionalInfo() {
+    makeAdditionalInfo(isVisible: true)
+  }
+  
+  private func makeAdditionalInfo(isVisible: Bool) {
+    hideAdditionalInfoButton.isHidden = isVisible ? false : true
+    showAdditionalInfoButton.isHidden = isVisible ? true : false
+    
+    let prevConstant = additionalInfoHeight.constant
+    additionalInfoHeight.constant = previousAditionalInfoHeight
+    previousAditionalInfoHeight = prevConstant
+    
+    layoutIfNeeded()    
+  }
   
 }
 
