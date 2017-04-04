@@ -48,6 +48,7 @@
 		F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5311E7DDEE400911C67 /* OrderViewController.swift */; };
 		F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904A5331E7DF74D00911C67 /* ProfileViewController.swift */; };
 		F904B7BD1E807A6E00F6297E /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904B7BC1E807A6E00F6297E /* MasterView.swift */; };
+		F90F00E51E94411E00B796E3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90F00E41E94411E00B796E3 /* UIViewExtension.swift */; };
 		F9189D301E7BEEE100C6F7D5 /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */; };
 		F9189D311E7BEEE100C6F7D5 /* LeftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */; };
 		F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */; };
@@ -125,6 +126,7 @@
 		F904A5311E7DDEE400911C67 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		F904A5331E7DF74D00911C67 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F904B7BC1E807A6E00F6297E /* MasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		F90F00E41E94411E00B796E3 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		F9189D2C1E7BEEE100C6F7D5 /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuCell.xib; sourceTree = "<group>"; };
 		F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				F957FBD31E8CF26F006B6825 /* UIViewControllerExtension.swift */,
 				F93A58471E91802A00148AB8 /* UIButtonExtension.swift */,
 				F93A58491E91815500148AB8 /* CGColorExtension.swift */,
+				F90F00E41E94411E00B796E3 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */,
 				5C9754561E9162430073D282 /* TextField.swift in Sources */,
 				F93A58481E91802A00148AB8 /* UIButtonExtension.swift in Sources */,
+				F90F00E51E94411E00B796E3 /* UIViewExtension.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9B619471E8ABBF7000D3157 /* SearchCityData.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,

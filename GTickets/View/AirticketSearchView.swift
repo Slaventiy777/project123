@@ -30,9 +30,47 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var hideAdditionalInfoButton: UIButton!
   @IBOutlet weak var showAdditionalInfoButton: UIButton!
   
+  @IBOutlet weak var additionalInfoLabel: UILabel!
   @IBOutlet weak var additionalInfoHeight: NSLayoutConstraint!
   
-  private var previousAditionalInfoHeight: CGFloat = 560
+  @IBOutlet weak var countPeopleLabel: UILabel!
+  @IBOutlet weak var countPeopleImage: UIImageView!
+  
+  @IBOutlet weak var comfortClassLabel: UILabel!
+  @IBOutlet weak var comfortClassImage: UIImageView!
+  
+  @IBOutlet weak var suitcase0View: UIView!
+  @IBOutlet weak var suitcase0Image: UIImageView!
+  @IBOutlet weak var suitcase0CrossLabel: UILabel!
+  @IBOutlet weak var suitcase0NumberLabel: UILabel!
+  
+  @IBOutlet weak var suitcase1View: UIView!
+  @IBOutlet weak var suitcase1Image: UIImageView!
+  @IBOutlet weak var suitcase1CrossLabel: UILabel!
+  @IBOutlet weak var suitcase1NumberLabel: UILabel!
+  
+  @IBOutlet weak var suitcase2View: UIView!
+  @IBOutlet weak var suitcase2Image: UIImageView!
+  @IBOutlet weak var suitcase2CrossLabel: UILabel!
+  @IBOutlet weak var suitcase2NumberLabel: UILabel!
+  
+  @IBOutlet weak var directFlightExternalView: UIView!
+  @IBOutlet weak var directFlightInternalView: UIView!
+  @IBOutlet weak var directFlightLabel: UILabel!
+  
+  @IBOutlet weak var visaCheckoutExternalView: UIView!
+  @IBOutlet weak var visaCheckoutInternalView: UIView!
+  @IBOutlet weak var visaCheckoutLabel: UILabel!
+  
+  @IBOutlet weak var dateVisaCheckoutButton: UIButton!
+  
+  @IBOutlet weak var daysOfStayLabel: UILabel!
+  @IBOutlet weak var daysOfStayImage: UIImageView!
+  
+  @IBOutlet weak var commentsTextView: UITextView!
+  @IBOutlet weak var commentsHeight: NSLayoutConstraint!
+  
+  private var previousAditionalInfoHeight: CGFloat = 330
   
   var isCityResultHidden = true
   
@@ -183,6 +221,47 @@ class AirticketSearchView: UIView {
     previousAditionalInfoHeight = prevConstant
     
     layoutIfNeeded()    
+  }
+  
+  // MARK: - Count people
+  
+  @IBAction func chooseCountPeople() {
+  }
+  
+  // MARK: - Comfort class
+  
+  @IBAction func chooseComfortClass() {
+  }
+
+  // MARK: - Count suitcases
+  
+  @IBAction func chooseSuitcase0() {
+  }
+  
+  @IBAction func chooseSuitcase1() {
+  }
+  
+  @IBAction func chooseSuitcase2() {
+  }
+  
+  // MARK: - Direct flight
+  
+  @IBAction func chooseDirectFlight() {
+  }
+  
+  // MARK: - Visa check-out
+  
+  @IBAction func chooseVisaCheckout() {
+  }
+  
+  // MARK: - Date visa check-out
+  
+  @IBAction func chooseDateVisaCheckout() {
+  }
+  
+  // MARK: - Days of stay
+  
+  @IBAction func chooseDaysOfStay() {
   }
   
 }
