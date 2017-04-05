@@ -202,6 +202,16 @@ class AirticketSearchView: UIView {
     endEditing(true)
   }
   
+  //MARK: - Outlets 
+  
+  @IBAction func chooseDispatchDate() {
+    delegate.chooseDispatchDate()
+  }
+  
+  @IBAction func chooseArrivalDate() {
+    delegate.chooseArrivalDate()
+  }
+  
   // MARK: - Hide / Show additional info
   
   @IBAction func hideAdditionalInfo() {
@@ -263,6 +273,7 @@ class AirticketSearchView: UIView {
   
   @IBAction func chooseDaysOfStay() {
   }
+  
   
 }
 

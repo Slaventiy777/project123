@@ -17,4 +17,8 @@ protocol SearchCityViewDelegate {
 
   func cityChosed(text: String, from: UIViewController)
   
+  func chooseDispatchDate()
+  
+  func chooseArrivalDate()
+  
 }

@@ -71,4 +71,22 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     }
   }
   
+  func chooseArrivalDate() {
+    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
+    controller.calendarView = calendarView
+//    self.navigationController?.pushViewController(controller, animated: true)
+    present(UINavigationController(rootViewController: controller), animated:true, completion: nil)
+  }
+  
+  func chooseDispatchDate() {
+    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
+    controller.calendarView = calendarView
+    
+    //self.navigationController?.pushViewController(controller, animated: true)
+    let navController = UINavigationController(rootViewController: controller)
+    present(navController, animated:true, completion: nil)
+  }
+  
 }
