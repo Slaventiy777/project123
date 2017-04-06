@@ -81,7 +81,7 @@ enum ItemLeftMenu: String {
   
 }
 
-enum People: Int {
+enum Passenger: Int {
   case one = 1, two, three, four, five, six, seven, eight, nine, ten
   
   static var count: Int {
@@ -104,11 +104,11 @@ enum ComfortClass: Int {
   }
 }
 
-enum Suitcases: Int {
+enum Baggage: Int {
   case zero, one, two
 }
 
-enum DaysOfStay: Int {
+enum VisaDays: Int {
   case thirty = 30
   case sixty = 60
   case ninety = 90

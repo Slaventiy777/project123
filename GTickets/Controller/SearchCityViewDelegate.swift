@@ -21,5 +21,5 @@ protocol SearchCityViewDelegate {
   
   func chooseArrivalDate()
   
-  func search()
+  func search(_ data: AirticketSearchData)
 }

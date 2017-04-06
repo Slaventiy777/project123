@@ -13,8 +13,6 @@ class AirticketSearchViewController: UIViewController {
   
   @IBOutlet weak var viewContent: AirticketSearchView!
   
-  let airticketSearchData = AirticketSearchData()
-  
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
   fileprivate var toSearchCity: AirticketSearchCityResultList!
   
@@ -25,7 +23,6 @@ class AirticketSearchViewController: UIViewController {
     super.viewDidLoad()
     
     viewContent.delegate = self
-    viewContent.updateInfo(airticketSearchData)
     
     let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
     dropdownMenu.dataSource = self
@@ -107,28 +104,9 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     present(navController, animated:true, completion: nil)
   }
   
-  func search() {
-    let params = [
-      /*
-      //"id": UIDevice.current.identifierForVendor!.uuidString,
-      "from":"from",
-      "to":"to",
-      "from_date_there":"2017-04-21 22:45:53",
-      "from_date_back":"2017-04-21 22:45:53",
-      "class":2,
-      "count_passenger":5,
-      "baggage":1,
-      "direct_flight":1,
-      "visa_date":"2017-04-21 22:45:53",
-      "visa_days":5,
-      "to_date_there":"2017-04-21 22:45:53",
-      "to_date_back":"2017-04-21 22:45:53",
-      "comment":"comment"
-      */
-      :] as Dictionary<String, Any>
-    
-    RequestManager.post(urlPath: "/api/order", params: params) { data in
-      
+  func search(_ data: AirticketSearchData) {
+    RequestManager.post(urlPath: "/api/order", params: data.dictionary()) { json in
+      //TODO: do something (for example auth)
     }
   }
   
@@ -141,7 +119,7 @@ extension AirticketSearchViewController: MKDropdownMenuDataSource {
   }
   
   func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-    return People.count
+    return Passenger.count
   }
   
 }

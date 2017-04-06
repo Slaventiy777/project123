@@ -115,21 +115,7 @@ class AirticketSearchView: UIView {
     }
   }
   
-  func updateInfo(_ model: AirticketSearchData) {
-    
-    countPeopleLabel.text = "\(model.countPeople.rawValue)"
-    comfortClassLabel.text = model.comfortClass.name
-    
-    switch model.suitcases {
-    case .zero:
-      chooseSuitcase0()
-    case .one:
-      chooseSuitcase1()
-    case .two:
-      chooseSuitcase2()
-    }
-    
-  }
+//  func defultData() { }
   
   private func update() {
     addGestureRecognizerDismissKeyboard()
@@ -313,7 +299,22 @@ class AirticketSearchView: UIView {
   //MARK: - Search
   
   @IBAction func search() {
-    delegate.search()
+    //TODO: fill data from view
+    let data = AirticketSearchData(fromCity: fromSearchCityText,
+                                   toCity: toSearchCityText,
+                                   fromDateDispatch: Date(),
+                                   toDateDispatch: Date(),
+                                   fromDateArrival: Date(),
+                                   toDateArrival: Date(),
+                                   comfortClass: .economy,
+                                   countPassenger: .one,
+                                   baggage: .one,
+                                   isDirectFlight: false,
+                                   isVisaCheckout: nil,
+                                   dateVisaCheckout: nil,
+                                   visaDays: nil,
+                                   comments: nil)
+    delegate.search(data)
   }
 
   
