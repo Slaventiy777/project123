@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import MKDropdownMenu
 
 class AirticketSearchViewController: UIViewController {
   
   @IBOutlet weak var viewContent: AirticketSearchView!
+  
+  let airticketSearchData = AirticketSearchData()
   
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
   fileprivate var toSearchCity: AirticketSearchCityResultList!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     viewContent.delegate = self
+    viewContent.updateInfo(airticketSearchData)
+    
+    let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
+    dropdownMenu.dataSource = self
+    dropdownMenu.delegate = self
+    viewContent.countPeopleView.addSubview(dropdownMenu)
+    
     makeSearchCityControllers()
   }
   
@@ -72,3 +83,24 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   }
   
 }
+
+extension AirticketSearchViewController: MKDropdownMenuDataSource {
+  
+  func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
+    return 1
+  }
+  
+  func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
+    return People.count
+  }
+  
+}
+
+extension AirticketSearchViewController: MKDropdownMenuDelegate {
+  
+  func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForRow row: Int, forComponent component: Int) -> String? {
+    return String(row)
+  }
+  
+}
+

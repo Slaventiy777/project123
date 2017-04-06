@@ -33,6 +33,7 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var additionalInfoLabel: UILabel!
   @IBOutlet weak var additionalInfoHeight: NSLayoutConstraint!
   
+  @IBOutlet weak var countPeopleView: UIView!
   @IBOutlet weak var countPeopleLabel: UILabel!
   @IBOutlet weak var countPeopleImage: UIImageView!
   
@@ -112,6 +113,22 @@ class AirticketSearchView: UIView {
     get {
       return toTextField.text!
     }
+  }
+  
+  func updateInfo(_ model: AirticketSearchData) {
+    
+    countPeopleLabel.text = "\(model.countPeople.rawValue)"
+    comfortClassLabel.text = model.comfortClass.name
+    
+    switch model.suitcases {
+    case .zero:
+      chooseSuitcase0()
+    case .one:
+      chooseSuitcase1()
+    case .two:
+      chooseSuitcase2()
+    }
+    
   }
   
   private func update() {
@@ -236,22 +253,41 @@ class AirticketSearchView: UIView {
   // MARK: - Count suitcases
   
   @IBAction func chooseSuitcase0() {
+    suitcase0View.backgroundColor = UIColor.blue
+    suitcase1View.backgroundColor = nil
+    suitcase2View.backgroundColor = nil
   }
   
   @IBAction func chooseSuitcase1() {
+    suitcase0View.backgroundColor = nil
+    suitcase1View.backgroundColor = UIColor.blue
+    suitcase2View.backgroundColor = nil
   }
   
   @IBAction func chooseSuitcase2() {
+    suitcase0View.backgroundColor = nil
+    suitcase1View.backgroundColor = nil
+    suitcase2View.backgroundColor = UIColor.blue
   }
   
   // MARK: - Direct flight
   
   @IBAction func chooseDirectFlight() {
+    if let _ = directFlightInternalView.backgroundColor {
+      directFlightInternalView.backgroundColor = nil
+    } else {
+      directFlightInternalView.backgroundColor = UIColor.blue
+    }
   }
   
   // MARK: - Visa check-out
   
   @IBAction func chooseVisaCheckout() {
+    if let _ = visaCheckoutInternalView.backgroundColor {
+      visaCheckoutInternalView.backgroundColor = nil
+    } else {
+      visaCheckoutInternalView.backgroundColor = UIColor.blue
+    }
   }
   
   // MARK: - Date visa check-out
