@@ -80,3 +80,36 @@ enum ItemLeftMenu: String {
   }
   
 }
+
+enum People: Int {
+  case one = 1, two, three, four, five, six, seven, eight, nine, ten
+  
+  static var count: Int {
+    return 10
+  }
+}
+
+enum ComfortClass: Int {
+  case economy = 1, business, first
+  
+  var name: String {
+    switch self {
+    case .economy:
+      return "Эконом"
+    case .business:
+      return "Бизнес"
+    case .first:
+      return "Первый"
+    }
+  }
+}
+
+enum Suitcases: Int {
+  case zero, one, two
+}
+
+enum DaysOfStay: Int {
+  case thirty = 30
+  case sixty = 60
+  case ninety = 90
+}
