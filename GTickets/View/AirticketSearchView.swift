@@ -289,6 +289,7 @@ class AirticketSearchView: UIView {
   // MARK: - Date visa check-out
   
   @IBAction func chooseDateVisaCheckout() {
+    delegate.chooseDateVisaCheckout()
   }
   
   // MARK: - Days of stay

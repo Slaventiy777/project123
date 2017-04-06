@@ -18,7 +18,9 @@ class AirticketSearchViewController: UIViewController {
   
   fileprivate var dispatchDateController: RangeOfDatesCalendarController?
   fileprivate var arrivalDateController: RangeOfDatesCalendarController?
-  
+
+  fileprivate var visaCheckoutDateController: OneDateCalendarController?
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -101,6 +103,17 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       //self.navigationController?.pushViewController(controller, animated: true)
     }
     let navController = UINavigationController(rootViewController: arrivalDateController!)
+    present(navController, animated:true, completion: nil)
+  }
+  
+  func chooseDateVisaCheckout() {
+    if visaCheckoutDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      visaCheckoutDateController = OneDateCalendarController()
+      visaCheckoutDateController?.calendarView = calendarView
+      //self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: visaCheckoutDateController!)
     present(navController, animated:true, completion: nil)
   }
   
