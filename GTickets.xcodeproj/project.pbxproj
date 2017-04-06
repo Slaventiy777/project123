@@ -64,7 +64,6 @@
 		5CEC35641E957BD7004B69DA /* GTCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */; };
 		5CEC35651E957BD7004B69DA /* GTCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */; };
 		5CEC35661E957BD7004B69DA /* GTCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */; };
-		5CEC35671E957BD7004B69DA /* GTExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354C1E957BD7004B69DA /* GTExampleController.swift */; };
 		5CEC35681E957BD7004B69DA /* OneDateCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */; };
 		5CEC35691E957BD7004B69DA /* RangeOfDatesCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354E1E957BD7004B69DA /* RangeOfDatesCalendarController.swift */; };
 		5CEC35701E957F20004B69DA /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC356F1E957F20004B69DA /* DIYCalendarCell.swift */; };
@@ -182,7 +181,6 @@
 		5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarDayView.swift; sourceTree = "<group>"; };
 		5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarDelegate.swift; sourceTree = "<group>"; };
 		5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarView.swift; sourceTree = "<group>"; };
-		5CEC354C1E957BD7004B69DA /* GTExampleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTExampleController.swift; sourceTree = "<group>"; };
 		5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneDateCalendarController.swift; sourceTree = "<group>"; };
 		5CEC354E1E957BD7004B69DA /* RangeOfDatesCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeOfDatesCalendarController.swift; sourceTree = "<group>"; };
 		5CEC356E1E957EEE004B69DA /* Gtickets-Objc-Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gtickets-Objc-Bridge-Header.h"; sourceTree = SOURCE_ROOT; };
@@ -277,7 +275,6 @@
 				5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */,
 				5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */,
 				5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */,
-				5CEC354C1E957BD7004B69DA /* GTExampleController.swift */,
 				5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */,
 				5CEC354E1E957BD7004B69DA /* RangeOfDatesCalendarController.swift */,
 			);
@@ -664,7 +661,6 @@
 				5CEC355D1E957BD7004B69DA /* FSCalendarScopeHandle.m in Sources */,
 				F957FBDA1E8CF2CC006B6825 /* Constants.swift in Sources */,
 				F9508CD41E7F293F0064D071 /* ContactsViewController.swift in Sources */,
-				5CEC35671E957BD7004B69DA /* GTExampleController.swift in Sources */,
 				5C1797241E8800BA00751910 /* SearchData.swift in Sources */,
 				5CEC35601E957BD7004B69DA /* FSCalendarWeekdayView.m in Sources */,
 				5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */,
@@ -763,7 +759,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -806,7 +802,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

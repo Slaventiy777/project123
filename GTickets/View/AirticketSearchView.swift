@@ -274,6 +274,13 @@ class AirticketSearchView: UIView {
   @IBAction func chooseDaysOfStay() {
   }
   
+  //MARK: - Search
+  
+  @IBAction func search() {
+    delegate.search()
+  }
+
+  
   
 }
 

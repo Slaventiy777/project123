@@ -15,6 +15,9 @@ class AirticketSearchViewController: UIViewController {
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
   fileprivate var toSearchCity: AirticketSearchCityResultList!
   
+  fileprivate var dispatchDateController: RangeOfDatesCalendarController?
+  fileprivate var arrivalDateController: RangeOfDatesCalendarController?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     viewContent.delegate = self
@@ -72,21 +75,50 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   }
   
   func chooseArrivalDate() {
-    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
-    controller.calendarView = calendarView
-//    self.navigationController?.pushViewController(controller, animated: true)
-    present(UINavigationController(rootViewController: controller), animated:true, completion: nil)
+    if dispatchDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      dispatchDateController = RangeOfDatesCalendarController()
+      dispatchDateController?.calendarView = calendarView
+      //    self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: dispatchDateController!)
+    present(navController, animated:true, completion: nil)
   }
   
   func chooseDispatchDate() {
-    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
-    controller.calendarView = calendarView
-    
-    //self.navigationController?.pushViewController(controller, animated: true)
-    let navController = UINavigationController(rootViewController: controller)
+    if arrivalDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      arrivalDateController = RangeOfDatesCalendarController()
+      arrivalDateController?.calendarView = calendarView
+      //self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: arrivalDateController!)
     present(navController, animated:true, completion: nil)
+  }
+  
+  func search() {
+    let params = [
+      /*
+      //"id": UIDevice.current.identifierForVendor!.uuidString,
+      "from":"from",
+      "to":"to",
+      "from_date_there":"2017-04-21 22:45:53",
+      "from_date_back":"2017-04-21 22:45:53",
+      "class":2,
+      "count_passenger":5,
+      "baggage":1,
+      "direct_flight":1,
+      "visa_date":"2017-04-21 22:45:53",
+      "visa_days":5,
+      "to_date_there":"2017-04-21 22:45:53",
+      "to_date_back":"2017-04-21 22:45:53",
+      "comment":"comment"
+      */
+      :] as Dictionary<String, Any>
+    
+    RequestManager.post(urlPath: "/api/order", params: params) { data in
+      
+    }
   }
   
 }

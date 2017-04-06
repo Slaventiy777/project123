@@ -21,4 +21,5 @@ protocol SearchCityViewDelegate {
   
   func chooseArrivalDate()
   
+  func search()
 }
