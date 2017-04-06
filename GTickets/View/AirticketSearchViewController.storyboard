@@ -854,6 +854,15 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <pickerView alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMl-ic-Rub">
+                                                <rect key="frame" x="0.0" y="400" width="375" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="cc5-Ha-BZm" id="XKb-Eh-tsI"/>
+                                                    <outlet property="delegate" destination="cc5-Ha-BZm" id="Ca0-xm-19a"/>
+                                                </connections>
+                                            </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -920,6 +929,7 @@
                                             <outlet property="additionalInfoLabel" destination="4f4-wg-0qd" id="VlZ-jg-Ahx"/>
                                             <outlet property="comfortClassImage" destination="mH5-b9-7Ib" id="RLG-qa-bQs"/>
                                             <outlet property="comfortClassLabel" destination="I5q-nP-zCc" id="AQe-BI-gBg"/>
+                                            <outlet property="comfortClassPickerView" destination="XMl-ic-Rub" id="6CC-gV-roO"/>
                                             <outlet property="commentsHeight" destination="Zde-Eo-Upb" id="12b-4O-wGL"/>
                                             <outlet property="commentsTextView" destination="8kJ-Mp-S4Q" id="6RT-VZ-5Uf"/>
                                             <outlet property="countPeopleImage" destination="bwU-Mr-r1U" id="mYk-Po-6WO"/>
@@ -1013,13 +1023,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNC-mv-7dS">
-                                                    <rect key="frame" x="10" y="5" width="355" height="22.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="23"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byY-Cg-ey7">
-                                                    <rect key="frame" x="10" y="29.5" width="355" height="16"/>
+                                                    <rect key="frame" x="10" y="30" width="355" height="16"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

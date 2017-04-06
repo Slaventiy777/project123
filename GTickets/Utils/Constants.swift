@@ -102,6 +102,11 @@ enum ComfortClass: Int {
       return "Первый"
     }
   }
+  
+  static var count: Int {
+    return 3
+  }
+  
 }
 
 enum Baggage: Int {

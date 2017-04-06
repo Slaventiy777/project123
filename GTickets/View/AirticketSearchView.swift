@@ -9,6 +9,7 @@
 import UIKit
 
 class AirticketSearchView: UIView {
+  fileprivate let animationDuration = 0.3
   
   var delegate: SearchCityViewDelegate! {
     didSet {
@@ -39,6 +40,7 @@ class AirticketSearchView: UIView {
   
   @IBOutlet weak var comfortClassLabel: UILabel!
   @IBOutlet weak var comfortClassImage: UIImageView!
+  @IBOutlet weak var comfortClassPickerView: UIPickerView!
   
   @IBOutlet weak var suitcase0View: UIView!
   @IBOutlet weak var suitcase0Image: UIImageView!
@@ -112,6 +114,12 @@ class AirticketSearchView: UIView {
     }
     get {
       return toTextField.text!
+    }
+  }
+  
+  fileprivate var comfortClass: ComfortClass = ComfortClass.economy {
+    didSet {
+      comfortClassLabel.text = comfortClass.name
     }
   }
   
@@ -244,6 +252,11 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
+    UIView.animate(withDuration: animationDuration) {
+      self.comfortClassPickerView.alpha = self.comfortClassPickerView.alpha == 1 ? 0 : 1
+    }
+
+    comfortClassPickerView.reloadAllComponents()
   }
 
   // MARK: - Count suitcases
@@ -317,8 +330,27 @@ class AirticketSearchView: UIView {
                                    comments: nil)
     delegate.search(data)
   }
+  
+}
 
+extension AirticketSearchView: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
   
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return ComfortClass.count
+  }
   
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return ComfortClass(rawValue: row+1)?.name
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    comfortClass = ComfortClass(rawValue: row+1)!
+    UIView.animate(withDuration: animationDuration) {
+      pickerView.alpha = 0
+    }
+  }
 }
 
