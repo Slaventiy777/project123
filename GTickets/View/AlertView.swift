@@ -13,6 +13,8 @@ enum AlertType: NSNumber {
 }
 
 class AlertView: UIView {
+  var parent: AlertViewController?
+  
     private let images = [
         UIImage.init(named: "AlertAirplane")!,
         UIImage.init(named: "AlertDoneGreen")!,
@@ -83,7 +85,11 @@ class AlertView: UIView {
             }
         }
     }
-    
+  
+  @IBAction func done(_ button: UIButton) {
+    parent?.close()
+  }
+  
 //    override func updateConstraints() {
 //        super.updateConstraints()
 //        alertType = AlertType.airplane

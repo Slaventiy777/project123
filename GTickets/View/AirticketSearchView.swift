@@ -273,11 +273,11 @@ class AirticketSearchView: UIView {
   private func makeAdditionalInfo(isVisible: Bool) {
     hideAdditionalInfoButton.isHidden = !isVisible
     showAdditionalInfoButton.isHidden = isVisible
-    additionalInfoHeight.constant = aditionalInfoView.frame.height
+    additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
-    UIView.animate(withDuration: 1) {
-      self.layoutIfNeeded()
-    }
+//    UIView.animate(withDuration: 1) {
+//      self.layoutIfNeeded()
+//    }
   }
   
   // MARK: - Count people
@@ -362,7 +362,7 @@ class AirticketSearchView: UIView {
     if let _ = directFlightInternalView.backgroundColor {
       directFlightInternalView.backgroundColor = nil
     } else {
-      directFlightInternalView.backgroundColor = UIColor.blue
+      directFlightInternalView.backgroundColor = suitcaseColor
     }
   }
   
@@ -372,7 +372,7 @@ class AirticketSearchView: UIView {
     if let _ = visaCheckoutInternalView.backgroundColor {
       visaCheckoutInternalView.backgroundColor = nil
     } else {
-      visaCheckoutInternalView.backgroundColor = UIColor.blue
+      visaCheckoutInternalView.backgroundColor = suitcaseColor
     }
   }
   

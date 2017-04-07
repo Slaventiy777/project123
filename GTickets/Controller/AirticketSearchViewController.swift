@@ -143,6 +143,9 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   func search() {
     RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { json in
       //TODO: do something (for example auth)
+      var alert = UIStoryboard(name: "Alert", bundle: nil).instantiateInitialViewController() as! AlertViewController
+      (alert.view as! AlertView).alertType = AlertType.donePurple
+      self.present(alert, animated:true, completion: nil)
     }
   }
   
