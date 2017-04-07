@@ -17,7 +17,7 @@ class AlertViewController: UIViewController {
   }
   
   func close() {
-    navigationController?.dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
 }
