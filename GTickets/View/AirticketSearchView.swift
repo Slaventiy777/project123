@@ -304,22 +304,54 @@ class AirticketSearchView: UIView {
 
   // MARK: - Count suitcases
   
+  private let suitcaseColor = UIColor(red: 0/255, green: 150/255, blue: 1, alpha: 1)
+  
+  //TODO: AWFUL! REFACTOR
+  
   @IBAction func chooseSuitcase0() {
-    suitcase0View.backgroundColor = UIColor.blue
+    suitcase0View.backgroundColor = suitcaseColor
     suitcase1View.backgroundColor = nil
     suitcase2View.backgroundColor = nil
+
+    let selectedSuitcaseColor = UIColor.black
+    let unselectedSuitcaseColor = UIColor.white
+    applyColorForSuitcase(selectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+  }
+  
+  func applyColorForSuitcase(_ color: UIColor, _ suitcaseView: UIView, _ suitcaseImage: UIImageView, _ suitcaseCrossLabel: UILabel, _ suitcaseNumberLabel: UILabel) {
+    suitcaseView.layer.borderColor = color.withAlphaComponent(0.3).cgColor
+    suitcaseImage.image = suitcaseImage.image?.withRenderingMode(.alwaysTemplate)
+    suitcaseImage.tintColor = color
+    suitcaseCrossLabel.textColor = color
+    suitcaseNumberLabel.textColor = color
   }
   
   @IBAction func chooseSuitcase1() {
     suitcase0View.backgroundColor = nil
-    suitcase1View.backgroundColor = UIColor.blue
+    suitcase1View.backgroundColor = suitcaseColor
     suitcase2View.backgroundColor = nil
+    
+    let selectedSuitcaseColor = UIColor.black
+    let unselectedSuitcaseColor = UIColor.white
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
+    applyColorForSuitcase(selectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+
   }
   
   @IBAction func chooseSuitcase2() {
     suitcase0View.backgroundColor = nil
     suitcase1View.backgroundColor = nil
-    suitcase2View.backgroundColor = UIColor.blue
+    suitcase2View.backgroundColor = suitcaseColor
+    
+    let selectedSuitcaseColor = UIColor.black
+    let unselectedSuitcaseColor = UIColor.white
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
+    applyColorForSuitcase(unselectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
+    applyColorForSuitcase(selectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+
   }
   
   // MARK: - Direct flight

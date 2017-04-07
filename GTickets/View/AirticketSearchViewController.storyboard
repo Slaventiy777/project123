@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UUS-EB-v5b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UUS-EB-v5b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaPTBook.otf">
+            <string>FuturaPT-Book</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Поиск авиабилетов-->
         <scene sceneID="uFq-Fc-HXx">
@@ -27,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cc5-Ha-BZm" customClass="AirticketSearchView" customModule="GTickets" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="595"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="602.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="DHU-WA-HKE">
                                                 <rect key="frame" x="127" y="42" width="121" height="70"/>
@@ -98,12 +103,11 @@
                                                 <rect key="frame" x="34" y="318" width="307" height="55"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-SK-F1b">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="55"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="0RD-Zo-KZN"/>
-                                                            <constraint firstAttribute="width" secondItem="Jl8-SK-F1b" secondAttribute="height" multiplier="138:55" id="jll-kA-f05"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="23"/>
                                                         <state key="normal" title="Туда">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -128,11 +132,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dto-mv-yTF">
-                                                        <rect key="frame" x="169" y="0.0" width="138" height="55"/>
+                                                        <rect key="frame" x="165" y="0.0" width="142" height="55"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="dto-mv-yTF" secondAttribute="height" multiplier="138:55" id="8Py-oX-gI3"/>
                                                             <constraint firstAttribute="height" constant="55" id="kcH-IT-iUe"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="23"/>
                                                         <state key="normal" title="Обратно">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -167,10 +171,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Swc-Mf-6s7" secondAttribute="height" multiplier="307:55" id="CWc-N0-apf"/>
                                                     <constraint firstAttribute="bottom" secondItem="dto-mv-yTF" secondAttribute="bottom" id="Xsk-27-YLS"/>
-                                                    <constraint firstAttribute="height" constant="55" id="hNi-rF-Akz"/>
                                                     <constraint firstAttribute="bottom" secondItem="Jl8-SK-F1b" secondAttribute="bottom" id="jCv-Qz-M9i"/>
                                                     <constraint firstAttribute="trailing" secondItem="dto-mv-yTF" secondAttribute="trailing" id="jWX-2X-Sk2"/>
-                                                    <constraint firstItem="dto-mv-yTF" firstAttribute="leading" secondItem="Jl8-SK-F1b" secondAttribute="trailing" constant="31" id="obw-az-Rra"/>
+                                                    <constraint firstAttribute="width" secondItem="Swc-Mf-6s7" secondAttribute="height" multiplier="960:172" id="nPe-Gg-iJ9"/>
+                                                    <constraint firstItem="dto-mv-yTF" firstAttribute="leading" secondItem="Jl8-SK-F1b" secondAttribute="trailing" constant="23" id="obw-az-Rra"/>
+                                                    <constraint firstItem="dto-mv-yTF" firstAttribute="width" secondItem="Jl8-SK-F1b" secondAttribute="width" id="pwn-fj-4JT"/>
                                                     <constraint firstItem="Jl8-SK-F1b" firstAttribute="top" secondItem="Swc-Mf-6s7" secondAttribute="top" id="sIs-tf-N7f"/>
                                                     <constraint firstItem="dto-mv-yTF" firstAttribute="top" secondItem="Swc-Mf-6s7" secondAttribute="top" id="v3K-qh-nKA"/>
                                                     <constraint firstItem="Jl8-SK-F1b" firstAttribute="leading" secondItem="Swc-Mf-6s7" secondAttribute="leading" id="wos-oj-Lhv"/>
@@ -186,19 +191,20 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="AGy-uc-jfU" secondAttribute="height" multiplier="19:11" id="yUf-Zb-5Wy"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="15"/>
                                                 <state key="normal" image="hide_additional_info_button"/>
                                                 <connections>
                                                     <action selector="hideAdditionalInfo" destination="cc5-Ha-BZm" eventType="touchUpInside" id="feD-Ie-FFl"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f4-wg-0qd">
-                                                <rect key="frame" x="103" y="423" width="169" height="12"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <rect key="frame" x="80.5" y="423" width="215.5" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgu-Em-cDf">
-                                                <rect key="frame" x="178" y="438" width="19" height="11"/>
+                                                <rect key="frame" x="178" y="445.5" width="19" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="cgu-Em-cDf" secondAttribute="height" multiplier="19:11" id="BOq-1q-QcD"/>
                                                 </constraints>
@@ -208,7 +214,7 @@
                                                 </connections>
                                             </button>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-c3-M5k">
-                                                <rect key="frame" x="0.0" y="457" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="464.5" width="375" height="0.0"/>
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQC-D2-0dy">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
@@ -233,13 +239,13 @@
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="R6Y-8L-YHa" secondAttribute="height" id="9cs-uA-7rr"/>
                                                                                         </constraints>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="show_additional_info_button" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-Mr-r1U">
+                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-Mr-r1U">
                                                                                         <rect key="frame" x="40" y="0.0" width="40" height="40"/>
-                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69978060787671237" colorSpace="calibratedRGB"/>
+                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="bwU-Mr-r1U" secondAttribute="height" id="u61-Um-UsE"/>
                                                                                         </constraints>
@@ -297,7 +303,7 @@
                                                                         <rect key="frame" x="126" y="0.0" width="189" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="s51-wP-Jel">
-                                                                                <rect key="frame" x="0.0" y="8" width="23" height="23"/>
+                                                                                <rect key="frame" x="0.0" y="8.5" width="23" height="23"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="s51-wP-Jel" secondAttribute="height" id="rzS-8y-0x7"/>
                                                                                 </constraints>
@@ -307,13 +313,13 @@
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бизнес" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-nP-zCc">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="show_additional_info_button" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-b9-7Ib">
+                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-b9-7Ib">
                                                                                         <rect key="frame" x="118" y="0.0" width="40" height="40"/>
-                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70130565068493156" colorSpace="calibratedRGB"/>
+                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="mH5-b9-7Ib" secondAttribute="height" multiplier="1:1" id="1XU-g9-4NW"/>
                                                                                         </constraints>
@@ -389,30 +395,30 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1V-hb-WzX">
                                                                 <rect key="frame" x="50" y="64" width="295" height="40"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-Xf-AOV">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-Xf-AOV" customClass="SuitcaseView" customModule="GTickets" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baggage_nonactive" translatesAutoresizingMaskIntoConstraints="NO" id="f9U-5O-Nfc">
-                                                                                <rect key="frame" x="10" y="10" width="22" height="22"/>
+                                                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="f9U-5O-Nfc" secondAttribute="height" id="nns-Ke-vGi"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j29-mW-PYU">
-                                                                                <rect key="frame" x="37" y="15" width="12" height="12"/>
+                                                                                <rect key="frame" x="35" y="15" width="9.5" height="10"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="j29-mW-PYU" secondAttribute="height" id="Voc-KL-VTh"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c1-YR-lWF">
-                                                                                <rect key="frame" x="54" y="11" width="20" height="20"/>
+                                                                                <rect key="frame" x="49.5" y="7.5" width="24.5" height="24.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="6c1-YR-lWF" secondAttribute="height" id="7ZQ-OS-NeC"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -427,7 +433,6 @@
                                                                             <constraint firstAttribute="bottom" secondItem="j29-mW-PYU" secondAttribute="bottom" constant="15" id="32m-Xe-iPe"/>
                                                                             <constraint firstAttribute="trailing" secondItem="6c1-YR-lWF" secondAttribute="trailing" constant="10" id="4N8-Uq-zCg"/>
                                                                             <constraint firstItem="6c1-YR-lWF" firstAttribute="leading" secondItem="j29-mW-PYU" secondAttribute="trailing" constant="5" id="4k0-DD-fgT"/>
-                                                                            <constraint firstItem="f9U-5O-Nfc" firstAttribute="top" secondItem="Mra-Xf-AOV" secondAttribute="top" constant="10" id="6h2-i6-3y1"/>
                                                                             <constraint firstAttribute="bottom" secondItem="03m-jX-6LP" secondAttribute="bottom" id="Buo-kB-z8O"/>
                                                                             <constraint firstItem="f9U-5O-Nfc" firstAttribute="leading" secondItem="Mra-Xf-AOV" secondAttribute="leading" constant="10" id="ByX-7G-K9c"/>
                                                                             <constraint firstItem="j29-mW-PYU" firstAttribute="centerY" secondItem="f9U-5O-Nfc" secondAttribute="centerY" id="CQ9-gQ-pRe"/>
@@ -435,11 +440,13 @@
                                                                             <constraint firstItem="j29-mW-PYU" firstAttribute="top" secondItem="Mra-Xf-AOV" secondAttribute="top" constant="15" id="Jd1-4g-MI3"/>
                                                                             <constraint firstItem="j29-mW-PYU" firstAttribute="leading" secondItem="f9U-5O-Nfc" secondAttribute="trailing" constant="5" id="Mak-R7-llA"/>
                                                                             <constraint firstAttribute="bottom" secondItem="6c1-YR-lWF" secondAttribute="bottom" constant="10" id="RYy-il-Tuh"/>
+                                                                            <constraint firstItem="f9U-5O-Nfc" firstAttribute="width" secondItem="Mra-Xf-AOV" secondAttribute="width" multiplier="20:84" id="VLv-Ib-klv"/>
                                                                             <constraint firstAttribute="bottom" secondItem="f9U-5O-Nfc" secondAttribute="bottom" constant="10" id="edF-CV-hbL"/>
                                                                             <constraint firstItem="03m-jX-6LP" firstAttribute="leading" secondItem="Mra-Xf-AOV" secondAttribute="leading" id="fqV-S1-1eb"/>
                                                                             <constraint firstAttribute="trailing" secondItem="03m-jX-6LP" secondAttribute="trailing" id="qSy-YB-mrk"/>
                                                                             <constraint firstItem="6c1-YR-lWF" firstAttribute="top" secondItem="Mra-Xf-AOV" secondAttribute="top" constant="10" id="qv8-P6-6SR"/>
                                                                             <constraint firstItem="6c1-YR-lWF" firstAttribute="centerY" secondItem="j29-mW-PYU" secondAttribute="centerY" id="tF8-Tk-nyf"/>
+                                                                            <constraint firstItem="f9U-5O-Nfc" firstAttribute="centerY" secondItem="Mra-Xf-AOV" secondAttribute="centerY" id="tPJ-Bp-8cE"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -465,26 +472,26 @@
                                                                         <rect key="frame" x="106" y="0.0" width="84" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baggage_nonactive" translatesAutoresizingMaskIntoConstraints="NO" id="8KI-vM-oZp">
-                                                                                <rect key="frame" x="10" y="10" width="22" height="22"/>
+                                                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="8KI-vM-oZp" secondAttribute="height" id="WYw-G0-DVE"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoL-VQ-L3X">
-                                                                                <rect key="frame" x="37" y="15" width="12" height="12"/>
+                                                                                <rect key="frame" x="35" y="15" width="9.5" height="10"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="XoL-VQ-L3X" secondAttribute="height" id="ae6-8Z-dBl"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6w-AH-N9c">
-                                                                                <rect key="frame" x="54" y="11" width="20" height="20"/>
+                                                                                <rect key="frame" x="49.5" y="8" width="24.5" height="24.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="r6w-AH-N9c" secondAttribute="height" id="Kjf-m6-JTx"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -504,15 +511,16 @@
                                                                             <constraint firstAttribute="trailing" secondItem="MCP-lQ-aFN" secondAttribute="trailing" id="Ol7-sz-S62"/>
                                                                             <constraint firstAttribute="trailing" secondItem="r6w-AH-N9c" secondAttribute="trailing" constant="10" id="Pwa-qP-eOn"/>
                                                                             <constraint firstItem="MCP-lQ-aFN" firstAttribute="leading" secondItem="OKn-U4-DaU" secondAttribute="leading" id="cH5-kO-fte"/>
+                                                                            <constraint firstItem="8KI-vM-oZp" firstAttribute="centerY" secondItem="OKn-U4-DaU" secondAttribute="centerY" id="fnD-Jm-EqK"/>
                                                                             <constraint firstAttribute="bottom" secondItem="MCP-lQ-aFN" secondAttribute="bottom" id="lli-HJ-1eN"/>
                                                                             <constraint firstItem="XoL-VQ-L3X" firstAttribute="leading" secondItem="8KI-vM-oZp" secondAttribute="trailing" constant="5" id="meB-lI-bij"/>
                                                                             <constraint firstItem="MCP-lQ-aFN" firstAttribute="top" secondItem="OKn-U4-DaU" secondAttribute="top" id="ngU-ou-WP5"/>
                                                                             <constraint firstAttribute="bottom" secondItem="XoL-VQ-L3X" secondAttribute="bottom" constant="15" id="otE-2X-dTu"/>
+                                                                            <constraint firstItem="8KI-vM-oZp" firstAttribute="width" secondItem="OKn-U4-DaU" secondAttribute="width" multiplier="20:84" id="ovc-Xa-cVt"/>
                                                                             <constraint firstItem="8KI-vM-oZp" firstAttribute="leading" secondItem="OKn-U4-DaU" secondAttribute="leading" constant="10" id="pDK-A6-aL7"/>
                                                                             <constraint firstItem="XoL-VQ-L3X" firstAttribute="top" secondItem="OKn-U4-DaU" secondAttribute="top" constant="15" id="pSD-pZ-98z"/>
                                                                             <constraint firstItem="XoL-VQ-L3X" firstAttribute="centerY" secondItem="8KI-vM-oZp" secondAttribute="centerY" id="rL9-jI-jlS"/>
                                                                             <constraint firstAttribute="bottom" secondItem="r6w-AH-N9c" secondAttribute="bottom" constant="10" id="sFZ-Nw-4kQ"/>
-                                                                            <constraint firstItem="8KI-vM-oZp" firstAttribute="top" secondItem="OKn-U4-DaU" secondAttribute="top" constant="10" id="xQs-0Q-CkL"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -538,26 +546,26 @@
                                                                         <rect key="frame" x="211" y="0.0" width="84" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baggage_nonactive" translatesAutoresizingMaskIntoConstraints="NO" id="GF1-TZ-0Rw">
-                                                                                <rect key="frame" x="10" y="10" width="22" height="22"/>
+                                                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" secondItem="GF1-TZ-0Rw" secondAttribute="height" id="t7Z-6f-JGH"/>
+                                                                                    <constraint firstAttribute="width" secondItem="GF1-TZ-0Rw" secondAttribute="height" multiplier="1:1" id="bQY-NP-X1d"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-4l-PJd">
-                                                                                <rect key="frame" x="37" y="15" width="12" height="12"/>
+                                                                                <rect key="frame" x="35" y="15" width="9.5" height="10"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="xbn-4l-PJd" secondAttribute="height" id="KxB-oC-0SF"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpW-2Q-Pv8">
-                                                                                <rect key="frame" x="54" y="11" width="20" height="20"/>
+                                                                                <rect key="frame" x="49.5" y="7.5" width="24.5" height="24.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="HpW-2Q-Pv8" secondAttribute="height" id="ojJ-jM-Unj"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -570,7 +578,9 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="77C-UK-0PU" secondAttribute="height" multiplier="21:10" id="3T7-kA-R8h"/>
                                                                             <constraint firstItem="V4S-2M-zvA" firstAttribute="top" secondItem="77C-UK-0PU" secondAttribute="top" id="5li-Er-1Oi"/>
+                                                                            <constraint firstItem="GF1-TZ-0Rw" firstAttribute="centerY" secondItem="77C-UK-0PU" secondAttribute="centerY" id="6kk-cc-jb7"/>
                                                                             <constraint firstAttribute="bottom" secondItem="HpW-2Q-Pv8" secondAttribute="bottom" constant="10" id="7KU-JY-MYB"/>
                                                                             <constraint firstItem="HpW-2Q-Pv8" firstAttribute="top" secondItem="77C-UK-0PU" secondAttribute="top" constant="10" id="FgX-n8-Lmh"/>
                                                                             <constraint firstItem="HpW-2Q-Pv8" firstAttribute="leading" secondItem="xbn-4l-PJd" secondAttribute="trailing" constant="5" id="ONy-81-7ct"/>
@@ -579,13 +589,13 @@
                                                                             <constraint firstAttribute="trailing" secondItem="V4S-2M-zvA" secondAttribute="trailing" id="SLL-Ha-u2x"/>
                                                                             <constraint firstAttribute="bottom" secondItem="GF1-TZ-0Rw" secondAttribute="bottom" constant="10" id="U91-9t-cqX"/>
                                                                             <constraint firstAttribute="bottom" secondItem="xbn-4l-PJd" secondAttribute="bottom" constant="15" id="UVT-NC-5Pm"/>
+                                                                            <constraint firstItem="GF1-TZ-0Rw" firstAttribute="width" secondItem="77C-UK-0PU" secondAttribute="width" multiplier="20:84" id="VOu-GU-ZNM"/>
                                                                             <constraint firstItem="xbn-4l-PJd" firstAttribute="centerY" secondItem="GF1-TZ-0Rw" secondAttribute="centerY" id="WBf-B7-2aE"/>
                                                                             <constraint firstAttribute="bottom" secondItem="V4S-2M-zvA" secondAttribute="bottom" id="bd7-bJ-Psg"/>
                                                                             <constraint firstItem="xbn-4l-PJd" firstAttribute="leading" secondItem="GF1-TZ-0Rw" secondAttribute="trailing" constant="5" id="eFm-TD-fdK"/>
                                                                             <constraint firstItem="V4S-2M-zvA" firstAttribute="leading" secondItem="77C-UK-0PU" secondAttribute="leading" id="eZr-RH-SRh"/>
                                                                             <constraint firstItem="GF1-TZ-0Rw" firstAttribute="leading" secondItem="77C-UK-0PU" secondAttribute="leading" constant="10" id="sxn-m0-hjU"/>
                                                                             <constraint firstItem="xbn-4l-PJd" firstAttribute="top" secondItem="77C-UK-0PU" secondAttribute="top" constant="15" id="uks-iq-cry"/>
-                                                                            <constraint firstItem="GF1-TZ-0Rw" firstAttribute="top" secondItem="77C-UK-0PU" secondAttribute="top" constant="10" id="uyq-6c-nmi"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -636,7 +646,7 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-C7-hmj">
                                                                         <rect key="frame" x="5" y="5" width="28" height="28"/>
-                                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Wc6-C7-hmj" secondAttribute="height" id="Aa2-RA-OpR"/>
                                                                         </constraints>
@@ -679,8 +689,8 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ТОЛЬКО ПРЯМОЙ РЕЙС" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYr-LA-Obs">
-                                                                <rect key="frame" x="96" y="129" width="194.5" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <rect key="frame" x="96" y="126" width="209" height="26"/>
+                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -689,7 +699,7 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnH-GT-gF6">
                                                                         <rect key="frame" x="5" y="5" width="28" height="28"/>
-                                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="RnH-GT-gF6" secondAttribute="height" id="J1g-C1-X58"/>
                                                                         </constraints>
@@ -732,8 +742,8 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗОВЫЙ ВЫЕЗД" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5az-qn-HAT">
-                                                                <rect key="frame" x="96" y="180" width="146" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <rect key="frame" x="96" y="177" width="155" height="26"/>
+                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -751,6 +761,7 @@
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-th-irq">
                                                                                 <rect key="frame" x="31" y="0.0" width="132" height="40"/>
+                                                                                <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="18"/>
                                                                                 <state key="normal" title="09.02">
                                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 </state>
@@ -783,7 +794,7 @@
                                                                         <rect key="frame" x="204" y="0.0" width="122" height="40"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="BVS-E8-IvH">
-                                                                                <rect key="frame" x="0.0" y="11" width="20" height="19.5"/>
+                                                                                <rect key="frame" x="0.0" y="10" width="20" height="19.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="BVS-E8-IvH" secondAttribute="height" multiplier="1:1" id="XZn-eM-xtd"/>
                                                                                 </constraints>
@@ -793,13 +804,13 @@
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-a4-aGJ">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="54" height="40"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="show_additional_info_button" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-Vl-YVE">
+                                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-Vl-YVE">
                                                                                         <rect key="frame" x="54" y="0.0" width="40" height="40"/>
-                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70071703766849325" colorSpace="calibratedRGB"/>
+                                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="Kog-Vl-YVE" secondAttribute="height" id="kAS-0G-tTy"/>
                                                                                         </constraints>
@@ -943,7 +954,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-JR-Dbb" customClass="GradientView" customModule="GTickets" customModuleProvider="target">
-                                                <rect key="frame" x="118" y="510" width="139" height="55"/>
+                                                <rect key="frame" x="118" y="517.5" width="139" height="55"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZu-vh-XhD">
                                                         <rect key="frame" x="0.0" y="0.0" width="139" height="55"/>
@@ -1190,6 +1201,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ArrowDown" width="17" height="10"/>
         <image name="baggage_nonactive" width="19" height="16"/>
         <image name="change_direct_active" width="40" height="40"/>
         <image name="change_direct_no_active" width="40" height="40"/>

@@ -42,6 +42,7 @@
 		5C97545A1E9162530073D282 /* AirticketSearchCityResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */; };
 		5C97545B1E9162530073D282 /* SearchCityViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */; };
 		5C97545D1E91646D0073D282 /* AirticketSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97545C1E91646D0073D282 /* AirticketSearchView.swift */; };
+		5CD711541E97E15500969516 /* SuitcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD711531E97E15500969516 /* SuitcaseView.swift */; };
 		5CEC35501E957BD7004B69DA /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CEC35241E957BD7004B69DA /* Calendar.storyboard */; };
 		5CEC35511E957BD7004B69DA /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35261E957BD7004B69DA /* FSCalendar+Deprecated.m */; };
 		5CEC35521E957BD7004B69DA /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35281E957BD7004B69DA /* FSCalendar.m */; };
@@ -145,6 +146,7 @@
 		5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchCityResultList.swift; sourceTree = "<group>"; };
 		5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityViewDelegate.swift; sourceTree = "<group>"; };
 		5C97545C1E91646D0073D282 /* AirticketSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchView.swift; sourceTree = "<group>"; };
+		5CD711531E97E15500969516 /* SuitcaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitcaseView.swift; sourceTree = "<group>"; };
 		5CEC35241E957BD7004B69DA /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		5CEC35261E957BD7004B69DA /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
 		5CEC35271E957BD7004B69DA /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				F93A58471E91802A00148AB8 /* UIButtonExtension.swift */,
 				F93A58491E91815500148AB8 /* CGColorExtension.swift */,
 				F90F00E41E94411E00B796E3 /* UIViewExtension.swift */,
+				5CD711531E97E15500969516 /* SuitcaseView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				F9B619471E8ABBF7000D3157 /* SearchCityData.swift in Sources */,
 				F907127D1E9597BC00FF789F /* AirticketSearchData.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
+				5CD711541E97E15500969516 /* SuitcaseView.swift in Sources */,
 				5CEC35651E957BD7004B69DA /* GTCalendarDelegate.swift in Sources */,
 				5CEC35571E957BD7004B69DA /* FSCalendarCollectionViewLayout.m in Sources */,
 				5CEC35581E957BD7004B69DA /* FSCalendarConstants.m in Sources */,
