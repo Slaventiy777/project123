@@ -25,15 +25,22 @@ class AirticketSearchViewController: UIViewController {
   
   fileprivate var picker: UIPickerView!
   
+  fileprivate var dataSearch: AirticketSearchData!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    dataSearch = AirticketSearchData()
+      
     viewContent.delegate = self
     
-    let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
-    dropdownMenu.dataSource = self
-    dropdownMenu.delegate = self
-    viewContent.countPeopleView.addSubview(dropdownMenu)
+    viewContent.updateInfo(dataSearch)
+    
+    
+//    let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
+//    dropdownMenu.dataSource = self
+//    dropdownMenu.delegate = self
+//    viewContent.countPeopleView.addSubview(dropdownMenu)
     
     picker = UIPickerView(frame: CGRect(x: 0,
                                         y: UIScreen.main.bounds.height - 100 - 64,
@@ -133,8 +140,8 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     present(navController, animated:true, completion: nil)
   }
   
-  func search(_ data: AirticketSearchData) {
-    RequestManager.post(urlPath: "/api/order", params: data.dictionary()) { json in
+  func search() {
+    RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { json in
       //TODO: do something (for example auth)
     }
   }
@@ -147,9 +154,13 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
   
     currentTypePicker = type
     
+    picker.alpha = 0
     picker.isHidden = false
     picker.reloadAllComponents()
     
+    UIView.animate(withDuration: 0.3) {
+      self.picker.alpha = 1
+    }
   }
   
 }
@@ -186,8 +197,12 @@ extension AirticketSearchViewController: UIPickerViewDataSource {
     }
     
     var numberOfRows = 0
-    if currentTypePicker == .baggage {
+    if currentTypePicker == .passenger {
+      numberOfRows = Passenger.count
+    } else if currentTypePicker == .baggage {
       numberOfRows = ComfortClass.count
+    } else if currentTypePicker == .visaDays {
+      numberOfRows = VisaDays.count
     }
     
     return numberOfRows
@@ -203,18 +218,39 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
     }
     
     var titleForRow = ""
-    if currentTypePicker == .baggage {
+    if currentTypePicker == .passenger {
+      titleForRow = "\(Passenger.array[row].rawValue)"
+    } else if currentTypePicker == .baggage {
       titleForRow = ComfortClass.array[row].name
+    } else if currentTypePicker == .visaDays {
+      titleForRow = "\(VisaDays.array[row].rawValue)"
     }
     
     return titleForRow
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//    comfortClass = ComfortClass(rawValue: row+1)!
-//    UIView.animate(withDuration: animationDuration) {
-//      pickerView.alpha = 0
-//    }
+   
+    if currentTypePicker == .passenger {
+      dataSearch.countPassenger = Passenger.array[row]
+      
+      viewContent.countPeopleLabel.text = "\(dataSearch.countPassenger.rawValue)"
+    } else if currentTypePicker == .baggage {
+      dataSearch.comfortClass = ComfortClass.array[row]
+      
+      viewContent.comfortClassLabel.text = dataSearch.comfortClass.name
+    } else if currentTypePicker == .visaDays {
+      dataSearch.visaDays = VisaDays.array[row]
+      
+      viewContent.daysOfStayLabel.text = "\(dataSearch.visaDays.rawValue)"
+    }
+    
+    UIView.animate(withDuration: 0.3, animations: {
+      self.picker.alpha = 0
+    }, completion: { (ok) in
+      self.picker.isHidden = true
+    })
+    
   }
   
 }

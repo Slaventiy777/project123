@@ -84,8 +84,19 @@ enum ItemLeftMenu: String {
 enum Passenger: Int {
   case one = 1, two, three, four, five, six, seven, eight, nine, ten
   
+  static var array = [Passenger.one,
+                      Passenger.two,
+                      Passenger.three,
+                      Passenger.four,
+                      Passenger.five,
+                      Passenger.six,
+                      Passenger.seven,
+                      Passenger.eight,
+                      Passenger.nine,
+                      Passenger.ten]
+  
   static var count: Int {
-    return 10
+    return array.count
   }
 }
 
@@ -119,10 +130,19 @@ enum VisaDays: Int {
   case thirty = 30
   case sixty = 60
   case ninety = 90
+  
+  static var array = [VisaDays.thirty, VisaDays.sixty, VisaDays.ninety]
+  
+  static var count: Int {
+    return array.count
+  }
+  
 }
 
 enum TypePicker {
+  case passenger
   case baggage
+  case visaDays
 }
 
 
