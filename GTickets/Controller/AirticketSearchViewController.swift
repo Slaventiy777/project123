@@ -13,16 +13,18 @@ class AirticketSearchViewController: UIViewController {
   
   @IBOutlet weak var viewContent: AirticketSearchView!
   
-  let airticketSearchData = AirticketSearchData()
-  
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
   fileprivate var toSearchCity: AirticketSearchCityResultList!
   
+  fileprivate var dispatchDateController: RangeOfDatesCalendarController?
+  fileprivate var arrivalDateController: RangeOfDatesCalendarController?
+
+  fileprivate var visaCheckoutDateController: OneDateCalendarController?
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
     viewContent.delegate = self
-    viewContent.updateInfo(airticketSearchData)
     
     let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
     dropdownMenu.dataSource = self
@@ -83,21 +85,42 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   }
   
   func chooseArrivalDate() {
-    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
-    controller.calendarView = calendarView
-//    self.navigationController?.pushViewController(controller, animated: true)
-    present(UINavigationController(rootViewController: controller), animated:true, completion: nil)
+    if dispatchDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      dispatchDateController = RangeOfDatesCalendarController()
+      dispatchDateController?.calendarView = calendarView
+      //    self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: dispatchDateController!)
+    present(navController, animated:true, completion: nil)
   }
   
   func chooseDispatchDate() {
-    let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-    let controller: RangeOfDatesCalendarController = RangeOfDatesCalendarController()
-    controller.calendarView = calendarView
-    
-    //self.navigationController?.pushViewController(controller, animated: true)
-    let navController = UINavigationController(rootViewController: controller)
+    if arrivalDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      arrivalDateController = RangeOfDatesCalendarController()
+      arrivalDateController?.calendarView = calendarView
+      //self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: arrivalDateController!)
     present(navController, animated:true, completion: nil)
+  }
+  
+  func chooseDateVisaCheckout() {
+    if visaCheckoutDateController == nil {
+      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
+      visaCheckoutDateController = OneDateCalendarController()
+      visaCheckoutDateController?.calendarView = calendarView
+      //self.navigationController?.pushViewController(controller, animated: true)
+    }
+    let navController = UINavigationController(rootViewController: visaCheckoutDateController!)
+    present(navController, animated:true, completion: nil)
+  }
+  
+  func search(_ data: AirticketSearchData) {
+    RequestManager.post(urlPath: "/api/order", params: data.dictionary()) { json in
+      //TODO: do something (for example auth)
+    }
   }
   
 }
@@ -109,7 +132,7 @@ extension AirticketSearchViewController: MKDropdownMenuDataSource {
   }
   
   func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-    return People.count
+    return Passenger.count
   }
   
 }

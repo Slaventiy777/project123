@@ -18,7 +18,9 @@ protocol SearchCityViewDelegate {
   func cityChosed(text: String, from: UIViewController)
   
   func chooseDispatchDate()
-  
   func chooseArrivalDate()
   
+  func chooseDateVisaCheckout()
+  
+  func search(_ data: AirticketSearchData)
 }

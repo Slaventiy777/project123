@@ -9,6 +9,7 @@
 import UIKit
 
 class AirticketSearchView: UIView {
+  fileprivate let animationDuration = 0.3
   
   var delegate: SearchCityViewDelegate! {
     didSet {
@@ -39,6 +40,7 @@ class AirticketSearchView: UIView {
   
   @IBOutlet weak var comfortClassLabel: UILabel!
   @IBOutlet weak var comfortClassImage: UIImageView!
+  @IBOutlet weak var comfortClassPickerView: UIPickerView!
   
   @IBOutlet weak var suitcase0View: UIView!
   @IBOutlet weak var suitcase0Image: UIImageView!
@@ -116,12 +118,20 @@ class AirticketSearchView: UIView {
     }
   }
   
+  fileprivate var comfortClass: ComfortClass = ComfortClass.economy {
+    didSet {
+      comfortClassLabel.text = comfortClass.name
+    }
+  }
+  
+//  func defultData() { }
+  
   func updateInfo(_ model: AirticketSearchData) {
     
-    countPeopleLabel.text = "\(model.countPeople.rawValue)"
+    countPeopleLabel.text = "\(model.countPassenger.rawValue)"
     comfortClassLabel.text = model.comfortClass.name
     
-    switch model.suitcases {
+    switch model.baggage {
     case .zero:
       chooseSuitcase0()
     case .one:
@@ -259,6 +269,12 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
+    UIView.animate(withDuration: animationDuration) {
+      self.comfortClassPickerView.alpha = self.comfortClassPickerView.alpha == 1 ? 0 : 1
+    }
+
+    comfortClassPickerView.frame = CGRect(x: 0, y: <#T##CGFloat#>, width: comfortClassPickerView.frame.size.width, height: comfortClassPickerView.frame.size.height)
+    comfortClassPickerView.reloadAllComponents()
   }
 
   // MARK: - Count suitcases
@@ -304,6 +320,7 @@ class AirticketSearchView: UIView {
   // MARK: - Date visa check-out
   
   @IBAction func chooseDateVisaCheckout() {
+    delegate.chooseDateVisaCheckout()
   }
   
   // MARK: - Days of stay
@@ -311,6 +328,47 @@ class AirticketSearchView: UIView {
   @IBAction func chooseDaysOfStay() {
   }
   
+  //MARK: - Search
   
+  @IBAction func search() {
+    //TODO: fill data from view
+    let data = AirticketSearchData(fromCity: fromSearchCityText,
+                                   toCity: toSearchCityText,
+                                   fromDateDispatch: Date(),
+                                   toDateDispatch: Date(),
+                                   fromDateArrival: Date(),
+                                   toDateArrival: Date(),
+                                   comfortClass: .economy,
+                                   countPassenger: .one,
+                                   baggage: .one,
+                                   isDirectFlight: false,
+                                   isVisaCheckout: nil,
+                                   dateVisaCheckout: nil,
+                                   visaDays: nil,
+                                   comments: nil)
+    delegate.search(data)
+  }
+  
+}
+
+extension AirticketSearchView: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return ComfortClass.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return ComfortClass(rawValue: row+1)?.name
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    comfortClass = ComfortClass(rawValue: row+1)!
+    UIView.animate(withDuration: animationDuration) {
+      pickerView.alpha = 0
+    }
+  }
 }
 
