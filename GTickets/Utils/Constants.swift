@@ -103,8 +103,10 @@ enum ComfortClass: Int {
     }
   }
   
+  static var array = [ComfortClass.economy, ComfortClass.business, ComfortClass.first]
+  
   static var count: Int {
-    return 3
+    return array.count
   }
   
 }
@@ -118,3 +120,9 @@ enum VisaDays: Int {
   case sixty = 60
   case ninety = 90
 }
+
+enum TypePicker {
+  case baggage
+}
+
+

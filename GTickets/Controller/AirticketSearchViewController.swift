@@ -21,6 +21,10 @@ class AirticketSearchViewController: UIViewController {
 
   fileprivate var visaCheckoutDateController: OneDateCalendarController?
 
+  fileprivate var currentTypePicker: TypePicker?
+  
+  fileprivate var picker: UIPickerView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -30,6 +34,18 @@ class AirticketSearchViewController: UIViewController {
     dropdownMenu.dataSource = self
     dropdownMenu.delegate = self
     viewContent.countPeopleView.addSubview(dropdownMenu)
+    
+    picker = UIPickerView(frame: CGRect(x: 0,
+                                        y: UIScreen.main.bounds.height - 100 - 64,
+                                        width: UIScreen.main.bounds.width,
+                                        height: 100))
+    picker.backgroundColor = UIColor.white
+    
+    picker.dataSource = self
+    picker.delegate = self
+    
+    view.addSubview(picker)
+    picker.isHidden = true
     
     makeSearchCityControllers()
   }
@@ -125,6 +141,19 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   
 }
 
+extension AirticketSearchViewController: AirticketSearchPickerDelegate {
+  
+  func showPicker(type: TypePicker) {
+  
+    currentTypePicker = type
+    
+    picker.isHidden = false
+    picker.reloadAllComponents()
+    
+  }
+  
+}
+
 extension AirticketSearchViewController: MKDropdownMenuDataSource {
   
   func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
@@ -141,6 +170,51 @@ extension AirticketSearchViewController: MKDropdownMenuDelegate {
   
   func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForRow row: Int, forComponent component: Int) -> String? {
     return String(row)
+  }
+  
+}
+
+extension AirticketSearchViewController: UIPickerViewDataSource {
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    guard let currentTypePicker = currentTypePicker else {
+      return 0
+    }
+    
+    var numberOfRows = 0
+    if currentTypePicker == .baggage {
+      numberOfRows = ComfortClass.count
+    }
+    
+    return numberOfRows
+  }
+  
+}
+
+extension AirticketSearchViewController: UIPickerViewDelegate {
+ 
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    guard let currentTypePicker = currentTypePicker else {
+      return nil
+    }
+    
+    var titleForRow = ""
+    if currentTypePicker == .baggage {
+      titleForRow = ComfortClass.array[row].name
+    }
+    
+    return titleForRow
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//    comfortClass = ComfortClass(rawValue: row+1)!
+//    UIView.animate(withDuration: animationDuration) {
+//      pickerView.alpha = 0
+//    }
   }
   
 }

@@ -80,6 +80,7 @@
 		F9189D321E7BEEE100C6F7D5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */; };
 		F9189D361E7BEF0300C6F7D5 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */; };
 		F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */; };
+		F919BDAF1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F919BDAE1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift */; };
 		F93A58481E91802A00148AB8 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93A58471E91802A00148AB8 /* UIButtonExtension.swift */; };
 		F93A584A1E91815500148AB8 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93A58491E91815500148AB8 /* CGColorExtension.swift */; };
 		F94A6CEE1E88531D00F84525 /* AirticketSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */; };
@@ -201,6 +202,7 @@
 		F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		F9189D341E7BEF0300C6F7D5 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F9189D351E7BEF0300C6F7D5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F919BDAE1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchPickerDelegate.swift; sourceTree = "<group>"; };
 		F93A58471E91802A00148AB8 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		F93A58491E91815500148AB8 /* CGColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		F94A6CED1E88531D00F84525 /* AirticketSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AirticketSearchViewController.storyboard; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				F904A52F1E7DDE8700911C67 /* AirticketSearchViewController.swift */,
 				5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */,
 				5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */,
+				F919BDAE1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				F9508CD61E7F29650064D071 /* FeedbackViewController.swift in Sources */,
 				F9508CDA1E7F29C60064D071 /* SettingsViewController.swift in Sources */,
 				5CEC35521E957BD7004B69DA /* FSCalendar.m in Sources */,
+				F919BDAF1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift in Sources */,
 				5C1797261E8833F000751910 /* UIManager.swift in Sources */,
 				5CEC35591E957BD7004B69DA /* FSCalendarDelegationFactory.m in Sources */,
 				5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */,

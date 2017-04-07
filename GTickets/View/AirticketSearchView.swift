@@ -11,7 +11,7 @@ import UIKit
 class AirticketSearchView: UIView {
   fileprivate let animationDuration = 0.3
   
-  var delegate: SearchCityViewDelegate! {
+  var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
     didSet {
       update()
     }
@@ -101,7 +101,9 @@ class AirticketSearchView: UIView {
   var fromSearchCityText: String {
     set {
       fromTextField.text = newValue
-      delegate.fromTextFieldDidChange()
+      if let delegate = delegate {
+        delegate.fromTextFieldDidChange()
+      }
     }
     get {
       return fromTextField.text!
@@ -111,8 +113,12 @@ class AirticketSearchView: UIView {
   var toSearchCityText: String {
     set {
       toTextField.text = newValue
-      delegate.toTextFieldDidChange()
+      
+      if let delegate = delegate {
+        delegate.toTextFieldDidChange()
+      }
     }
+    
     get {
       return toTextField.text!
     }
@@ -153,7 +159,11 @@ class AirticketSearchView: UIView {
     isCityResultHidden = true
     toSearchResultContainerHeight.constant = 0
     fromSearchResultContainerHeight.constant = 0
-    delegate.swapCityTextFieldsAction()
+    
+    if let delegate = delegate {
+      delegate.swapCityTextFieldsAction()
+    }
+  
     endEditing(true)
   }
   
@@ -235,10 +245,18 @@ class AirticketSearchView: UIView {
   //MARK: - Outlets 
   
   @IBAction func chooseDispatchDate() {
+    guard let delegate = delegate else {
+      return
+    }
+    
     delegate.chooseDispatchDate()
   }
   
   @IBAction func chooseArrivalDate() {
+    guard let delegate = delegate else {
+      return
+    }
+    
     delegate.chooseArrivalDate()
   }
   
@@ -269,12 +287,19 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
-    UIView.animate(withDuration: animationDuration) {
-      self.comfortClassPickerView.alpha = self.comfortClassPickerView.alpha == 1 ? 0 : 1
+    
+    guard let delegate = delegate else {
+      return
     }
+    
+    delegate.showPicker(type: .baggage)
+    
+//    UIView.animate(withDuration: animationDuration) {
+//      self.comfortClassPickerView.alpha = self.comfortClassPickerView.alpha == 1 ? 0 : 1
+//    }
 
-    comfortClassPickerView.frame = CGRect(x: 0, y: <#T##CGFloat#>, width: comfortClassPickerView.frame.size.width, height: comfortClassPickerView.frame.size.height)
-    comfortClassPickerView.reloadAllComponents()
+    //comfortClassPickerView.frame = CGRect(x: 0, y: <#T##CGFloat#>, width: comfortClassPickerView.frame.size.width, height: comfortClassPickerView.frame.size.height)
+    //comfortClassPickerView.reloadAllComponents()
   }
 
   // MARK: - Count suitcases
@@ -320,7 +345,7 @@ class AirticketSearchView: UIView {
   // MARK: - Date visa check-out
   
   @IBAction func chooseDateVisaCheckout() {
-    delegate.chooseDateVisaCheckout()
+    delegate?.chooseDateVisaCheckout()
   }
   
   // MARK: - Days of stay
@@ -346,7 +371,7 @@ class AirticketSearchView: UIView {
                                    dateVisaCheckout: nil,
                                    visaDays: nil,
                                    comments: nil)
-    delegate.search(data)
+    delegate?.search(data)
   }
   
 }
