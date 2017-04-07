@@ -273,10 +273,11 @@ class AirticketSearchView: UIView {
   private func makeAdditionalInfo(isVisible: Bool) {
     hideAdditionalInfoButton.isHidden = !isVisible
     showAdditionalInfoButton.isHidden = isVisible
-    
     additionalInfoHeight.constant = aditionalInfoView.frame.height
     
-    layoutIfNeeded()    
+    UIView.animate(withDuration: 1) {
+      self.layoutIfNeeded()
+    }
   }
   
   // MARK: - Count people
