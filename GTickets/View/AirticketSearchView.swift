@@ -71,7 +71,8 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var commentsTextView: UITextView!
   @IBOutlet weak var commentsHeight: NSLayoutConstraint!
   
-  private var previousAditionalInfoHeight: CGFloat = 330
+  @IBOutlet weak var aditionalInfoView: UIView!
+  
   
   var isCityResultHidden = true
   
@@ -133,6 +134,8 @@ class AirticketSearchView: UIView {
   
   private func update() {
     addGestureRecognizerDismissKeyboard()
+    
+    commentsTextView.sizeToFit()
   }
   
   
@@ -240,12 +243,10 @@ class AirticketSearchView: UIView {
   }
   
   private func makeAdditionalInfo(isVisible: Bool) {
-    hideAdditionalInfoButton.isHidden = isVisible ? false : true
-    showAdditionalInfoButton.isHidden = isVisible ? true : false
+    hideAdditionalInfoButton.isHidden = !isVisible
+    showAdditionalInfoButton.isHidden = isVisible
     
-    let prevConstant = additionalInfoHeight.constant
-    additionalInfoHeight.constant = previousAditionalInfoHeight
-    previousAditionalInfoHeight = prevConstant
+    additionalInfoHeight.constant = aditionalInfoView.frame.height
     
     layoutIfNeeded()    
   }
