@@ -22,5 +22,5 @@ protocol SearchCityViewDelegate {
   
   func chooseDateVisaCheckout()
   
-  func search(_ data: AirticketSearchData)
+  func search()
 }

@@ -282,6 +282,7 @@ class AirticketSearchView: UIView {
   // MARK: - Count people
   
   @IBAction func chooseCountPeople() {
+    delegate?.showPicker(type: .passenger)
   }
   
   // MARK: - Comfort class
@@ -351,27 +352,28 @@ class AirticketSearchView: UIView {
   // MARK: - Days of stay
   
   @IBAction func chooseDaysOfStay() {
+    delegate?.showPicker(type: .visaDays)
   }
   
   //MARK: - Search
   
   @IBAction func search() {
     //TODO: fill data from view
-    let data = AirticketSearchData(fromCity: fromSearchCityText,
-                                   toCity: toSearchCityText,
-                                   fromDateDispatch: Date(),
-                                   toDateDispatch: Date(),
-                                   fromDateArrival: Date(),
-                                   toDateArrival: Date(),
-                                   comfortClass: .economy,
-                                   countPassenger: .one,
-                                   baggage: .one,
-                                   isDirectFlight: false,
-                                   isVisaCheckout: nil,
-                                   dateVisaCheckout: nil,
-                                   visaDays: nil,
-                                   comments: nil)
-    delegate?.search(data)
+//    let data = AirticketSearchData(fromCity: fromSearchCityText,
+//                                   toCity: toSearchCityText,
+//                                   fromDateDispatch: Date(),
+//                                   toDateDispatch: Date(),
+//                                   fromDateArrival: Date(),
+//                                   toDateArrival: Date(),
+//                                   comfortClass: .economy,
+//                                   countPassenger: .one,
+//                                   baggage: .one,
+//                                   isDirectFlight: false,
+//                                   isVisaCheckout: nil,
+//                                   dateVisaCheckout: nil,
+//                                   visaDays: nil,
+//                                   comments: nil)
+    delegate?.search()
   }
   
 }
