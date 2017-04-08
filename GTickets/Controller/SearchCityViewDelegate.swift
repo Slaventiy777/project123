@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SearchCityViewDelegate {
+protocol SearchCityViewDelegate: class {
   //дописывать методы IBAction с вьюхи
   func fromTextFieldDidChange()
   func toTextFieldDidChange()

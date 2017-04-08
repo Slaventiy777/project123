@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MKDropdownMenu
 
 class AirticketSearchViewController: UIViewController {
   
@@ -23,69 +22,75 @@ class AirticketSearchViewController: UIViewController {
 
   fileprivate var currentTypePicker: TypePicker?
   
-  fileprivate var picker: UIPickerView!
+  fileprivate lazy var picker: UIPickerView = { [weak self] in
+    guard let strongSelf = self else {
+      return UIPickerView()
+    }
+    
+    let heightPicker: CGFloat = 100
+    let heightNavBar = strongSelf.navigationController?.navigationBar.frame.size.height ?? 0
+    
+    let picker = UIPickerView(frame: CGRect(x: 0,
+                                        y: UIScreen.main.bounds.height - heightPicker - heightNavBar,
+                                        width: UIScreen.main.bounds.width,
+                                        height: heightPicker))
+    picker.backgroundColor = UIColor.white
+    
+    picker.dataSource = strongSelf
+    picker.delegate = strongSelf
+    
+    strongSelf.view.addSubview(picker)
+    picker.isHidden = true
+    
+    return picker
+  }()
   
-  fileprivate var dataSearch: AirticketSearchData!
+  fileprivate let dataSearch = AirticketSearchData()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    dataSearch = AirticketSearchData()
-      
-    viewContent.delegate = self
-    
+    viewContent.delegate = self    
     viewContent.updateInfo(dataSearch)
-    
-    
-//    let dropdownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 80, height: 100))
-//    dropdownMenu.dataSource = self
-//    dropdownMenu.delegate = self
-//    viewContent.countPeopleView.addSubview(dropdownMenu)
-    
-    picker = UIPickerView(frame: CGRect(x: 0,
-                                        y: UIScreen.main.bounds.height - 100 - 64,
-                                        width: UIScreen.main.bounds.width,
-                                        height: 100))
-    picker.backgroundColor = UIColor.white
-    
-    picker.dataSource = self
-    picker.delegate = self
-    
-    view.addSubview(picker)
-    picker.isHidden = true
     
     makeSearchCityControllers()
   }
   
   func makeSearchCityControllers() {
-    fromSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
-    fromSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.fromSearchResultContainer.frame.width, height: viewContent.fromSearchResultContainer.frame.height)
-    viewContent.fromSearchResultContainer.addSubview(fromSearchCity.view)
-    addChildViewController(fromSearchCity)
-    fromSearchCity.delegate = self
+    makeSearchCityController(searchCity: &fromSearchCity, viewContainer: viewContent.fromSearchResultContainer)
+    makeSearchCityController(searchCity: &toSearchCity, viewContainer: viewContent.toSearchResultContainer)
+  }
+  
+  private func makeSearchCityController(searchCity: inout AirticketSearchCityResultList!, viewContainer: UIView) {
+    let searchCityController = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList")
     
-    toSearchCity = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList") as! AirticketSearchCityResultList!
-    toSearchCity.view.frame = CGRect(x: 0, y: 0, width: viewContent.toSearchResultContainer.frame.width, height: viewContent.toSearchResultContainer.frame.height)
-    viewContent.toSearchResultContainer.addSubview(toSearchCity.view)
-    addChildViewController(toSearchCity)
-    toSearchCity.delegate = self
-    
+    if let searchCityController = searchCityController as? AirticketSearchCityResultList {
+      searchCity = searchCityController
+      searchCity.view.frame = CGRect(x: 0,
+                                     y: 0,
+                                     width: viewContainer.frame.width,
+                                     height: viewContainer.frame.height)
+      viewContainer.addSubview(searchCity.view)
+      addChildViewController(searchCity)
+      
+      searchCity.delegate = self
+    }
   }
   
 }
 
 extension AirticketSearchViewController: SearchCityViewDelegate {
-  
+
   func fromTextFieldDidChange() {
-    fromSearchCity.makeDataSource(city: viewContent.fromSearchCityText, callback: {
+    fromSearchCity.makeDataSource(city: viewContent.fromSearchCityText) {
       viewContent.fromSearchResultContainerContentHeight = fromSearchCity.tableView.contentSize.height
-    })
+    }
   }
-  
+
   func toTextFieldDidChange() {
-    toSearchCity.makeDataSource(city: viewContent.toSearchCityText, callback: {
+    toSearchCity.makeDataSource(city: viewContent.toSearchCityText) {
       viewContent.toSearchResultContainerContentHeight = toSearchCity.tableView.contentSize.height
-    })
+    }
   }
 
   func swapCityTextFieldsAction() {
@@ -98,7 +103,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     fromTextFieldDidChange()
     toTextFieldDidChange()
   }
-  
+
   func cityChosed(text: String, from: UIViewController) {
     if from == fromSearchCity {
       viewContent.fromSearchCityText = text
@@ -106,49 +111,73 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       viewContent.toSearchCityText = text
     }
   }
-  
+
   func chooseArrivalDate() {
-    if dispatchDateController == nil {
-      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-      dispatchDateController = RangeOfDatesCalendarController()
-      dispatchDateController?.calendarView = calendarView
-      //    self.navigationController?.pushViewController(controller, animated: true)
-    }
-    let navController = UINavigationController(rootViewController: dispatchDateController!)
-    present(navController, animated:true, completion: nil)
+    chooseRangeDates(dateController: &dispatchDateController)
   }
-  
+
   func chooseDispatchDate() {
-    if arrivalDateController == nil {
-      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-      arrivalDateController = RangeOfDatesCalendarController()
-      arrivalDateController?.calendarView = calendarView
-      //self.navigationController?.pushViewController(controller, animated: true)
+    chooseRangeDates(dateController: &arrivalDateController)
+  }
+
+  func chooseDateVisaCheckout() {
+    chooseDate(dateController: &visaCheckoutDateController)
+  }
+
+  private func chooseDate(dateController: inout OneDateCalendarController?) {
+    if dateController == nil {
+      let storyboard = UIStoryboard.init(name: "Calendar", bundle: nil)
+      let calendarView = storyboard.instantiateViewController(withIdentifier: "CalendarController").view
+      
+      guard let calendarViewGT = calendarView as? GTCalendarView else {
+        return
+      }
+      
+      dateController = OneDateCalendarController()
+      dateController?.calendarView = calendarViewGT
     }
-    let navController = UINavigationController(rootViewController: arrivalDateController!)
-    present(navController, animated:true, completion: nil)
+    
+    let navController = UINavigationController(rootViewController: dateController!)
+    present(navController, animated: true, completion: nil)
   }
   
-  func chooseDateVisaCheckout() {
-    if visaCheckoutDateController == nil {
-      let calendarView: GTCalendarView = UIStoryboard.init(name: "Calendar", bundle: nil).instantiateViewController(withIdentifier: "CalendarController").view as! GTCalendarView
-      visaCheckoutDateController = OneDateCalendarController()
-      visaCheckoutDateController?.calendarView = calendarView
-      //self.navigationController?.pushViewController(controller, animated: true)
+  private func chooseRangeDates(dateController: inout RangeOfDatesCalendarController?) {
+    if dateController == nil {
+      let storyboard = UIStoryboard.init(name: "Calendar", bundle: nil)
+      let calendarView = storyboard.instantiateViewController(withIdentifier: "CalendarController").view
+      
+      guard let calendarViewGT = calendarView as? GTCalendarView else {
+        return
+      }
+      
+      dateController = RangeOfDatesCalendarController()
+      dateController?.calendarView = calendarViewGT
     }
-    let navController = UINavigationController(rootViewController: visaCheckoutDateController!)
-    present(navController, animated:true, completion: nil)
+    
+    let navController = UINavigationController(rootViewController: dateController!)
+    present(navController, animated: true, completion: nil)
   }
   
   func search() {
-    RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { json in
+    RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { [weak self] json in
+      guard let strongSelf = self else {
+        return
+      }
+      
       //TODO: do something (for example auth)
-      var alert = UIStoryboard(name: "Alert", bundle: nil).instantiateInitialViewController() as! AlertViewController
-      (alert.view as! AlertView).alertType = AlertType.donePurple
-      self.present(alert, animated:true, completion: nil)
+      
+      guard let alertViewController = AlertViewController.storyboardInstance() else {
+        return
+      }
+      
+      if let alertView = alertViewController.view as? AlertView {
+        alertView.alertType = AlertType.donePurple
+      }
+      
+      strongSelf.present(alertViewController, animated: true, completion: nil)
     }
   }
-  
+
 }
 
 extension AirticketSearchViewController: AirticketSearchPickerDelegate {
@@ -164,26 +193,6 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
     UIView.animate(withDuration: 0.3) {
       self.picker.alpha = 1
     }
-  }
-  
-}
-
-extension AirticketSearchViewController: MKDropdownMenuDataSource {
-  
-  func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
-    return 1
-  }
-  
-  func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-    return Passenger.count
-  }
-  
-}
-
-extension AirticketSearchViewController: MKDropdownMenuDelegate {
-  
-  func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForRow row: Int, forComponent component: Int) -> String? {
-    return String(row)
   }
   
 }

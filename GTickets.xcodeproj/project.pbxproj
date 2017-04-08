@@ -12,7 +12,7 @@
 		5C1797221E87FE7B00751910 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797211E87FE7B00751910 /* SearchViewController.swift */; };
 		5C1797241E8800BA00751910 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797231E8800BA00751910 /* SearchData.swift */; };
 		5C1797261E8833F000751910 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797251E8833F000751910 /* UIManager.swift */; };
-		5C1797281E8C0C7E00751910 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1797271E8C0C7E00751910 /* Alert.storyboard */; };
+		5C1797281E8C0C7E00751910 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */; };
 		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
 		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
 		5C8E29641E80777D00206EF0 /* FuturaPTBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */; };
@@ -117,7 +117,7 @@
 		5C1797211E87FE7B00751910 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5C1797231E8800BA00751910 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		5C1797251E8833F000751910 /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
-		5C1797271E8C0C7E00751910 /* Alert.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
 		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBold.otf; sourceTree = "<group>"; };
@@ -419,7 +419,7 @@
 				5C17971E1E87FD5600751910 /* Cells */,
 				5C8E294C1E80748200206EF0 /* AlertView.swift */,
 				5C17971C1E87FBCF00751910 /* Search.storyboard */,
-				5C1797271E8C0C7E00751910 /* Alert.storyboard */,
+				5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */,
 				F904B7BC1E807A6E00F6297E /* MasterView.swift */,
 				F9189D2E1E7BEEE100C6F7D5 /* LeftMenuView.swift */,
 				F9189D2D1E7BEEE100C6F7D5 /* LeftMenuCell.xib */,
@@ -582,7 +582,7 @@
 				5C8E29681E80777D00206EF0 /* FuturaPTCondBold.otf in Resources */,
 				5C8E29771E80777D00206EF0 /* FuturaPTLightOblique.otf in Resources */,
 				5C8E296D1E80777D00206EF0 /* FuturaPTCondExtraBoldOblique.otf in Resources */,
-				5C1797281E8C0C7E00751910 /* Alert.storyboard in Resources */,
+				5C1797281E8C0C7E00751910 /* AlertViewController.storyboard in Resources */,
 				5C8E296B1E80777D00206EF0 /* FuturaPTCondBookOblique.otf in Resources */,
 				5C17971D1E87FBCF00751910 /* Search.storyboard in Resources */,
 				F94A7AF01E768D2B004ED5FD /* Assets.xcassets in Resources */,

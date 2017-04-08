@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AirticketSearchPickerDelegate {
+protocol AirticketSearchPickerDelegate: class {
   
   func showPicker(type: TypePicker)
   

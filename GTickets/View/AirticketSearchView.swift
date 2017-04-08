@@ -11,7 +11,7 @@ import UIKit
 class AirticketSearchView: UIView {
   fileprivate let animationDuration = 0.3
   
-  var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
+  weak var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
     didSet {
       update()
     }
@@ -130,8 +130,6 @@ class AirticketSearchView: UIView {
     }
   }
   
-//  func defultData() { }
-  
   func updateInfo(_ model: AirticketSearchData) {
     
     countPeopleLabel.text = "\(model.countPassenger.rawValue)"
@@ -212,8 +210,8 @@ class AirticketSearchView: UIView {
       animateConstraintChanging()
       showCityTextFieldsButton()
     }
+    
     isCityResultHidden = true
-
   }
   
   private func animateConstraintChanging() {
@@ -245,19 +243,11 @@ class AirticketSearchView: UIView {
   //MARK: - Outlets 
   
   @IBAction func chooseDispatchDate() {
-    guard let delegate = delegate else {
-      return
-    }
-    
-    delegate.chooseDispatchDate()
+    delegate?.chooseDispatchDate()
   }
   
   @IBAction func chooseArrivalDate() {
-    guard let delegate = delegate else {
-      return
-    }
-    
-    delegate.chooseArrivalDate()
+    delegate?.chooseArrivalDate()
   }
   
   // MARK: - Hide / Show additional info
@@ -289,71 +279,60 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
-    
-    guard let delegate = delegate else {
-      return
-    }
-    
-    delegate.showPicker(type: .baggage)
-    
-//    UIView.animate(withDuration: animationDuration) {
-//      self.comfortClassPickerView.alpha = self.comfortClassPickerView.alpha == 1 ? 0 : 1
-//    }
-
-    //comfortClassPickerView.frame = CGRect(x: 0, y: <#T##CGFloat#>, width: comfortClassPickerView.frame.size.width, height: comfortClassPickerView.frame.size.height)
-    //comfortClassPickerView.reloadAllComponents()
+    delegate?.showPicker(type: .baggage)
   }
 
   // MARK: - Count suitcases
   
-  private let suitcaseColor = UIColor(red: 0/255, green: 150/255, blue: 1, alpha: 1)
-  
-  //TODO: AWFUL! REFACTOR
+  private let suitcaseColor = UIColor(red: 0 / 255, green: 150 / 255, blue: 1, alpha: 1)
   
   @IBAction func chooseSuitcase0() {
-    suitcase0View.backgroundColor = suitcaseColor
-    suitcase1View.backgroundColor = nil
-    suitcase2View.backgroundColor = nil
-
-    let selectedSuitcaseColor = UIColor.black
-    let unselectedSuitcaseColor = UIColor.white
-    applyColorForSuitcase(selectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+    chooseSuitcases(count: 0)
   }
   
-  func applyColorForSuitcase(_ color: UIColor, _ suitcaseView: UIView, _ suitcaseImage: UIImageView, _ suitcaseCrossLabel: UILabel, _ suitcaseNumberLabel: UILabel) {
+  @IBAction func chooseSuitcase1() {
+    chooseSuitcases(count: 1)
+  }
+  
+  @IBAction func chooseSuitcase2() {
+    chooseSuitcases(count: 2)
+  }
+  
+  private func chooseSuitcases(count: Int) {
+    var color0 = UIColor.white
+    var color1 = UIColor.white
+    var color2 = UIColor.white
+    var backgroundColor0: UIColor?
+    var backgroundColor1: UIColor?
+    var backgroundColor2: UIColor?
+    
+    if count == 0 {
+      color0 = UIColor.black
+      backgroundColor0 = suitcaseColor
+    } else if count == 1 {
+      color1 = UIColor.black
+      backgroundColor1 = suitcaseColor
+    } else if count == 2 {
+      color2 = UIColor.black
+      backgroundColor2 = suitcaseColor
+    }
+    
+    applyColorForSuitcase(color0, backgroundColor0, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
+    applyColorForSuitcase(color1, backgroundColor1, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
+    applyColorForSuitcase(color2, backgroundColor2, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+  }
+  
+  func applyColorForSuitcase(_ color: UIColor, _ backgroundColor: UIColor?,
+                             _ suitcaseView: UIView, _ suitcaseImage: UIImageView,
+                             _ suitcaseCrossLabel: UILabel, _ suitcaseNumberLabel: UILabel) {
+    
+    suitcaseView.backgroundColor = backgroundColor
     suitcaseView.layer.borderColor = color.withAlphaComponent(0.3).cgColor
     suitcaseImage.image = suitcaseImage.image?.withRenderingMode(.alwaysTemplate)
     suitcaseImage.tintColor = color
     suitcaseCrossLabel.textColor = color
     suitcaseNumberLabel.textColor = color
-  }
-  
-  @IBAction func chooseSuitcase1() {
-    suitcase0View.backgroundColor = nil
-    suitcase1View.backgroundColor = suitcaseColor
-    suitcase2View.backgroundColor = nil
     
-    let selectedSuitcaseColor = UIColor.black
-    let unselectedSuitcaseColor = UIColor.white
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
-    applyColorForSuitcase(selectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
-
-  }
-  
-  @IBAction func chooseSuitcase2() {
-    suitcase0View.backgroundColor = nil
-    suitcase1View.backgroundColor = nil
-    suitcase2View.backgroundColor = suitcaseColor
-    
-    let selectedSuitcaseColor = UIColor.black
-    let unselectedSuitcaseColor = UIColor.white
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
-    applyColorForSuitcase(unselectedSuitcaseColor, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
-    applyColorForSuitcase(selectedSuitcaseColor, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
-
   }
   
   // MARK: - Direct flight
@@ -391,44 +370,9 @@ class AirticketSearchView: UIView {
   //MARK: - Search
   
   @IBAction func search() {
-    //TODO: fill data from view
-//    let data = AirticketSearchData(fromCity: fromSearchCityText,
-//                                   toCity: toSearchCityText,
-//                                   fromDateDispatch: Date(),
-//                                   toDateDispatch: Date(),
-//                                   fromDateArrival: Date(),
-//                                   toDateArrival: Date(),
-//                                   comfortClass: .economy,
-//                                   countPassenger: .one,
-//                                   baggage: .one,
-//                                   isDirectFlight: false,
-//                                   isVisaCheckout: nil,
-//                                   dateVisaCheckout: nil,
-//                                   visaDays: nil,
-//                                   comments: nil)
     delegate?.search()
   }
   
 }
 
-extension AirticketSearchView: UIPickerViewDataSource {
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return ComfortClass.count
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return ComfortClass(rawValue: row+1)?.name
-  }
-  
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    comfortClass = ComfortClass(rawValue: row+1)!
-    UIView.animate(withDuration: animationDuration) {
-      pickerView.alpha = 0
-    }
-  }
-}
 
