@@ -27,12 +27,13 @@ class AirticketSearchViewController: UIViewController {
       return UIPickerView()
     }
     
-    let heightPicker: CGFloat = 100
+    let mainWindow = UIScreen.main.bounds
+    let heightPicker: CGFloat = mainWindow.height / 5
     let heightNavBar = strongSelf.navigationController?.navigationBar.frame.size.height ?? 0
     
     let picker = UIPickerView(frame: CGRect(x: 0,
-                                        y: UIScreen.main.bounds.height - heightPicker - heightNavBar,
-                                        width: UIScreen.main.bounds.width,
+                                        y: mainWindow.height - heightPicker - heightNavBar,
+                                        width: mainWindow.width,
                                         height: heightPicker))
     picker.backgroundColor = UIColor.white
     
@@ -126,7 +127,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
 
   private func chooseDate(dateController: inout OneDateCalendarController?) {
     if dateController == nil {
-      let storyboard = UIStoryboard.init(name: "Calendar", bundle: nil)
+      let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
       let calendarView = storyboard.instantiateViewController(withIdentifier: "CalendarController").view
       
       guard let calendarViewGT = calendarView as? GTCalendarView else {
@@ -156,6 +157,14 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     
     let navController = UINavigationController(rootViewController: dateController!)
     present(navController, animated: true, completion: nil)
+  }
+  
+  func chooseBaggage(_ baggage: Baggage) {
+    dataSearch.baggage = baggage
+  }
+  
+  func chooseDirectFlight(_ isDirect: Bool) {
+    dataSearch.isDirectFlight = isDirect
   }
   
   func search() {
@@ -223,7 +232,8 @@ extension AirticketSearchViewController: UIPickerViewDataSource {
 }
 
 extension AirticketSearchViewController: UIPickerViewDelegate {
- 
+
+  
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     guard let currentTypePicker = currentTypePicker else {
       return nil
@@ -244,9 +254,9 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
    
     if currentTypePicker == .passenger {
-      dataSearch.countPassenger = Passenger.array[row]
+      dataSearch.numberOfPassengers = Passenger.array[row]
       
-      viewContent.countPeopleLabel.text = "\(dataSearch.countPassenger.rawValue)"
+      viewContent.countPeopleLabel.text = "\(dataSearch.numberOfPassengers.rawValue)"
     } else if currentTypePicker == .baggage {
       dataSearch.comfortClass = ComfortClass.array[row]
       
@@ -262,8 +272,8 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
     }, completion: { (ok) in
       self.picker.isHidden = true
     })
-    
+
   }
-  
+
 }
 

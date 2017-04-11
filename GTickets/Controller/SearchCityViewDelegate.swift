@@ -22,5 +22,8 @@ protocol SearchCityViewDelegate: class {
   
   func chooseDateVisaCheckout()
   
+  func chooseBaggage(_ baggage: Baggage)
+  func chooseDirectFlight(_ isDirect: Bool)
+  
   func search()
 }

@@ -132,7 +132,7 @@ class AirticketSearchView: UIView {
   
   func updateInfo(_ model: AirticketSearchData) {
     
-    countPeopleLabel.text = "\(model.countPassenger.rawValue)"
+    countPeopleLabel.text = "\(model.numberOfPassengers.rawValue)"
     comfortClassLabel.text = model.comfortClass.name
     
     switch model.baggage {
@@ -270,7 +270,7 @@ class AirticketSearchView: UIView {
 //    }
   }
   
-  // MARK: - Count people
+  // MARK: - number of people
   
   @IBAction func chooseCountPeople() {
     delegate?.showPicker(type: .passenger)
@@ -287,18 +287,18 @@ class AirticketSearchView: UIView {
   private let suitcaseColor = UIColor(red: 0 / 255, green: 150 / 255, blue: 1, alpha: 1)
   
   @IBAction func chooseSuitcase0() {
-    chooseSuitcases(count: 0)
+    chooseSuitcases(baggage: .zero)
   }
   
   @IBAction func chooseSuitcase1() {
-    chooseSuitcases(count: 1)
+    chooseSuitcases(baggage: .one)
   }
   
   @IBAction func chooseSuitcase2() {
-    chooseSuitcases(count: 2)
+    chooseSuitcases(baggage: .two)
   }
   
-  private func chooseSuitcases(count: Int) {
+  private func chooseSuitcases(baggage: Baggage) {
     var color0 = UIColor.white
     var color1 = UIColor.white
     var color2 = UIColor.white
@@ -306,6 +306,7 @@ class AirticketSearchView: UIView {
     var backgroundColor1: UIColor?
     var backgroundColor2: UIColor?
     
+    let count = baggage.rawValue
     if count == 0 {
       color0 = UIColor.black
       backgroundColor0 = suitcaseColor
@@ -320,6 +321,8 @@ class AirticketSearchView: UIView {
     applyColorForSuitcase(color0, backgroundColor0, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
     applyColorForSuitcase(color1, backgroundColor1, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
     applyColorForSuitcase(color2, backgroundColor2, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
+    
+    delegate?.chooseBaggage(baggage)
   }
   
   func applyColorForSuitcase(_ color: UIColor, _ backgroundColor: UIColor?,
@@ -338,11 +341,16 @@ class AirticketSearchView: UIView {
   // MARK: - Direct flight
   
   @IBAction func chooseDirectFlight() {
+    var isDirect = false
     if let _ = directFlightInternalView.backgroundColor {
       directFlightInternalView.backgroundColor = nil
     } else {
       directFlightInternalView.backgroundColor = suitcaseColor
+      
+      isDirect = true
     }
+    
+    delegate?.chooseDirectFlight(isDirect)
   }
   
   // MARK: - Visa check-out
