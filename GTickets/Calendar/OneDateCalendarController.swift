@@ -10,6 +10,9 @@ import Foundation
 
 class OneDateCalendarController: UIViewController, CalendarDelegate, FSCalendarDataSource, FSCalendarDelegate {
   
+  weak var delegate: AirticketSearchDateDelegate?
+  var typeDate: TypeDate
+  
   //MARK: GTCalendarDelegate
   var calendarView: GTCalendarView! {
     didSet {
@@ -23,9 +26,28 @@ class OneDateCalendarController: UIViewController, CalendarDelegate, FSCalendarD
   
   var dates: [Date] = [] {
     didSet {
+      if dates.count == 1 {
+        delegate?.setDates(type: typeDate, from: dates[0], to: nil)
+      }
+      
       close()
     }
   }
+  
+  convenience init() {
+    self.init(type: .departure)
+  }
+  
+  init(type: TypeDate) {
+    typeDate = type
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  convenience required init?(coder aDecoder: NSCoder) {
+    self.init()
+    //super.init(coder: aDecoder)
+  }
+
   
   //MARK - FSCalendarDataSource, FSCalendarDelegate
   fileprivate let gregorian = Calendar(identifier: .gregorian)

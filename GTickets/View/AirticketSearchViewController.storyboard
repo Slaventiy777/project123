@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UUS-EB-v5b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UUS-EB-v5b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1067,6 +1067,7 @@
                                             <outlet property="dateVisaCheckoutButton" destination="AeY-th-irq" id="SIv-V4-8gQ"/>
                                             <outlet property="daysOfStayImage" destination="Kog-Vl-YVE" id="22b-LX-rBb"/>
                                             <outlet property="daysOfStayLabel" destination="8kD-a4-aGJ" id="D4u-li-oFy"/>
+                                            <outlet property="departureButton" destination="Jl8-SK-F1b" id="jHn-IR-kkT"/>
                                             <outlet property="directFlightExternalView" destination="fMt-hL-KLk" id="Nvj-Cm-WbG"/>
                                             <outlet property="directFlightInternalView" destination="Wc6-C7-hmj" id="3GD-TL-h1d"/>
                                             <outlet property="directFlightLabel" destination="kYr-LA-Obs" id="mRy-bV-EtF"/>
@@ -1074,6 +1075,7 @@
                                             <outlet property="fromSearchResultContainerHeight" destination="pKQ-AI-nnA" id="zih-HL-dY8"/>
                                             <outlet property="fromTextField" destination="PSc-tn-uaa" id="2zB-IE-jIp"/>
                                             <outlet property="hideAdditionalInfoButton" destination="AGy-uc-jfU" id="WPe-tV-I2A"/>
+                                            <outlet property="returnButton" destination="dto-mv-yTF" id="qtY-33-LUz"/>
                                             <outlet property="showAdditionalInfoButton" destination="cgu-Em-cDf" id="fZA-xG-dJl"/>
                                             <outlet property="suitcase0CrossLabel" destination="j29-mW-PYU" id="QU3-Eb-3TU"/>
                                             <outlet property="suitcase0Image" destination="f9U-5O-Nfc" id="mKx-iO-86W"/>

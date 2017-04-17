@@ -8,20 +8,24 @@
 
 import UIKit
 
+protocol AirticketSearchDateDelegate: class {
+  func setDates(type: TypeDate, from: Date?, to: Date?)
+}
+
 class AirticketSearchViewController: UIViewController {
-  
+
   @IBOutlet weak var viewContent: AirticketSearchView!
-  
+
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
   fileprivate var toSearchCity: AirticketSearchCityResultList!
-  
+
   fileprivate var dispatchDateController: RangeOfDatesCalendarController?
   fileprivate var arrivalDateController: RangeOfDatesCalendarController?
 
   fileprivate var visaCheckoutDateController: OneDateCalendarController?
 
   fileprivate var currentTypePicker: TypePicker?
-  
+
   fileprivate lazy var picker: UIPickerView = { [weak self] in
     guard let strongSelf = self else {
       return UIPickerView()
@@ -32,9 +36,9 @@ class AirticketSearchViewController: UIViewController {
     let heightNavBar = strongSelf.navigationController?.navigationBar.frame.size.height ?? 0
     
     let picker = UIPickerView(frame: CGRect(x: 0,
-                                        y: mainWindow.height - heightPicker - heightNavBar,
-                                        width: mainWindow.width,
-                                        height: heightPicker))
+                                            y: mainWindow.height - heightPicker - heightNavBar,
+                                            width: mainWindow.width,
+                                            height: heightPicker))
     picker.backgroundColor = UIColor.white
     
     picker.dataSource = strongSelf
@@ -45,9 +49,9 @@ class AirticketSearchViewController: UIViewController {
     
     return picker
   }()
-  
+
   fileprivate let dataSearch = AirticketSearchData()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -56,12 +60,12 @@ class AirticketSearchViewController: UIViewController {
     
     makeSearchCityControllers()
   }
-  
-  func makeSearchCityControllers() {
+
+  private func makeSearchCityControllers() {
     makeSearchCityController(searchCity: &fromSearchCity, viewContainer: viewContent.fromSearchResultContainer)
     makeSearchCityController(searchCity: &toSearchCity, viewContainer: viewContent.toSearchResultContainer)
   }
-  
+
   private func makeSearchCityController(searchCity: inout AirticketSearchCityResultList!, viewContainer: UIView) {
     let searchCityController = storyboard?.instantiateViewController(withIdentifier: "AirticketSearchCityResultList")
     
@@ -77,7 +81,7 @@ class AirticketSearchViewController: UIViewController {
       searchCity.delegate = self
     }
   }
-  
+
 }
 
 extension AirticketSearchViewController: SearchCityViewDelegate {
@@ -114,18 +118,18 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   }
 
   func chooseArrivalDate() {
-    chooseRangeDates(dateController: &dispatchDateController)
+    chooseRangeDates(type: .return, dateController: &dispatchDateController)
   }
 
   func chooseDispatchDate() {
-    chooseRangeDates(dateController: &arrivalDateController)
+    chooseRangeDates(type: .departure, dateController: &arrivalDateController)
   }
 
   func chooseDateVisaCheckout() {
-    chooseDate(dateController: &visaCheckoutDateController)
+    chooseDate(type: .visa, dateController: &visaCheckoutDateController)
   }
 
-  private func chooseDate(dateController: inout OneDateCalendarController?) {
+  private func chooseDate(type: TypeDate, dateController: inout OneDateCalendarController?) {
     if dateController == nil {
       let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
       let calendarView = storyboard.instantiateViewController(withIdentifier: "CalendarController").view
@@ -134,15 +138,16 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
         return
       }
       
-      dateController = OneDateCalendarController()
+      dateController = OneDateCalendarController(type: type)
+      dateController?.delegate = self
       dateController?.calendarView = calendarViewGT
     }
     
     let navController = UINavigationController(rootViewController: dateController!)
     present(navController, animated: true, completion: nil)
   }
-  
-  private func chooseRangeDates(dateController: inout RangeOfDatesCalendarController?) {
+
+  private func chooseRangeDates(type: TypeDate, dateController: inout RangeOfDatesCalendarController?) {
     if dateController == nil {
       let storyboard = UIStoryboard.init(name: "Calendar", bundle: nil)
       let calendarView = storyboard.instantiateViewController(withIdentifier: "CalendarController").view
@@ -151,14 +156,15 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
         return
       }
       
-      dateController = RangeOfDatesCalendarController()
+      dateController = RangeOfDatesCalendarController(type: type)
+      dateController?.delegate = self
       dateController?.calendarView = calendarViewGT
     }
     
     let navController = UINavigationController(rootViewController: dateController!)
     present(navController, animated: true, completion: nil)
   }
-  
+
   func chooseBaggage(_ baggage: Baggage) {
     dataSearch.baggage = baggage
   }
@@ -166,7 +172,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   func chooseDirectFlight(_ isDirect: Bool) {
     dataSearch.isDirectFlight = isDirect
   }
-  
+
   func search() {
     RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { [weak self] json in
       guard let strongSelf = self else {
@@ -189,10 +195,28 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
 
 }
 
+extension AirticketSearchViewController: AirticketSearchDateDelegate {
+
+  func setDates(type: TypeDate, from: Date?, to: Date?) {
+    switch type {
+    case .departure:
+      dataSearch.fromDepartureDate = from
+      dataSearch.toDepartureDate = to
+    case .return:
+      dataSearch.fromReturnDate = from
+      dataSearch.toReturnDate = to
+    case .visa:
+      dataSearch.dateVisaCheckout = from
+    }
+    
+    viewContent.setTitleDates(type: type, from: from, to: to)
+  }
+
+}
+
 extension AirticketSearchViewController: AirticketSearchPickerDelegate {
-  
+
   func showPicker(type: TypePicker) {
-  
     currentTypePicker = type
     
     picker.alpha = 0
@@ -203,15 +227,15 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
       self.picker.alpha = 1
     }
   }
-  
+
 }
 
 extension AirticketSearchViewController: UIPickerViewDataSource {
-  
+
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
-  
+
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     guard let currentTypePicker = currentTypePicker else {
       return 0
@@ -228,12 +252,11 @@ extension AirticketSearchViewController: UIPickerViewDataSource {
     
     return numberOfRows
   }
-  
+
 }
 
 extension AirticketSearchViewController: UIPickerViewDelegate {
 
-  
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     guard let currentTypePicker = currentTypePicker else {
       return nil
@@ -250,7 +273,7 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
     
     return titleForRow
   }
-  
+
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
    
     if currentTypePicker == .passenger {
@@ -276,4 +299,3 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
   }
 
 }
-
