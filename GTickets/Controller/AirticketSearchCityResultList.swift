@@ -9,15 +9,17 @@
 import UIKit
 
 class AirticketSearchCityResultList: UIViewController {
+  
   @IBOutlet weak var tableView: UITableView!
 
   fileprivate var dataSource: [SearchCityData] = []
-  fileprivate var city: String! = ""
+  fileprivate var city = ""
   
-  var delegate: SearchCityViewDelegate?
+  weak var delegate: SearchCityViewDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     makeDataSource(city: "", callback: {})
     
     tableView.layer.cornerRadius = LAYER_CORNER_RADIUS
@@ -28,12 +30,9 @@ class AirticketSearchCityResultList: UIViewController {
   }
   
   private func makeDataSource(_ array: [Dictionary<String, String>]) {
-    var buffer: [SearchCityData] = []
-    array.forEach { item in
-      let data = SearchCityData(item)
-      buffer.append(data)
+    dataSource = array.map {
+      SearchCityData($0)
     }
-    dataSource = buffer
   }
   
   func makeDataSource(city: String, callback: ()->()) { //место для запроса
@@ -68,6 +67,7 @@ class AirticketSearchCityResultList: UIViewController {
       ]
     
     makeDataSource(data)
+    
     tableView.reloadData()
     tableView.layoutIfNeeded()
     
@@ -89,9 +89,14 @@ extension AirticketSearchCityResultList: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ITEM", for: indexPath) as! SearchCityViewCell
-    cell.model = dataSource[indexPath.row]
-    return cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ITEM", for: indexPath)
+    guard let itemCell = cell as? SearchCityViewCell else {
+      return UITableViewCell()
+    }
+
+    itemCell.model = dataSource[indexPath.row]
+    
+    return itemCell
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

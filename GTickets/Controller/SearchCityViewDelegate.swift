@@ -10,8 +10,8 @@ import UIKit
 
 protocol SearchCityViewDelegate: class {
   //дописывать методы IBAction с вьюхи
-  func fromTextFieldDidChange()
-  func toTextFieldDidChange()
+  func fromTextFieldDidChange(_ text: String)
+  func toTextFieldDidChange(_ text: String)
 
   func swapCityTextFieldsAction()
 
@@ -23,7 +23,8 @@ protocol SearchCityViewDelegate: class {
   func chooseDateVisaCheckout()
   
   func chooseBaggage(_ baggage: Baggage)
-  func chooseDirectFlight(_ isDirect: Bool)
+  func chooseDirectFlight()
+  func chooseVisaCheckout()
   
   func search()
 }

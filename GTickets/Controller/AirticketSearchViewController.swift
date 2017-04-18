@@ -86,35 +86,43 @@ class AirticketSearchViewController: UIViewController {
 
 extension AirticketSearchViewController: SearchCityViewDelegate {
 
-  func fromTextFieldDidChange() {
-    fromSearchCity.makeDataSource(city: viewContent.fromSearchCityText) {
+  func fromTextFieldDidChange(_ text: String) {
+    dataSearch.fromCity = text
+    
+    fromSearchCity.makeDataSource(city: text) {
       viewContent.fromSearchResultContainerContentHeight = fromSearchCity.tableView.contentSize.height
     }
   }
 
-  func toTextFieldDidChange() {
-    toSearchCity.makeDataSource(city: viewContent.toSearchCityText) {
+  func toTextFieldDidChange(_ text: String) {
+    dataSearch.toCity = text
+    
+    toSearchCity.makeDataSource(city: text) {
       viewContent.toSearchResultContainerContentHeight = toSearchCity.tableView.contentSize.height
     }
   }
 
   func swapCityTextFieldsAction() {
-    let fromSearchCityText = viewContent.fromSearchCityText
-    let toSearchCityText = viewContent.toSearchCityText
-
-    viewContent.fromSearchCityText = toSearchCityText
-    viewContent.toSearchCityText = fromSearchCityText
+    let fromSearchCity = dataSearch.fromCity ?? ""
+    let toSearchCity = dataSearch.toCity ?? ""
     
-    fromTextFieldDidChange()
-    toTextFieldDidChange()
+    viewContent.fromTextField.text = toSearchCity
+    viewContent.toTextField.text = fromSearchCity
+    
+    fromTextFieldDidChange(toSearchCity)
+    toTextFieldDidChange(fromSearchCity)
   }
 
   func cityChosed(text: String, from: UIViewController) {
     if from == fromSearchCity {
-      viewContent.fromSearchCityText = text
+      viewContent.fromTextField.text = text
+      fromTextFieldDidChange(text)
     } else if from == toSearchCity {
-      viewContent.toSearchCityText = text
+      viewContent.toTextField.text = text
+      toTextFieldDidChange(text)
     }
+    
+    viewContent.dismissKeyboard()
   }
 
   func chooseArrivalDate() {
@@ -169,8 +177,14 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.baggage = baggage
   }
   
-  func chooseDirectFlight(_ isDirect: Bool) {
-    dataSearch.isDirectFlight = isDirect
+  func chooseDirectFlight() {
+    dataSearch.isDirectFlight = !dataSearch.isDirectFlight
+    viewContent.setDirectFlight(isDirect: dataSearch.isDirectFlight)
+  }
+  
+  func chooseVisaCheckout() {
+    dataSearch.isVisaCheckout = !dataSearch.isVisaCheckout
+    viewContent.setVisaCheckout(isVisaCheckout: dataSearch.isVisaCheckout)
   }
 
   func search() {

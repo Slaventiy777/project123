@@ -101,30 +101,6 @@ class AirticketSearchView: UIView {
     }
   }
 
-  var fromSearchCityText: String {
-    set {
-      fromTextField.text = newValue
-      
-      delegate?.fromTextFieldDidChange()
-    }
-    
-    get {
-      return fromTextField.text ?? ""
-    }
-  }
-
-  var toSearchCityText: String {
-    set {
-      toTextField.text = newValue
-      
-      delegate?.toTextFieldDidChange()
-    }
-    
-    get {
-      return toTextField.text ?? ""
-    }
-  }
-
   fileprivate var comfortClass: ComfortClass = ComfortClass.economy {
     didSet {
       comfortClassLabel.text = comfortClass.name
@@ -143,6 +119,10 @@ class AirticketSearchView: UIView {
     case .two:
       chooseSuitcase2()
     }
+    
+    setDirectFlight(isDirect: model.isDirectFlight)
+    setVisaCheckout(isVisaCheckout: model.isDirectFlight)
+    
   }
 
   private func update() {
@@ -188,10 +168,11 @@ class AirticketSearchView: UIView {
     }
 
     if textField == toTextField {
-      toSearchCityText = toTextField.text!
+      let toSearchCityText = toTextField.text ?? ""
+      delegate?.toTextFieldDidChange(toSearchCityText)
     } else if textField == fromTextField {
-      fromSearchCityText = fromTextField.text!
-      
+      let fromSearchCityText = fromTextField.text ?? ""
+      delegate?.fromTextFieldDidChange(fromSearchCityText)
       showCityTextFieldsButton()
     }
   }
@@ -220,14 +201,11 @@ class AirticketSearchView: UIView {
   //MARK: - UIViewController
 
   func addGestureRecognizerDismissKeyboard() {
-    //return  //конфликтует с didSelectRowAt в AirticketSearchCityResultList
-    
     //Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                              action: #selector(dismissKeyboard))
     
-    //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-    //tap.cancelsTouchesInView = false
+    tap.delegate = self
     addGestureRecognizer(tap)
   }
 
@@ -370,28 +348,31 @@ class AirticketSearchView: UIView {
   // MARK: - Direct flight
 
   @IBAction func chooseDirectFlight() {
-    var isDirect = false
-    if let _ = directFlightInternalView.backgroundColor {
-      directFlightInternalView.backgroundColor = nil
-    } else {
-      directFlightInternalView.backgroundColor = suitcaseColor
-      
-      isDirect = true
-    }
-    
-    delegate?.chooseDirectFlight(isDirect)
+    delegate?.chooseDirectFlight()
   }
 
+  func setDirectFlight(isDirect: Bool) {
+    if isDirect {
+      directFlightInternalView.backgroundColor = suitcaseColor
+    } else {
+      directFlightInternalView.backgroundColor = nil
+    }
+  }
+  
   // MARK: - Visa check-out
 
   @IBAction func chooseVisaCheckout() {
-    if let _ = visaCheckoutInternalView.backgroundColor {
-      visaCheckoutInternalView.backgroundColor = nil
-    } else {
-      visaCheckoutInternalView.backgroundColor = suitcaseColor
-    }
+    delegate?.chooseVisaCheckout()
   }
 
+  func setVisaCheckout(isVisaCheckout: Bool) {
+    if isVisaCheckout {
+      visaCheckoutInternalView.backgroundColor = suitcaseColor
+    } else {
+      visaCheckoutInternalView.backgroundColor = nil
+    }
+  }
+  
   // MARK: - Date visa check-out
 
   @IBAction func chooseDateVisaCheckout() {
@@ -410,4 +391,21 @@ class AirticketSearchView: UIView {
     delegate?.search()
   }
 
+}
+
+extension AirticketSearchView: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    guard let touchView = touch.view else {
+      return true
+    }
+    
+    if touchView.isDescendant(of: fromSearchResultContainer) ||
+      touchView.isDescendant(of: toSearchResultContainer) {
+      return false
+    }
+    
+    return true
+  }
+  
 }
