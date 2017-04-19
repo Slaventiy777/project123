@@ -9,11 +9,11 @@
 import UIKit
 
 class AlertViewController: UIViewController {
-//  @IBOutlet weak var alertView: AlertView!
+  @IBOutlet weak var alertView: AlertView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    (view as! AlertView).parent = self
+    alertView.parent = self
   }
   
   func close() {

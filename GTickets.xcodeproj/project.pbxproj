@@ -13,6 +13,7 @@
 		5C1797241E8800BA00751910 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797231E8800BA00751910 /* SearchData.swift */; };
 		5C1797261E8833F000751910 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797251E8833F000751910 /* UIManager.swift */; };
 		5C1797281E8C0C7E00751910 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */; };
+		5C256D7B1EA7E08A003E1276 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */; };
 		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
 		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
 		5C8E29641E80777D00206EF0 /* FuturaPTBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */; };
@@ -42,7 +43,6 @@
 		5C97545A1E9162530073D282 /* AirticketSearchCityResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */; };
 		5C97545B1E9162530073D282 /* SearchCityViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */; };
 		5C97545D1E91646D0073D282 /* AirticketSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97545C1E91646D0073D282 /* AirticketSearchView.swift */; };
-		5CD711541E97E15500969516 /* SuitcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD711531E97E15500969516 /* SuitcaseView.swift */; };
 		5CD711561E97EEC500969516 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD711551E97EEC500969516 /* AlertViewController.swift */; };
 		5CEC35501E957BD7004B69DA /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CEC35241E957BD7004B69DA /* Calendar.storyboard */; };
 		5CEC35511E957BD7004B69DA /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35261E957BD7004B69DA /* FSCalendar+Deprecated.m */; };
@@ -118,6 +118,7 @@
 		5C1797231E8800BA00751910 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		5C1797251E8833F000751910 /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
+		5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		5C8E294E1E80777D00206EF0 /* FuturaPTBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTBold.otf; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 		5C9754581E9162530073D282 /* AirticketSearchCityResultList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchCityResultList.swift; sourceTree = "<group>"; };
 		5C9754591E9162530073D282 /* SearchCityViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityViewDelegate.swift; sourceTree = "<group>"; };
 		5C97545C1E91646D0073D282 /* AirticketSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirticketSearchView.swift; sourceTree = "<group>"; };
-		5CD711531E97E15500969516 /* SuitcaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitcaseView.swift; sourceTree = "<group>"; };
 		5CD711551E97EEC500969516 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		5CEC35241E957BD7004B69DA /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		5CEC35261E957BD7004B69DA /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -435,6 +435,7 @@
 				F957FBCB1E8CEE23006B6825 /* ShareViewController.storyboard */,
 				F957FBCE1E8CEE55006B6825 /* SettingsViewController.storyboard */,
 				F957FBD01E8CF0FF006B6825 /* LeftMenuViewController.storyboard */,
+				5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -484,7 +485,6 @@
 				F93A58471E91802A00148AB8 /* UIButtonExtension.swift */,
 				F93A58491E91815500148AB8 /* CGColorExtension.swift */,
 				F90F00E41E94411E00B796E3 /* UIViewExtension.swift */,
-				5CD711531E97E15500969516 /* SuitcaseView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -711,11 +711,11 @@
 				5CEC35631E957BD7004B69DA /* GTCalendarCell.swift in Sources */,
 				F90F00E51E94411E00B796E3 /* UIViewExtension.swift in Sources */,
 				5CEC35661E957BD7004B69DA /* GTCalendarView.swift in Sources */,
+				5C256D7B1EA7E08A003E1276 /* CheckboxView.swift in Sources */,
 				F904A5341E7DF74D00911C67 /* ProfileViewController.swift in Sources */,
 				F9B619471E8ABBF7000D3157 /* SearchCityData.swift in Sources */,
 				F907127D1E9597BC00FF789F /* AirticketSearchData.swift in Sources */,
 				F9189D371E7BEF0300C6F7D5 /* MainViewController.swift in Sources */,
-				5CD711541E97E15500969516 /* SuitcaseView.swift in Sources */,
 				5CEC35651E957BD7004B69DA /* GTCalendarDelegate.swift in Sources */,
 				5CEC35571E957BD7004B69DA /* FSCalendarCollectionViewLayout.m in Sources */,
 				5CEC35581E957BD7004B69DA /* FSCalendarConstants.m in Sources */,
@@ -776,7 +776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -819,7 +819,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
