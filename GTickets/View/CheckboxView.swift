@@ -14,7 +14,7 @@ class CheckboxView: UIView {
   
   var onStateChangedAction: (Bool)->() = { _ in }
   
-  private(set) var isSelected: Bool = false {
+  var isSelected: Bool = false {
     didSet {
       icon.isHidden = !isSelected
       onStateChangedAction(isSelected)

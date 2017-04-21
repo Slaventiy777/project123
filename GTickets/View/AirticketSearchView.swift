@@ -106,8 +106,8 @@ class AirticketSearchView: UIView {
       chooseSuitcase2()
     }
     
-    setDirectFlight(isDirect: model.isDirectFlight)
-    setVisaCheckout(isVisaCheckout: model.isDirectFlight)
+    directFlightCheckbox.isSelected = model.isDirectFlight
+    visaCheckoutCheckbox.isSelected = model.isVisaCheckout
     
   }
 

@@ -177,14 +177,12 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.baggage = baggage
   }
   
-  func chooseDirectFlight() {
-    dataSearch.isDirectFlight = !dataSearch.isDirectFlight
-    viewContent.setDirectFlight(isDirect: dataSearch.isDirectFlight)
+  func chooseDirectFlight(_ isSelect: Bool) {
+    dataSearch.isDirectFlight = isSelect
   }
   
-  func chooseVisaCheckout() {
-    dataSearch.isVisaCheckout = !dataSearch.isVisaCheckout
-    viewContent.setVisaCheckout(isVisaCheckout: dataSearch.isVisaCheckout)
+  func chooseVisaCheckout(_ isSelect: Bool) {
+    dataSearch.isVisaCheckout = isSelect
   }
 
   func search() {
