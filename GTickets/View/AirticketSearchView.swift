@@ -16,7 +16,9 @@ class AirticketSearchView: UIView {
       update()
     }
   }
-
+  
+  @IBOutlet weak var scrollView: UIScrollView!
+  
   @IBOutlet weak var swapCityTextFieldsButton: UIButton!
 
   @IBOutlet weak var fromTextField: UITextField!
@@ -44,30 +46,14 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var comfortClassLabel: UILabel!
   @IBOutlet weak var comfortClassImage: UIImageView!
   @IBOutlet weak var comfortClassPickerView: UIPickerView!
-
-  @IBOutlet weak var suitcase0View: UIView!
-  @IBOutlet weak var suitcase0Image: UIImageView!
-  @IBOutlet weak var suitcase0CrossLabel: UILabel!
-  @IBOutlet weak var suitcase0NumberLabel: UILabel!
-
-  @IBOutlet weak var suitcase1View: UIView!
-  @IBOutlet weak var suitcase1Image: UIImageView!
-  @IBOutlet weak var suitcase1CrossLabel: UILabel!
-  @IBOutlet weak var suitcase1NumberLabel: UILabel!
-
-  @IBOutlet weak var suitcase2View: UIView!
-  @IBOutlet weak var suitcase2Image: UIImageView!
-  @IBOutlet weak var suitcase2CrossLabel: UILabel!
-  @IBOutlet weak var suitcase2NumberLabel: UILabel!
-
-  @IBOutlet weak var directFlightExternalView: UIView!
-  @IBOutlet weak var directFlightInternalView: UIView!
-  @IBOutlet weak var directFlightLabel: UILabel!
-
-  @IBOutlet weak var visaCheckoutExternalView: UIView!
-  @IBOutlet weak var visaCheckoutInternalView: UIView!
-  @IBOutlet weak var visaCheckoutLabel: UILabel!
-
+  
+  @IBOutlet weak var suitcase0Button: UIButton!
+  @IBOutlet weak var suitcase1Button: UIButton!
+  @IBOutlet weak var suitcase2Button: UIButton!
+  
+  @IBOutlet weak var directFlightCheckbox: CheckboxView!
+  @IBOutlet weak var visaCheckoutCheckbox: CheckboxView!
+  
   @IBOutlet weak var dateVisaCheckoutButton: UIButton!
 
   @IBOutlet weak var daysOfStayLabel: UILabel!
@@ -127,6 +113,17 @@ class AirticketSearchView: UIView {
 
   private func update() {
     addGestureRecognizerDismissKeyboard()
+    
+    commentsTextView.sizeToFit()
+    
+    directFlightCheckbox.onStateChangedAction = { _ in
+      self.delegate?.chooseDirectFlight(self.directFlightCheckbox.isSelected)
+    }
+    
+    visaCheckoutCheckbox.onStateChangedAction = { _ in
+      //delegate?.
+    }
+
   }
 
 
@@ -294,85 +291,38 @@ class AirticketSearchView: UIView {
   private let suitcaseColor = UIColor(red: 0 / 255, green: 150 / 255, blue: 1, alpha: 1)
 
   @IBAction func chooseSuitcase0() {
-    chooseSuitcases(baggage: .zero)
+    chooseSuitcase(.zero)
   }
 
   @IBAction func chooseSuitcase1() {
-    chooseSuitcases(baggage: .one)
+    chooseSuitcase(.one)
   }
 
   @IBAction func chooseSuitcase2() {
-    chooseSuitcases(baggage: .two)
-  }
-
-  private func chooseSuitcases(baggage: Baggage) {
-    var color0 = UIColor.white
-    var color1 = UIColor.white
-    var color2 = UIColor.white
-    var backgroundColor0: UIColor?
-    var backgroundColor1: UIColor?
-    var backgroundColor2: UIColor?
-    
-    let count = baggage.rawValue
-    if count == 0 {
-      color0 = UIColor.black
-      backgroundColor0 = suitcaseColor
-    } else if count == 1 {
-      color1 = UIColor.black
-      backgroundColor1 = suitcaseColor
-    } else if count == 2 {
-      color2 = UIColor.black
-      backgroundColor2 = suitcaseColor
-    }
-    
-    applyColorForSuitcase(color0, backgroundColor0, suitcase0View, suitcase0Image, suitcase0CrossLabel, suitcase0NumberLabel)
-    applyColorForSuitcase(color1, backgroundColor1, suitcase1View, suitcase1Image, suitcase1CrossLabel, suitcase1NumberLabel)
-    applyColorForSuitcase(color2, backgroundColor2, suitcase2View, suitcase2Image, suitcase2CrossLabel, suitcase2NumberLabel)
-    
-    delegate?.chooseBaggage(baggage)
-  }
-
-  func applyColorForSuitcase(_ color: UIColor, _ backgroundColor: UIColor?,
-                             _ suitcaseView: UIView, _ suitcaseImage: UIImageView,
-                             _ suitcaseCrossLabel: UILabel, _ suitcaseNumberLabel: UILabel) {
-    
-    suitcaseView.backgroundColor = backgroundColor
-    suitcaseView.layer.borderColor = color.withAlphaComponent(0.3).cgColor
-    suitcaseImage.image = suitcaseImage.image?.withRenderingMode(.alwaysTemplate)
-    suitcaseImage.tintColor = color
-    suitcaseCrossLabel.textColor = color
-    suitcaseNumberLabel.textColor = color
-    
-  }
-
-  // MARK: - Direct flight
-
-  @IBAction func chooseDirectFlight() {
-    delegate?.chooseDirectFlight()
-  }
-
-  func setDirectFlight(isDirect: Bool) {
-    if isDirect {
-      directFlightInternalView.backgroundColor = suitcaseColor
-    } else {
-      directFlightInternalView.backgroundColor = nil
-    }
+    chooseSuitcase(.two)
   }
   
-  // MARK: - Visa check-out
-
-  @IBAction func chooseVisaCheckout() {
-    delegate?.chooseVisaCheckout()
-  }
-
-  func setVisaCheckout(isVisaCheckout: Bool) {
-    if isVisaCheckout {
-      visaCheckoutInternalView.backgroundColor = suitcaseColor
-    } else {
-      visaCheckoutInternalView.backgroundColor = nil
+    private func chooseSuitcase(_ baggage: Baggage) {
+        var isSelected0 = false
+        var isSelected1 = false
+        var isSelected2 = false
+        
+        switch baggage {
+        case .zero:
+            isSelected0 = true
+        case .one:
+            isSelected1 = true
+        case .two:
+            isSelected2 = true
+        }
+        
+        suitcase2Button.isSelected = isSelected0
+        suitcase0Button.isSelected = isSelected1
+        suitcase1Button.isSelected = isSelected2
+        
+        delegate?.chooseBaggage(baggage)
     }
-  }
-  
+    
   // MARK: - Date visa check-out
 
   @IBAction func chooseDateVisaCheckout() {
