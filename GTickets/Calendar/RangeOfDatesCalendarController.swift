@@ -213,20 +213,10 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   
   func deselectDate(date: Date) {
     if dateFrom != nil && dateTo != nil {
-      let fmt = DateFormatter()
-      fmt.dateFormat = "dd/MM/yyyy"
-      let currentCalendar = Calendar.current
-      var dateFromRemoveSelection = date - 1
-      while dateFromRemoveSelection <= dateTo! {
-        //            print(fmt.string(from: dateFromRemoveSelection))
-        dateFromRemoveSelection = currentCalendar.date(byAdding: .day, value: 1, to: dateFromRemoveSelection)!
-        calendarView.calendar.deselect(dateFromRemoveSelection)
-      }
+      deselectRangeOfDates(withNewDate: date - 1)
       
       if date == dateFrom {
         dateTo = nil
-        //            } else if date == dateTo {
-        //                dateTo = dateTo! - 1
       } else {
         dateTo = date
       }
@@ -239,22 +229,45 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
     
   }
   
+  private func deselectRangeOfDates(withNewDate date: Date) {
+    let fmt = DateFormatter()
+    fmt.dateFormat = "dd/MM/yyyy"
+    let currentCalendar = Calendar.current
+    var dateFromRemoveSelection = date
+    while dateFromRemoveSelection <= dateTo! {
+      //            print(fmt.string(from: dateFromRemoveSelection))
+      dateFromRemoveSelection = currentCalendar.date(byAdding: .day, value: 1, to: dateFromRemoveSelection)!
+      calendarView.calendar.deselect(dateFromRemoveSelection)
+    }
+  }
+  
   private func updateRangeOfSelectedDates(newDate: Date!) {
     if dateFrom == nil && dateTo == nil {
-      self.dateFrom = newDate
-    } else if dateFrom == nil && dateTo != nil {
-      self.dateFrom = newDate
-      self.checkDates()
+      dateFrom = newDate
     } else if dateFrom != nil && dateTo == nil {
-      self.dateTo = newDate
-      self.checkDates()
+      dateTo = newDate
+      checkDates()
     } else if dateFrom != nil && dateTo != nil {
-      if newDate! < dateFrom! {
-        dateFrom = newDate
-      } else {
-        dateTo = newDate
-      }
+      deselectDate(date: dateFrom!)
+      dateFrom = newDate
+      dateTo = nil
     }
+    
+//    if dateFrom == nil && dateTo == nil {
+//      self.dateFrom = newDate
+//    } else if dateFrom == nil && dateTo != nil {
+//      self.dateFrom = newDate
+//      self.checkDates()
+//    } else if dateFrom != nil && dateTo == nil {
+//      self.dateTo = newDate
+//      self.checkDates()
+//    } else if dateFrom != nil && dateTo != nil {
+//      if newDate! < dateFrom! {
+//        dateFrom = newDate
+//      } else {
+//        dateTo = newDate
+//      }
+//    }
   }
   
   private func checkDates() {
@@ -263,9 +276,9 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
       dateFrom = dateTo
       dateTo = bufferDate
     }
-    if dateFrom == dateTo {
-      dateTo = nil
-    }
+//    if dateFrom == dateTo {
+//      dateTo = nil
+//    }
   }
   
   private func datesDifference(firstDate: Date, secondDate: Date) -> Int? {
