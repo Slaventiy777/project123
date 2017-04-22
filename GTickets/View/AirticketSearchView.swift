@@ -94,6 +94,12 @@ class AirticketSearchView: UIView {
   }
 
   func updateInfo(_ model: AirticketSearchData) {
+    fromTextField.text = model.fromCity
+    toTextField.text = model.toCity
+    
+    setTitleDates(type: .departure, from: model.fromDepartureDate, to: model.toDepartureDate)
+    setTitleDates(type: .return, from: model.fromReturnDate, to: model.toReturnDate)
+    
     countPeopleLabel.text = "\(model.numberOfPassengers.rawValue)"
     comfortClassLabel.text = model.comfortClass.name
     
@@ -109,6 +115,9 @@ class AirticketSearchView: UIView {
     directFlightCheckbox.isSelected = model.isDirectFlight
     visaCheckoutCheckbox.isSelected = model.isVisaCheckout
     
+    setTitleDates(type: .visa, from: model.dateVisaCheckout, to: nil)
+    daysOfStayLabel.text = "\(model.visaDays.rawValue)"
+    commentsTextView.text = model.comments
   }
 
   private func update() {
@@ -315,11 +324,11 @@ class AirticketSearchView: UIView {
         case .two:
             isSelected2 = true
         }
-        
-        suitcase2Button.isSelected = isSelected0
-        suitcase0Button.isSelected = isSelected1
-        suitcase1Button.isSelected = isSelected2
-        
+      
+        suitcase0Button.isSelected = isSelected0
+        suitcase1Button.isSelected = isSelected1
+        suitcase2Button.isSelected = isSelected2
+      
         delegate?.chooseBaggage(baggage)
     }
     

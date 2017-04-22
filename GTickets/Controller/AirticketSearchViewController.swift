@@ -184,8 +184,80 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   func chooseVisaCheckout(_ isSelect: Bool) {
     dataSearch.isVisaCheckout = isSelect
   }
-
+  
+  fileprivate func validationInfo() -> (isOk: Bool, competition: () -> ()) {
+    
+    // Check of city from / to
+    guard let fromCity = dataSearch.fromCity, !fromCity.isEmpty,
+      let toCity = dataSearch.toCity, !toCity.isEmpty else {
+        
+        return (isOk: false, competition: { [weak self] in
+          guard let strongSelf = self else {
+            return
+          }
+          
+          guard let alertViewController = AlertViewController.storyboardInstance() else {
+            return
+          }
+          
+          if let alertView = alertViewController.view as? AlertView {
+            alertView.alertType = AlertType.error
+          }
+          
+          strongSelf.present(alertViewController, animated: true, completion: nil)
+        })
+    }
+    
+    // Check of departure date
+    guard let _ = dataSearch.fromDepartureDate else {
+      return (isOk: false, competition: { [weak self] in
+        guard let strongSelf = self else {
+          return
+        }
+        
+        guard let alertViewController = AlertViewController.storyboardInstance() else {
+          return
+        }
+        
+        if let alertView = alertViewController.view as? AlertView {
+          alertView.alertType = AlertType.datesError
+        }
+        
+        strongSelf.present(alertViewController, animated: true, completion: nil)
+      })
+    }
+    
+    // Check of return date
+    guard let _ = dataSearch.fromReturnDate else {
+      return (isOk: false, competition: { [weak self] in
+        guard let strongSelf = self else {
+          return
+        }
+        
+        guard let alertViewController = AlertViewController.storyboardInstance() else {
+          return
+        }
+        
+        if let alertView = alertViewController.view as? AlertView {
+          alertView.alertType = AlertType.datesError
+        }
+        
+        strongSelf.present(alertViewController, animated: true, completion: nil)
+      })
+    }
+    
+    return (isOk: true, competition: {})
+    
+  }
+  
   func search() {
+    let validation = validationInfo()
+    
+    guard validation.isOk else {
+      validation.competition()
+      return
+    }
+    
     RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { [weak self] json in
       guard let strongSelf = self else {
         return
