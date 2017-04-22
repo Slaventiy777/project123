@@ -141,7 +141,7 @@ class AirticketSearchView: UIView {
       self.visaCheckoutContainerHeight.constant = isVisible ? self.suitcase0Button.frame.height : 0
 //      self.additionalInfoHeight.constant = self.additionalInfoHeight.constant + self.visaCheckoutContainerHeight.constant
       
-      UIView.animate(withDuration: 0.3, animations: {
+      UIView.animate(withDuration: 0.2, animations: {
         self.visaCheckoutContainer.alpha = isVisible ? 1 : 0
         self.view.layoutIfNeeded()
       }, completion: { _ in
@@ -154,11 +154,11 @@ class AirticketSearchView: UIView {
     toTextField.font = getActualFont(toTextField.font!)
     departureButton.titleLabel?.font = getActualFont((departureButton.titleLabel?.font)!)
     returnButton.titleLabel?.font = getActualFont((returnButton.titleLabel?.font)!)
-    additionalInfoLabel.font = getActualFont(additionalInfoLabel.font)
+//    additionalInfoLabel.font = getActualFont(additionalInfoLabel.font)
     
     directFlightCheckbox.info.font = getActualFont(directFlightCheckbox.info.font)
     visaCheckoutCheckbox.info.font = getActualFont(visaCheckoutCheckbox.info.font)
-    dateVisaCheckoutButton.titleLabel?.font = getActualFont((dateVisaCheckoutButton.titleLabel?.font)!)
+//    dateVisaCheckoutButton.titleLabel?.font = getActualFont((dateVisaCheckoutButton.titleLabel?.font)!)
     commentsTextView.font = getActualFont(commentsTextView.font!)
     suitcase0Button.titleLabel?.font = getActualFont((suitcase0Button.titleLabel?.font)!)
     suitcase1Button.titleLabel?.font = getActualFont((suitcase1Button.titleLabel?.font)!)
