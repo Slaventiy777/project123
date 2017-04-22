@@ -13,6 +13,7 @@
 		5C1797241E8800BA00751910 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797231E8800BA00751910 /* SearchData.swift */; };
 		5C1797261E8833F000751910 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797251E8833F000751910 /* UIManager.swift */; };
 		5C1797281E8C0C7E00751910 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */; };
+		5C1A2CE41EABBDD5008C8AE7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */; };
 		5C256D7B1EA7E08A003E1276 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */; };
 		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
 		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
@@ -63,7 +64,6 @@
 		5CEC35601E957BD7004B69DA /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35451E957BD7004B69DA /* FSCalendarWeekdayView.m */; };
 		5CEC35611E957BD7004B69DA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CEC35461E957BD7004B69DA /* Info.plist */; };
 		5CEC35631E957BD7004B69DA /* GTCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35481E957BD7004B69DA /* GTCalendarCell.swift */; };
-		5CEC35641E957BD7004B69DA /* GTCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */; };
 		5CEC35651E957BD7004B69DA /* GTCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */; };
 		5CEC35661E957BD7004B69DA /* GTCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */; };
 		5CEC35681E957BD7004B69DA /* OneDateCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */; };
@@ -118,6 +118,7 @@
 		5C1797231E8800BA00751910 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		5C1797251E8833F000751910 /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
+		5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -184,7 +185,6 @@
 		5CEC35451E957BD7004B69DA /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		5CEC35461E957BD7004B69DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CEC35481E957BD7004B69DA /* GTCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarCell.swift; sourceTree = "<group>"; };
-		5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarDayView.swift; sourceTree = "<group>"; };
 		5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarDelegate.swift; sourceTree = "<group>"; };
 		5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTCalendarView.swift; sourceTree = "<group>"; };
 		5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneDateCalendarController.swift; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 				5CEC35241E957BD7004B69DA /* Calendar.storyboard */,
 				5CEC35251E957BD7004B69DA /* FSCalendar */,
 				5CEC35481E957BD7004B69DA /* GTCalendarCell.swift */,
-				5CEC35491E957BD7004B69DA /* GTCalendarDayView.swift */,
 				5CEC354A1E957BD7004B69DA /* GTCalendarDelegate.swift */,
 				5CEC354B1E957BD7004B69DA /* GTCalendarView.swift */,
 				5CEC354D1E957BD7004B69DA /* OneDateCalendarController.swift */,
@@ -485,6 +484,7 @@
 				F93A58471E91802A00148AB8 /* UIButtonExtension.swift */,
 				F93A58491E91815500148AB8 /* CGColorExtension.swift */,
 				F90F00E41E94411E00B796E3 /* UIViewExtension.swift */,
+				5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -682,6 +682,7 @@
 				5C97545D1E91646D0073D282 /* AirticketSearchView.swift in Sources */,
 				5CEC35541E957BD7004B69DA /* FSCalendarCalculator.m in Sources */,
 				5C1797221E87FE7B00751910 /* SearchViewController.swift in Sources */,
+				5C1A2CE41EABBDD5008C8AE7 /* DateExtension.swift in Sources */,
 				5CEC35681E957BD7004B69DA /* OneDateCalendarController.swift in Sources */,
 				F94A7AE91E768D2B004ED5FD /* AppDelegate.swift in Sources */,
 				5C9754571E9162430073D282 /* UIConstants.swift in Sources */,
@@ -726,7 +727,6 @@
 				5CEC355E1E957BD7004B69DA /* FSCalendarStickyHeader.m in Sources */,
 				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,
 				5CEC35701E957F20004B69DA /* DIYCalendarCell.swift in Sources */,
-				5CEC35641E957BD7004B69DA /* GTCalendarDayView.swift in Sources */,
 				F957FBDC1E8CF3BE006B6825 /* RequestManager.swift in Sources */,
 				5C97545B1E9162530073D282 /* SearchCityViewDelegate.swift in Sources */,
 				5CD711561E97EEC500969516 /* AlertViewController.swift in Sources */,

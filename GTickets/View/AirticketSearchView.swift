@@ -10,7 +10,7 @@ import UIKit
 
 class AirticketSearchView: UIView {
   fileprivate let animationDuration = 0.3
-
+  
   weak var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
     didSet {
       update()
@@ -18,31 +18,32 @@ class AirticketSearchView: UIView {
   }
   
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var view: UIView!
   
   @IBOutlet weak var swapCityTextFieldsButton: UIButton!
-
+  
   @IBOutlet weak var fromTextField: UITextField!
   @IBOutlet weak var toTextField: UITextField!
-
+  
   @IBOutlet weak var fromSearchResultContainer: UIView!
   @IBOutlet weak var toSearchResultContainer: UIView!
-
+  
   @IBOutlet weak var fromSearchResultContainerHeight: NSLayoutConstraint!
   @IBOutlet weak var toSearchResultContainerHeight: NSLayoutConstraint!
-
+  
   @IBOutlet weak var departureButton: UIButton!
   @IBOutlet weak var returnButton: UIButton!
-
+  
   @IBOutlet weak var hideAdditionalInfoButton: UIButton!
   @IBOutlet weak var showAdditionalInfoButton: UIButton!
-
+  
   @IBOutlet weak var additionalInfoLabel: UILabel!
   @IBOutlet weak var additionalInfoHeight: NSLayoutConstraint!
-
+  
   @IBOutlet weak var countPeopleView: UIView!
   @IBOutlet weak var countPeopleLabel: UILabel!
   @IBOutlet weak var countPeopleImage: UIImageView!
-
+  
   @IBOutlet weak var comfortClassLabel: UILabel!
   @IBOutlet weak var comfortClassImage: UIImageView!
   @IBOutlet weak var comfortClassPickerView: UIPickerView!
@@ -54,19 +55,23 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var directFlightCheckbox: CheckboxView!
   @IBOutlet weak var visaCheckoutCheckbox: CheckboxView!
   
-  @IBOutlet weak var dateVisaCheckoutButton: UIButton!
+  @IBOutlet weak var visaCheckoutContainerHeight: NSLayoutConstraint!
+  @IBOutlet weak var visaCheckoutContainer: UIView!
 
+  @IBOutlet weak var dateVisaCheckoutButton: UIButton!
+  
   @IBOutlet weak var daysOfStayLabel: UILabel!
   @IBOutlet weak var daysOfStayImage: UIImageView!
-
+  
   @IBOutlet weak var commentsTextView: UITextView!
   @IBOutlet weak var commentsHeight: NSLayoutConstraint!
-
+  
   @IBOutlet weak var aditionalInfoView: UIView!
-
-
+  
+  @IBOutlet weak internal var searchButton: UIButton!
+  
   var isCityResultHidden = true
-
+  
   var fromSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
       if isCityResultHidden {
@@ -76,23 +81,23 @@ class AirticketSearchView: UIView {
       fromSearchResultContainerHeight.constant = fromSearchResultContainerContentHeight
     }
   }
-
+  
   var toSearchResultContainerContentHeight: CGFloat = 0.0 {
     didSet {
       if isCityResultHidden {
         return
       }
-
+      
       toSearchResultContainerHeight.constant = toSearchResultContainerContentHeight
     }
   }
-
+  
   fileprivate var comfortClass: ComfortClass = ComfortClass.economy {
     didSet {
       comfortClassLabel.text = comfortClass.name
     }
   }
-
+  
   func updateInfo(_ model: AirticketSearchData) {
     fromTextField.text = model.fromCity
     toTextField.text = model.toCity
@@ -119,7 +124,7 @@ class AirticketSearchView: UIView {
     daysOfStayLabel.text = "\(model.visaDays.rawValue)"
     commentsTextView.text = model.comments
   }
-
+  
   private func update() {
     addGestureRecognizerDismissKeyboard()
     
@@ -130,12 +135,49 @@ class AirticketSearchView: UIView {
     }
     
     visaCheckoutCheckbox.onStateChangedAction = { _ in
+      
+      self.scrollView.isScrollEnabled = false
+      let isVisible = self.visaCheckoutCheckbox.isSelected
+      self.visaCheckoutContainerHeight.constant = isVisible ? self.suitcase0Button.frame.height : 0
+//      self.additionalInfoHeight.constant = self.additionalInfoHeight.constant + self.visaCheckoutContainerHeight.constant
+      
+      UIView.animate(withDuration: 0.3, animations: {
+        self.visaCheckoutContainer.alpha = isVisible ? 1 : 0
+        self.view.layoutIfNeeded()
+      }, completion: { _ in
+        self.scrollView.isScrollEnabled = true
+      })
       //delegate?.
     }
-
+    
+    fromTextField.font = getActualFont(fromTextField.font!)
+    toTextField.font = getActualFont(toTextField.font!)
+    departureButton.titleLabel?.font = getActualFont((departureButton.titleLabel?.font)!)
+    returnButton.titleLabel?.font = getActualFont((returnButton.titleLabel?.font)!)
+    additionalInfoLabel.font = getActualFont(additionalInfoLabel.font)
+    
+    directFlightCheckbox.info.font = getActualFont(directFlightCheckbox.info.font)
+    visaCheckoutCheckbox.info.font = getActualFont(visaCheckoutCheckbox.info.font)
+    dateVisaCheckoutButton.titleLabel?.font = getActualFont((dateVisaCheckoutButton.titleLabel?.font)!)
+    commentsTextView.font = getActualFont(commentsTextView.font!)
+    suitcase0Button.titleLabel?.font = getActualFont((suitcase0Button.titleLabel?.font)!)
+    suitcase1Button.titleLabel?.font = getActualFont((suitcase1Button.titleLabel?.font)!)
+    suitcase2Button.titleLabel?.font = getActualFont((suitcase2Button.titleLabel?.font)!)
+    comfortClassLabel.font = getActualFont(comfortClassLabel.font)
+    countPeopleLabel.font = getActualFont(countPeopleLabel.font)
+    searchButton.titleLabel?.font = getActualFont((searchButton.titleLabel?.font)!)
+    
   }
-
-
+  
+  private func getActualFont(_ font: UIFont) -> UIFont! {
+    let fontName = font.fontName
+    return UIFont(name: fontName, size: getActualSize(font.pointSize) )!
+  }
+  
+  private func getActualSize(_ size: CGFloat) -> CGFloat {
+    return size / 414 * UIScreen.main.bounds.size.width
+  }
+  
   @IBAction func swapCityTextFieldsAction(_ button: UIButton) {
     isCityResultHidden = true
     toSearchResultContainerHeight.constant = 0
@@ -145,7 +187,7 @@ class AirticketSearchView: UIView {
     
     endEditing(true)
   }
-
+  
   func showCityTextFieldsButton() {
     let show: CGFloat = fromSearchResultContainerHeight.constant == 0 ? 1.0 : 0.0
     
@@ -153,12 +195,12 @@ class AirticketSearchView: UIView {
       self.swapCityTextFieldsButton.alpha = show
     }
   }
-
+  
   //MARK: - UITextFieldDelegate
-
+  
   @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
     isCityResultHidden = false
-
+    
     if textField == toTextField {
       toSearchResultContainerHeight.constant = toSearchResultContainerContentHeight
     } else if textField == fromTextField {
@@ -167,12 +209,12 @@ class AirticketSearchView: UIView {
       showCityTextFieldsButton()
     }
   }
-
+  
   @IBAction func textFieldDidChange(_ textField: UITextField) {
     guard textField.text != nil else {
       return
     }
-
+    
     if textField == toTextField {
       let toSearchCityText = toTextField.text ?? ""
       delegate?.toTextFieldDidChange(toSearchCityText)
@@ -196,16 +238,19 @@ class AirticketSearchView: UIView {
     
     isCityResultHidden = true
   }
-
+  
   private func animateConstraintChanging() {
-    UIView.animate(withDuration: 0.2) {
+    self.scrollView.isScrollEnabled = false
+    UIView.animate(withDuration: 0.3, animations: {
       self.layoutIfNeeded()
+    }) { _ in
+      self.scrollView.isScrollEnabled = true
     }
   }
-
-
+  
+  
   //MARK: - UIViewController
-
+  
   func addGestureRecognizerDismissKeyboard() {
     //Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
@@ -214,23 +259,23 @@ class AirticketSearchView: UIView {
     tap.delegate = self
     addGestureRecognizer(tap)
   }
-
+  
   //Calls this function when the tap is recognized.
   func dismissKeyboard() {
     //Causes the view (or one of its embedded text fields) to resign the first responder status.
     endEditing(true)
   }
-
-  //MARK: - Outlets 
-
+  
+  //MARK: - Outlets
+  
   @IBAction func chooseDispatchDate() {
     delegate?.chooseDispatchDate()
   }
-
+  
   @IBAction func chooseArrivalDate() {
     delegate?.chooseArrivalDate()
   }
-
+  
   func setTitleDates(type: TypeDate, from: Date?, to: Date?) {
     var textButton = ""
     
@@ -241,19 +286,19 @@ class AirticketSearchView: UIView {
     var fromString = ""
     if let from = from {
       fromString = dateFormatter.string(from: from)
-        
+      
       textButton = fromString
     }
     
     var toString = ""
     if let to = to {
       toString = dateFormatter.string(from: to)
-    
-        if !textButton.isEmpty {
-          textButton += " - \(toString)"
-        }
+      
+      if !textButton.isEmpty {
+        textButton += " - \(toString)"
+      }
     }
-
+    
     switch type {
     case .departure:
       textButton = textButton.isEmpty ? "Туда" : textButton
@@ -262,94 +307,102 @@ class AirticketSearchView: UIView {
       textButton = textButton.isEmpty ? "Обратно" : textButton
       returnButton.setTitle(textButton, for: .normal)
     case .visa:
-      textButton = textButton.isEmpty ? "???" : textButton
+      textButton = textButton.isEmpty ? "          " : textButton
       dateVisaCheckoutButton.setTitle(textButton, for: .normal)
     }
   }
-
+  
   // MARK: - Hide / Show additional info
-
+  
   @IBAction func hideAdditionalInfo() {
     makeAdditionalInfo(isVisible: false)
   }
-
+  
   @IBAction func showAdditionalInfo() {
     makeAdditionalInfo(isVisible: true)
   }
-
+  
   private func makeAdditionalInfo(isVisible: Bool) {
     hideAdditionalInfoButton.isHidden = !isVisible
     showAdditionalInfoButton.isHidden = isVisible
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
+    
+    scrollView.isScrollEnabled = false
+    UIView.animate(withDuration: 0.3, animations: { 
+      self.view.layoutIfNeeded()
+      self.aditionalInfoView.alpha = isVisible ? 1 : 0
+    }) { _ in
+      self.scrollView.isScrollEnabled = true
+    }
   }
-
+  
   // MARK: - number of people
-
+  
   @IBAction func chooseCountPeople() {
     delegate?.showPicker(type: .passenger)
   }
-
+  
   // MARK: - Comfort class
-
+  
   @IBAction func chooseComfortClass() {
     delegate?.showPicker(type: .baggage)
   }
   
   // MARK: - Count suitcases
-
+  
   private let suitcaseColor = UIColor(red: 0 / 255, green: 150 / 255, blue: 1, alpha: 1)
-
+  
   @IBAction func chooseSuitcase0() {
     chooseSuitcase(.zero)
   }
-
+  
   @IBAction func chooseSuitcase1() {
     chooseSuitcase(.one)
   }
-
+  
   @IBAction func chooseSuitcase2() {
     chooseSuitcase(.two)
   }
   
-    private func chooseSuitcase(_ baggage: Baggage) {
-        var isSelected0 = false
-        var isSelected1 = false
-        var isSelected2 = false
-        
-        switch baggage {
-        case .zero:
-            isSelected0 = true
-        case .one:
-            isSelected1 = true
-        case .two:
-            isSelected2 = true
-        }
-      
-        suitcase0Button.isSelected = isSelected0
-        suitcase1Button.isSelected = isSelected1
-        suitcase2Button.isSelected = isSelected2
-      
-        delegate?.chooseBaggage(baggage)
+  private func chooseSuitcase(_ baggage: Baggage) {
+    var isSelected0 = false
+    var isSelected1 = false
+    var isSelected2 = false
+    
+    switch baggage {
+    case .zero:
+      isSelected0 = true
+    case .one:
+      isSelected1 = true
+    case .two:
+      isSelected2 = true
     }
     
+    suitcase0Button.isSelected = isSelected0
+    suitcase1Button.isSelected = isSelected1
+    suitcase2Button.isSelected = isSelected2
+    
+    delegate?.chooseBaggage(baggage)
+  }
+  
   // MARK: - Date visa check-out
-
+  
   @IBAction func chooseDateVisaCheckout() {
     delegate?.chooseDateVisaCheckout()
   }
-
+  
   // MARK: - Days of stay
-
+  
   @IBAction func chooseDaysOfStay() {
     delegate?.showPicker(type: .visaDays)
   }
-
+  
   //MARK: - Search
-
+  
   @IBAction func search() {
     delegate?.search()
   }
-
+  
 }
 
 extension AirticketSearchView: UIGestureRecognizerDelegate {
@@ -367,4 +420,27 @@ extension AirticketSearchView: UIGestureRecognizerDelegate {
     return true
   }
   
+}
+
+extension AirticketSearchView: UITextViewDelegate {
+  
+  func textViewDidChange(_ textView: UITextView) {
+    let MIN_TEXT_VIEW_HEIGHT: CGFloat = 40
+    let MAX_TEXT_VIEW_HEIGHT: CGFloat = 266
+    let fixedWidth = textView.frame.size.width
+    textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+    let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+    var newFrame = textView.frame
+    newFrame.size = CGSize(width: max(newSize.width, fixedWidth),
+                           height: min(max(newSize.height, MIN_TEXT_VIEW_HEIGHT), MAX_TEXT_VIEW_HEIGHT))
+
+    if newFrame.height != textView.frame.height {
+      scrollView.isScrollEnabled = false
+      textView.frame = newFrame
+      view.layoutIfNeeded()
+      additionalInfoHeight.constant = aditionalInfoView.frame.height
+      scrollView.isScrollEnabled = true
+    }
+    
+  }
 }

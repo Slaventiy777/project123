@@ -64,32 +64,10 @@ class OneDateCalendarController: UIViewController, CalendarDelegate, FSCalendarD
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)  //TODO: перенести в другое место
-    applyNavBarSettings()
-  }
-  
-  private func applyNavBarSettings() {
-    //    navigationItem.title = "ЧТО-ТО ТАМ ВСЕГДА МОЖНО ДОПИСАТЬ"
-    navigationController?.navigationBar.tintColor = UIColor.white
-    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    
-    navigationController?.navigationBar.barTintColor = UIColor.clear
-    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    //navigationController?.navigationBar.shadowImage = UIImage()
-    //navigationController?.navigationBar.alpha = 0.5
-    
-    navigationController?.navigationBar.layer.masksToBounds = false
-    navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
-    navigationController?.navigationBar.layer.shadowOpacity = 0.99
-    navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 5.0)
-    navigationController?.navigationBar.layer.shadowRadius = 5
-    
-    navigationController?.navigationBar.isTranslucent = true
-    
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "ЗАКРЫТЬ", style: .plain, target: self, action: #selector(close))
   }
   
   func close() {
-    navigationController?.dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

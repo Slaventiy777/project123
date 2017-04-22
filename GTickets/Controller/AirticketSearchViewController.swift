@@ -149,10 +149,10 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController = OneDateCalendarController(type: type)
       dateController?.delegate = self
       dateController?.calendarView = calendarViewGT
+
     }
+    present(dateController!, animated: true, completion: nil)
     
-    let navController = UINavigationController(rootViewController: dateController!)
-    present(navController, animated: true, completion: nil)
   }
 
   private func chooseRangeDates(type: TypeDate, dateController: inout RangeOfDatesCalendarController?) {
@@ -167,10 +167,10 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController = RangeOfDatesCalendarController(type: type)
       dateController?.delegate = self
       dateController?.calendarView = calendarViewGT
+
     }
+    present(dateController!, animated: true, completion: nil)
     
-    let navController = UINavigationController(rootViewController: dateController!)
-    present(navController, animated: true, completion: nil)
   }
 
   func chooseBaggage(_ baggage: Baggage) {
@@ -340,7 +340,7 @@ extension AirticketSearchViewController: UIPickerViewDataSource {
 }
 
 extension AirticketSearchViewController: UIPickerViewDelegate {
-
+  
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     guard let currentTypePicker = currentTypePicker else {
       return nil

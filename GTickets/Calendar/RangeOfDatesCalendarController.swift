@@ -34,12 +34,7 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   
   var dates: [Date] = [] {
     didSet {
-      if dates.count == 1 {
-        delegate?.setDates(type: typeDate, from: dates[0], to: nil)
-      } else if dates.count >= 2 {
-        delegate?.setDates(type: typeDate, from: dates[0], to: dates[dates.count - 1])
-      }
-      
+      delegate?.setDates(type: typeDate, from: dateFrom, to: dateTo)
       close()
     }
   }
@@ -72,32 +67,10 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)  //TODO: перенести в другое место
-    applyNavBarSettings()
-  }
-  
-  private func applyNavBarSettings() {
-//    navigationItem.title = "ЧТО-ТО ТАМ ВСЕГДА МОЖНО ДОПИСАТЬ"
-    navigationController?.navigationBar.tintColor = UIColor.white
-    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    
-    navigationController?.navigationBar.barTintColor = UIColor.clear
-    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    //navigationController?.navigationBar.shadowImage = UIImage()
-    //navigationController?.navigationBar.alpha = 0.5
-    
-    navigationController?.navigationBar.layer.masksToBounds = false
-    navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
-    navigationController?.navigationBar.layer.shadowOpacity = 0.99
-    navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 5.0)
-    navigationController?.navigationBar.layer.shadowRadius = 5
-    
-    navigationController?.navigationBar.isTranslucent = true
-    
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "ЗАКРЫТЬ", style: .plain, target: self, action: #selector(close))
   }
   
   func close() {
-    navigationController?.dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
   // MARK:- FSCalendarDataSource
@@ -159,7 +132,6 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   }
   
   private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
-    
     let diyCell = (cell as! GTCalendarCell)
     // Custom today circle
     //diyCell.circleImageView.isHidden = true//!self.gregorian.isDateInToday(date)
@@ -180,11 +152,14 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
           }
           else if calendarView.calendar.selectedDates.contains(nextDate) {
             selectionType = .leftBorder
+//            if
           }
           else {
             selectionType = .single
           }
+          selectionType = roundEdgesOf(cell: cell, selectionType: selectionType)
         }
+        
       }
       else {
         selectionType = .none
@@ -200,6 +175,31 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
       //            diyCell.circleImageView.isHidden = true
       diyCell.selectionLayer.isHidden = true
     }
+  }
+  
+  private func roundEdgesOf(cell: FSCalendarCell, selectionType: SelectionType) -> SelectionType {
+    var newSelectionType = selectionType
+      if let indexPath = calendarView.calendar.getCollectionView().indexPath(for: cell) {
+        if selectionType == .leftBorder && indexPath.row == 0 {
+          newSelectionType = .single
+        }
+        
+        if selectionType == .rightBorder && (indexPath.row+1) % 7 == 0 {
+          newSelectionType = .single
+        }
+
+        if selectionType == .middle {
+          if indexPath.row == 0 {
+            newSelectionType = .leftBorder
+          } else if (indexPath.row+1) % 7 == 0 /*calendarView.calendar.getCollectionView().numberOfItems(inSection: (indexPath.section))-1*/ {
+            newSelectionType = .rightBorder
+          }
+        }
+        
+        return newSelectionType
+      }
+    
+    return selectionType
   }
   
   
@@ -271,7 +271,7 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
       dateTo = newDate
       checkDates()
     } else if dateFrom != nil && dateTo != nil {
-      deselectDate(date: dateFrom!)
+      deselectRangeOfDates(withNewDate: dateFrom! - 1)
       dateFrom = newDate
       dateTo = nil
     }

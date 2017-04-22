@@ -1723,6 +1723,13 @@ void FSCalendarRunLoopCallback(CFRunLoopObserverRef observer, CFRunLoopActivity 
 #endif
 }
 
+//Custom
+
+-(UICollectionView*) getCollectionView {
+  return self.collectionView;
+}
+
+
 @end
 
 
