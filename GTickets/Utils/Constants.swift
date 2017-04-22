@@ -145,4 +145,9 @@ enum TypePicker {
   case visaDays
 }
 
+enum TypeDate {
+  case departure
+  case `return`
+  case visa
+}
 

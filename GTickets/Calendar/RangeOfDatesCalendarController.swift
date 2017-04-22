@@ -10,6 +10,9 @@ import Foundation
 
 class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
   
+  weak var delegate: AirticketSearchDateDelegate?
+  var typeDate: TypeDate
+  
   fileprivate let gregorian = Calendar(identifier: .gregorian)
   fileprivate let formatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -31,8 +34,28 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   
   var dates: [Date] = [] {
     didSet {
+      if dates.count == 1 {
+        delegate?.setDates(type: typeDate, from: dates[0], to: nil)
+      } else if dates.count >= 2 {
+        delegate?.setDates(type: typeDate, from: dates[0], to: dates[dates.count - 1])
+      }
+      
       close()
     }
+  }
+  
+  convenience init() {
+    self.init(type: .departure)
+  }
+  
+  init(type: TypeDate) {
+    typeDate = type
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  convenience required init?(coder aDecoder: NSCoder) {
+    self.init()
+    //super.init(coder: aDecoder)
   }
   
   override func viewDidLoad() {

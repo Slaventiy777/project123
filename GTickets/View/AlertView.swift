@@ -8,91 +8,137 @@
 
 import UIKit
 
-enum AlertType: NSNumber {
-    case airplane = 0, doneGreen, donePurple, error, datesError
+enum AlertType: Int {
+  case airplane
+  case doneGreen
+  case donePurple
+  case datesError
+  case error
+  
+  var image: UIImage? {
+    var nameImage = ""
+    
+    switch self {
+    case .airplane:
+      nameImage = "AlertAirplane"
+    case .doneGreen:
+      nameImage = "AlertDoneGreen"
+    case .donePurple:
+      nameImage = "AlertDonePurple"
+    case .datesError:
+      fallthrough
+    case .error:
+      nameImage = "AlertError"
+    }
+    
+    return UIImage(named: nameImage)
+  }
+  
+  var title: String {
+    switch self {
+    case .airplane:
+      return "Спасибо!"
+    case .doneGreen:
+      return "Ура!"
+    case .donePurple:
+      return "Спасибо за оплату!"
+    case .datesError:
+      fallthrough
+    case .error:
+      return "Упс..."
+    }
+  }
+  
+  var titleColor: UIColor {
+    switch self {
+    case .airplane, .donePurple:
+      return UIColor(red: 94 / 255, green: 40 / 255, blue: 212 / 255, alpha: 1)
+    case .doneGreen:
+      return UIColor(red: 0, green: 158 / 255, blue: 11 / 255, alpha: 1)
+    case .datesError:
+      fallthrough
+    case .error:
+      return UIColor(red: 255 / 255, green: 68 / 255, blue: 68 / 255, alpha: 1)
+    }
+  }
+  
+  var subtitle: String {
+    switch self {
+    case .airplane:
+      return "Ваш запрос обрабатывается.\nВы получите Push-уведомление с результатами подбора"
+    case .doneGreen:
+      return "Фото Вашего документа успешно загружено!"
+    case .donePurple:
+      return "Идет оформление билета.\nВы можете отследить статус Вашего заказа в меню приложения"
+    case .error:
+      return "Что-то пошло не так.\nПроверьте правильность введенных данных"
+    case .datesError:
+      return "Выберите диапазон дат для подбора билета"
+    }
+  }
+  
+  var buttonTitle: String {
+    switch self {
+    case .airplane, .doneGreen, .donePurple:
+      return "ГОТОВО!"
+    case .datesError, .error:
+      return "ЗАКРЫТЬ!"
+    }
+  }
+  
+  var buttonColor: [UIColor] {
+    switch self {
+    case .airplane, .donePurple:
+      return [UIColor(red: 144/255, green: 0, blue: 255/255, alpha: 1),
+              UIColor(red: 23/255, green: 97/255, blue: 153/255, alpha: 1)]
+    case .doneGreen:
+      return [UIColor(red: 0, green: 158/255, blue: 11/255, alpha: 1)]
+    case .datesError, .error:
+      return [UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1)]
+    }
+  }
+  
 }
 
 class AlertView: UIView {
-  var parent: AlertViewController?
+  weak var parent: AlertViewController?
   
-    private let images = [
-        UIImage.init(named: "AlertAirplane")!,
-        UIImage.init(named: "AlertDoneGreen")!,
-        UIImage.init(named: "AlertDonePurple")!,
-        UIImage.init(named: "AlertError")!,
-        UIImage.init(named: "AlertError")!
-    ]
-    
-    private let titles = ["Спасибо!", "Ура!", "Спасибо за оплату!", "Упс...", "Упс..." ]
-    
-    private let titleColors = [
-        UIColor(red: 94/255, green: 40/255, blue: 212/255, alpha: 1),
-        UIColor(red: 0, green: 158/255, blue: 11/255, alpha: 1),
-        UIColor(red: 94/255, green: 40/255, blue: 212/255, alpha: 1),
-        UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1),
-        UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1)
-    ]
-    
-    private let subtitles = [
-        "Ваш запрос обрабатывается.\nВы получите Push-уведомление с результатами подбора",
-        "Фото Вашего документа успешно загружено!",
-        "Идет оформление билета.\nВы можете отследить статус Вашего заказа в меню приложения",
-        "Что-то пошло не так.\nПроверьте правильность введенных данных",
-        "Выберите диапазон дат для подбора билета"
-    ]
-    
-    private let buttonColors = [
-        [UIColor(red: 144/255, green: 0, blue: 255/255, alpha: 1), UIColor(red: 23/255, green: 97/255, blue: 153/255, alpha: 1)],
-        UIColor(red: 0, green: 158/255, blue: 11/255, alpha: 1),
-        [UIColor(red: 144/255, green: 0, blue: 255/255, alpha: 1), UIColor(red: 23/255, green: 97/255, blue: 153/255, alpha: 1)],
-        UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1),
-        UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1)
-    ] as [Any]
-    
-    private let buttonTitles = ["ГОТОВО!", "ГОТОВО!", "ГОТОВО!", "ЗАКРЫТЬ", "ЗАКРЫТЬ" ]
-    
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var doneButtonContainer: GradientView!
-    
-//    required
-    var alertType: AlertType! {
-        didSet {
-            let index = alertType.rawValue as Int
-            icon.image = images[index]
-            self.title.text = titles[index]
-            self.title.textColor = titleColors[index]
-            
-            let paragraphStyle = NSMutableParagraphStyle()
-//            paragraphStyle.lineSpacing = -1
-            paragraphStyle.maximumLineHeight = 17
-            paragraphStyle.alignment = NSTextAlignment.center
-            let attrString = NSMutableAttributedString(string: subtitles[index])
-            attrString.addAttribute(NSFontAttributeName, value: self.subtitle.font, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
-            self.subtitle.attributedText = attrString
-
-            self.doneButton.setTitle(buttonTitles[index], for: .normal)
-            
-            let buttonColor = buttonColors[index]
-            if buttonColor is UIColor {
-                self.doneButtonContainer.backgroundColor = buttonColor as? UIColor
-            } else if buttonColor is [UIColor] {
-                self.doneButtonContainer.startColor = ((buttonColor as? [UIColor])![0])
-                self.doneButtonContainer.endColor = ((buttonColor as? [UIColor])![1])
-            }
-        }
+  @IBOutlet weak var icon: UIImageView!
+  @IBOutlet weak var title: UILabel!
+  @IBOutlet weak var subtitle: UILabel!
+  @IBOutlet weak var doneButton: UIButton!
+  @IBOutlet weak var doneButtonContainer: GradientView!
+  
+  // Required
+  var alertType: AlertType! {
+    didSet {
+      let paragraphStyle = NSMutableParagraphStyle()
+      paragraphStyle.maximumLineHeight = 17
+      paragraphStyle.alignment = NSTextAlignment.center
+      
+      let attrString = NSMutableAttributedString(string: alertType.subtitle)
+      attrString.addAttribute(NSFontAttributeName, value: subtitle.font, range: NSMakeRange(0, attrString.length))
+      attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range: NSMakeRange(0, attrString.length))
+      
+      icon.image = alertType.image
+      title.text = alertType.title
+      title.textColor = alertType.titleColor
+      
+      subtitle.attributedText = attrString
+      
+      doneButton.setTitle(alertType.buttonTitle, for: .normal)
+      
+      if alertType.buttonColor.count == 1 {
+        doneButtonContainer.backgroundColor = alertType.buttonColor[0]
+      } else if alertType.buttonColor.count > 1 {
+        doneButtonContainer.startColor = alertType.buttonColor[0]
+        doneButtonContainer.endColor = alertType.buttonColor[1]
+      }
     }
+  }
   
   @IBAction func done(_ button: UIButton) {
     parent?.close()
   }
   
-//    override func updateConstraints() {
-//        super.updateConstraints()
-//        alertType = AlertType.airplane
-//    }
-    
 }
