@@ -141,8 +141,19 @@ enum VisaDays: Int {
 
 enum TypePicker {
   case passenger
-  case baggage
+  case comfortClass
   case visaDays
+  
+  var title: String {
+    switch self {
+    case .passenger:
+      return "ВЫБЕРИТЕ КОЛИЧЕСТВО ПАССАЖИРОВ"
+    case .comfortClass:
+      return "ВЫБЕРИТЕ КЛАСС ПЕРЕЛЕТА"
+    case .visaDays:
+      return "ВЫБЕРИТЕ КОЛИЧЕСТВО ДНЕЙ ПРЕБЫВАНИЯ"
+    }
+  }
 }
 
 enum TypeDate {

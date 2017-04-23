@@ -26,13 +26,32 @@ class AirticketSearchViewController: UIViewController {
 
   fileprivate var currentTypePicker: TypePicker?
 
+  fileprivate lazy var pickerTitle: UILabel = { [weak self] in
+    guard let strongSelf = self else {
+      return UILabel()
+    }
+    
+    let mainWindow = UIScreen.main.bounds
+    let heightTitle: CGFloat = 30
+    let heightNavBar = strongSelf.navigationController?.navigationBar.frame.size.height ?? 0
+    
+    let pickerTitle = UILabel(frame: CGRect(x: 0,
+                                            y: strongSelf.picker.frame.minY - heightTitle,
+                                            width: mainWindow.width,
+                                            height: heightTitle))
+    pickerTitle.textAlignment = .center
+    pickerTitle.backgroundColor = UIColor.white
+    
+    return pickerTitle
+  }()
+  
   fileprivate lazy var picker: UIPickerView = { [weak self] in
     guard let strongSelf = self else {
       return UIPickerView()
     }
     
     let mainWindow = UIScreen.main.bounds
-    let heightPicker: CGFloat = mainWindow.height / 5
+    let heightPicker: CGFloat = mainWindow.height / 6
     let heightNavBar = strongSelf.navigationController?.navigationBar.frame.size.height ?? 0
     
     let picker = UIPickerView(frame: CGRect(x: 0,
@@ -44,7 +63,7 @@ class AirticketSearchViewController: UIViewController {
     picker.dataSource = strongSelf
     picker.delegate = strongSelf
     
-    strongSelf.view.addSubview(picker)
+    //strongSelf.view.addSubview(picker)
     picker.isHidden = true
     
     return picker
@@ -303,12 +322,24 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
   func showPicker(type: TypePicker) {
     currentTypePicker = type
     
-    picker.alpha = 0
-    picker.isHidden = false
-    picker.reloadAllComponents()
-    
-    UIView.animate(withDuration: 0.3) {
-      self.picker.alpha = 1
+    if let snapshotView = view.snapshotView(afterScreenUpdates: false) {
+      snapshotView.addSubview(pickerTitle)
+      snapshotView.addSubview(picker)
+      
+      view.addSubview(snapshotView)
+      
+      pickerTitle.text = type.title
+      pickerTitle.alpha = 0
+      pickerTitle.isHidden = false
+      
+      picker.alpha = 0
+      picker.isHidden = false
+      picker.reloadAllComponents()
+      
+      UIView.animate(withDuration: 0.3) {
+        self.pickerTitle.alpha = 1
+        self.picker.alpha = 1
+      }
     }
   }
 
@@ -328,7 +359,7 @@ extension AirticketSearchViewController: UIPickerViewDataSource {
     var numberOfRows = 0
     if currentTypePicker == .passenger {
       numberOfRows = Passenger.count
-    } else if currentTypePicker == .baggage {
+    } else if currentTypePicker == .comfortClass {
       numberOfRows = ComfortClass.count
     } else if currentTypePicker == .visaDays {
       numberOfRows = VisaDays.count
@@ -349,7 +380,7 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
     var titleForRow = ""
     if currentTypePicker == .passenger {
       titleForRow = "\(Passenger.array[row].rawValue)"
-    } else if currentTypePicker == .baggage {
+    } else if currentTypePicker == .comfortClass {
       titleForRow = ComfortClass.array[row].name
     } else if currentTypePicker == .visaDays {
       titleForRow = "\(VisaDays.array[row].rawValue)"
@@ -364,7 +395,7 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
       dataSearch.numberOfPassengers = Passenger.array[row]
       
       viewContent.countPeopleLabel.text = "\(dataSearch.numberOfPassengers.rawValue)"
-    } else if currentTypePicker == .baggage {
+    } else if currentTypePicker == .comfortClass {
       dataSearch.comfortClass = ComfortClass.array[row]
       
       viewContent.comfortClassLabel.text = dataSearch.comfortClass.name
@@ -374,9 +405,15 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
       viewContent.daysOfStayLabel.text = "\(dataSearch.visaDays.rawValue)"
     }
     
+    picker.superview?.removeFromSuperview()
+    pickerTitle.removeFromSuperview()
+    picker.removeFromSuperview()
+    
     UIView.animate(withDuration: 0.3, animations: {
+      self.pickerTitle.alpha = 0
       self.picker.alpha = 0
     }, completion: { (ok) in
+      self.pickerTitle.isHidden = true
       self.picker.isHidden = true
     })
 

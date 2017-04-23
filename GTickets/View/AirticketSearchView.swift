@@ -361,7 +361,7 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
-    delegate?.showPicker(type: .baggage)
+    delegate?.showPicker(type: .comfortClass)
   }
   
   // MARK: - Count suitcases
@@ -397,6 +397,10 @@ class AirticketSearchView: UIView {
     suitcase0Button.isSelected = isSelected0
     suitcase1Button.isSelected = isSelected1
     suitcase2Button.isSelected = isSelected2
+    
+    suitcase0Button.setBackgroundColor()
+    suitcase1Button.setBackgroundColor()
+    suitcase2Button.setBackgroundColor()
     
     delegate?.chooseBaggage(baggage)
   }
