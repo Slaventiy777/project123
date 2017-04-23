@@ -388,6 +388,10 @@ class AirticketSearchView: UIView {
     suitcase1Button.isSelected = isSelected1
     suitcase2Button.isSelected = isSelected2
     
+    suitcase0Button.setBackgroundColor()
+    suitcase1Button.setBackgroundColor()
+    suitcase2Button.setBackgroundColor()
+    
     delegate?.chooseBaggage(baggage)
   }
   
