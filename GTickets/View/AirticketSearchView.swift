@@ -35,8 +35,8 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var departureButton: UIButton!
   @IBOutlet weak var returnButton: UIButton!
   
-  @IBOutlet weak var hideAdditionalInfoButton: UIButton!
-  @IBOutlet weak var showAdditionalInfoButton: UIButton!
+  @IBOutlet weak var additionalInfoButton: UIButton!
+    @IBOutlet weak var additionalInfoButtonCenterY: NSLayoutConstraint!
   
   @IBOutlet weak var additionalInfoLabel: UILabel!
   @IBOutlet weak var additionalInfoHeight: NSLayoutConstraint!
@@ -324,27 +324,31 @@ class AirticketSearchView: UIView {
   
   // MARK: - Hide / Show additional info
   
-  @IBAction func hideAdditionalInfo() {
-    makeAdditionalInfo(isVisible: false)
+  @IBAction func toggleAdditionalInfo() {
+    let newState = !additionalInfoButton.isSelected
+    additionalInfoButton.isSelected = newState
+    makeAdditionalInfo(isVisible: newState)
   }
-  
-  @IBAction func showAdditionalInfo() {
-    makeAdditionalInfo(isVisible: true)
-  }
-  
+    
   private func makeAdditionalInfo(isVisible: Bool) {
-    if self.additionalInfoHeightConst == 0 {  //move to
-      self.additionalInfoHeightConst = self.aditionalInfoView.frame.height
+    if self.additionalInfoHeightConst == 0 {  //TODO: move to
+        self.additionalInfoHeightConst = self.aditionalInfoView.frame.height
     }
 
-    hideAdditionalInfoButton.isHidden = !isVisible
-    showAdditionalInfoButton.isHidden = isVisible
+    let additionalInfoButtonCenterYConst: CGFloat = 17
+
+    UIView.animate(withDuration:0.3, animations: { () -> Void in
+      let angleRotate = CGFloat(isVisible ? Double.pi : Double.pi*2)
+      self.additionalInfoButton.transform = CGAffineTransform(rotationAngle: angleRotate)
+    })
+
+    additionalInfoButtonCenterY.constant = isVisible ? additionalInfoButtonCenterYConst : -additionalInfoButtonCenterYConst
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
     endEditing(true)
     scrollView.layoutIfNeeded()
     scrollView.isScrollEnabled = false
-    UIView.animate(withDuration: 0.3, animations: { 
+    UIView.animate(withDuration: 0.3, animations: {
       self.view.layoutIfNeeded()
       self.aditionalInfoView.alpha = isVisible ? 1 : 0
     }) { _ in
