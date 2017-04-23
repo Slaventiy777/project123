@@ -23,7 +23,7 @@ class MasterView: UIView {
     
     let imageView = UIImageView()
     imageView.frame = imageViewStarsFrame
-    imageView.image = UIImage(named:"stars")
+    imageView.image = #imageLiteral(resourceName: "Stars")
     self.addSubview(imageView)
   
   }

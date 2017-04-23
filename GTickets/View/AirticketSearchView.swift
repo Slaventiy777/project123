@@ -219,7 +219,7 @@ class AirticketSearchView: UIView {
   }
   
   @IBAction func textFieldDidChange(_ textField: UITextField) {
-    guard textField.text != nil && (textField.text?.characters.count)! > 3 else {
+    guard textField.text != nil /*&& (textField.text?.characters.count)! > 3*/ else {
       return
     }
     
