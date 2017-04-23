@@ -427,6 +427,30 @@ class AirticketSearchView: UIView {
     delegate?.search()
   }
   
+  func keyboardWillShow(notification: NSNotification) {
+    if let keyboardRectValue = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      let keyboardHeight = keyboardRectValue.height
+      
+      searchButtonBottomOffset.constant += keyboardHeight
+      scrollView.layoutIfNeeded()
+      
+      let bottomOffset = CGPoint(x: 0,
+                                 y: scrollView.contentSize.height - scrollView.bounds.size.height)
+      scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if let keyboardRectValue = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      let keyboardHeight = keyboardRectValue.height
+      
+      searchButtonBottomOffset.constant -= keyboardHeight
+      scrollView.layoutIfNeeded()
+      
+      delegate?.removeListenersKeyboard()
+    }
+  }
+  
 }
 
 extension AirticketSearchView: UIGestureRecognizerDelegate {
@@ -448,24 +472,19 @@ extension AirticketSearchView: UIGestureRecognizerDelegate {
 
 extension AirticketSearchView: UITextViewDelegate {
   
-  //FIXME: dont work
-  func textViewDidBeginEditing(_ textView: UITextView) {
-    let keyboardHeight = view.frame.width / 2
-    searchButtonBottomOffset.constant = 30 + keyboardHeight
-    animateConstraintChanging()
+  func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    delegate?.addListenersKeyboard()
+    
+    return true
   }
-  
-  //FIXME: dont work
-  func textViewDidEndEditing(_ textView: UITextView) {
-    searchButtonBottomOffset.constant = 30
-    animateConstraintChanging()
-  }
-  
+    
   func textViewDidChange(_ textView: UITextView) {
     let MIN_TEXT_VIEW_HEIGHT: CGFloat = 40
     let MAX_TEXT_VIEW_HEIGHT: CGFloat = 266
+    
     let fixedWidth = textView.frame.size.width
     textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+    
     let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
     var newFrame = textView.frame
     newFrame.size = CGSize(width: max(newSize.width, fixedWidth),
@@ -474,10 +493,20 @@ extension AirticketSearchView: UITextViewDelegate {
     if newFrame.height != textView.frame.height {
       scrollView.isScrollEnabled = false
       textView.frame = newFrame
+      commentsHeight.constant = newFrame.height
       view.layoutIfNeeded()
       additionalInfoHeight.constant = aditionalInfoView.frame.height
       scrollView.isScrollEnabled = true
     }
     
   }
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    let limitCharacters = 300
+    
+    let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+    let numberOfChars = newText.characters.count
+    return numberOfChars < limitCharacters
+  }
+  
 }

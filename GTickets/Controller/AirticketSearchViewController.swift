@@ -79,7 +79,7 @@ class AirticketSearchViewController: UIViewController {
     
     makeSearchCityControllers()
   }
-
+  
   private func makeSearchCityControllers() {
     makeSearchCityController(searchCity: &fromSearchCity, viewContainer: viewContent.fromSearchResultContainer)
     makeSearchCityController(searchCity: &toSearchCity, viewContainer: viewContent.toSearchResultContainer)
@@ -296,6 +296,16 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     }
   }
 
+  func addListenersKeyboard() {
+    NotificationCenter.default.addObserver(viewContent, selector: #selector(AirticketSearchView.keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(viewContent, selector: #selector(AirticketSearchView.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+  }
+  
+  func removeListenersKeyboard() {
+    NotificationCenter.default.removeObserver(viewContent, name: .UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.removeObserver(viewContent, name: .UIKeyboardWillHide, object: nil)
+  }
+  
 }
 
 extension AirticketSearchViewController: AirticketSearchDateDelegate {
