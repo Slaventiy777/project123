@@ -345,7 +345,7 @@ class AirticketSearchView: UIView {
   // MARK: - Comfort class
   
   @IBAction func chooseComfortClass() {
-    delegate?.showPicker(type: .baggage)
+    delegate?.showPicker(type: .comfortClass)
   }
   
   // MARK: - Count suitcases
