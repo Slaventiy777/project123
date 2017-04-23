@@ -13,7 +13,8 @@ protocol AirticketSearchDateDelegate: class {
 }
 
 class AirticketSearchViewController: UIViewController {
-
+  fileprivate let CITY_CONTAINER_MAX_HEIGHT = 300 as CGFloat
+  
   @IBOutlet weak var viewContent: AirticketSearchView!
 
   fileprivate var fromSearchCity: AirticketSearchCityResultList!
@@ -109,7 +110,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.fromCity = text
     
     fromSearchCity.makeDataSource(city: text) {
-      viewContent.fromSearchResultContainerContentHeight = fromSearchCity.tableView.contentSize.height
+      viewContent.fromSearchResultContainerContentHeight = min(fromSearchCity.tableView.contentSize.height, CITY_CONTAINER_MAX_HEIGHT)
     }
   }
 
@@ -117,7 +118,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.toCity = text
     
     toSearchCity.makeDataSource(city: text) {
-      viewContent.toSearchResultContainerContentHeight = toSearchCity.tableView.contentSize.height
+      viewContent.toSearchResultContainerContentHeight = min(toSearchCity.tableView.contentSize.height, CITY_CONTAINER_MAX_HEIGHT)
     }
   }
 

@@ -128,10 +128,11 @@ enum Baggage: Int {
 
 enum VisaDays: Int {
   case thirty = 30
+  case fortyFive = 45
   case sixty = 60
   case ninety = 90
   
-  static var array = [VisaDays.thirty, VisaDays.sixty, VisaDays.ninety]
+  static var array = [VisaDays.thirty, VisaDays.fortyFive, VisaDays.sixty, VisaDays.ninety]
   
   static var count: Int {
     return array.count
