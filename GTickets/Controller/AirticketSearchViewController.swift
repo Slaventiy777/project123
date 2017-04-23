@@ -101,7 +101,7 @@ class AirticketSearchViewController: UIViewController {
       searchCity.delegate = self
     }
   }
-
+  
 }
 
 extension AirticketSearchViewController: SearchCityViewDelegate {
@@ -205,65 +205,38 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.isVisaCheckout = isSelect
   }
   
+  fileprivate func makeAlert(type: AlertType) -> () -> () {
+    return { [weak self] in
+      guard let strongSelf = self else {
+        return
+      }
+      
+      guard let alertViewController = AlertViewController.storyboardInstance() else {
+        return
+      }
+      
+      if let alertView = alertViewController.view as? AlertView {
+        alertView.alertType = type
+      }
+      
+      strongSelf.addAsChildViewController(alertViewController)
+    }
+  }
+  
   fileprivate func validationInfo() -> (isOk: Bool, competition: () -> ()) {
     
     // Check of city from / to
     guard let fromCity = dataSearch.fromCity, !fromCity.isEmpty,
       let toCity = dataSearch.toCity, !toCity.isEmpty else {
         
-        return (isOk: false, competition: { [weak self] in
-          guard let strongSelf = self else {
-            return
-          }
-          
-          guard let alertViewController = AlertViewController.storyboardInstance() else {
-            return
-          }
-          
-          if let alertView = alertViewController.view as? AlertView {
-            alertView.alertType = AlertType.error
-          }
-          
-          strongSelf.present(alertViewController, animated: true, completion: nil)
-        })
+        return (isOk: false,
+                competition: makeAlert(type: AlertType.error(subtitle: nil)))
     }
     
     // Check of departure date
     guard let _ = dataSearch.fromDepartureDate else {
-      return (isOk: false, competition: { [weak self] in
-        guard let strongSelf = self else {
-          return
-        }
-        
-        guard let alertViewController = AlertViewController.storyboardInstance() else {
-          return
-        }
-        
-        if let alertView = alertViewController.view as? AlertView {
-          alertView.alertType = AlertType.datesError
-        }
-        
-        strongSelf.present(alertViewController, animated: true, completion: nil)
-      })
-    }
-    
-    // Check of return date
-    guard let _ = dataSearch.fromReturnDate else {
-      return (isOk: false, competition: { [weak self] in
-        guard let strongSelf = self else {
-          return
-        }
-        
-        guard let alertViewController = AlertViewController.storyboardInstance() else {
-          return
-        }
-        
-        if let alertView = alertViewController.view as? AlertView {
-          alertView.alertType = AlertType.datesError
-        }
-        
-        strongSelf.present(alertViewController, animated: true, completion: nil)
-      })
+      return (isOk: false,
+              competition: makeAlert(type: AlertType.datesError))
     }
     
     return (isOk: true, competition: {})
@@ -278,23 +251,21 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       return
     }
     
-    RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { [weak self] json in
+    let callback: (_ data: Any) -> () = { [weak self] json in
       guard let strongSelf = self else {
         return
       }
       
       //TODO: do something (for example auth)
       
-      guard let alertViewController = AlertViewController.storyboardInstance() else {
-        return
-      }
-      
-      if let alertView = alertViewController.view as? AlertView {
-        alertView.alertType = AlertType.donePurple
-      }
-      
-      strongSelf.present(alertViewController, animated: true, completion: nil)
+      strongSelf.makeAlert(type: AlertType.donePurple)()
     }
+
+    
+    RequestManager.post(urlPath: RequestManager.apiOrder,
+                        params: dataSearch.dictionary(),
+                        callback: callback)
+
   }
 
   func addListenersKeyboard() {

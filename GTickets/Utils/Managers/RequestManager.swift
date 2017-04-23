@@ -14,6 +14,8 @@ class RequestManager {
     return "http://china-air.returnt.ru"
   }
   
+  public static let apiOrder = "/api/order"
+  
   public static func get(urlPath: String, params: Dictionary<String, Any>, callback: @escaping (_ data: Any) -> ()) {
     Alamofire.request("\(rootRef)\(urlPath)").responseJSON { response in
       if let JSON = response.result.value {

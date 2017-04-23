@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum AlertType: Int {
+enum AlertType {
   case airplane
   case doneGreen
   case donePurple
   case datesError
-  case error
+  case error(subtitle: String?)
   
   var image: UIImage? {
     var nameImage = ""
@@ -70,8 +70,12 @@ enum AlertType: Int {
       return "Фото Вашего документа успешно загружено!"
     case .donePurple:
       return "Идет оформление билета.\nВы можете отследить статус Вашего заказа в меню приложения"
-    case .error:
-      return "Что-то пошло не так.\nПроверьте правильность введенных данных"
+    case .error(let subtitle):
+      guard let subtitle = subtitle else {
+        return "Что-то пошло не так.\nПроверьте правильность введенных данных"
+      }
+      
+      return subtitle
     case .datesError:
       return "Выберите диапазон дат для подбора билета"
     }
