@@ -329,6 +329,8 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
       view.addSubview(snapshotView)
       
       pickerTitle.text = type.title
+      pickerTitle.textColor = UIColor.black.withAlphaComponent(0.5)
+      pickerTitle.font = UIFont(name: "FuturaPT-Book", size: 17)
       pickerTitle.alpha = 0
       pickerTitle.isHidden = false
       
