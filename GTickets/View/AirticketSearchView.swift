@@ -136,6 +136,8 @@ class AirticketSearchView: UIView {
     
     visaCheckoutCheckbox.onStateChangedAction = { _ in
       
+      self.endEditing(true)
+      self.scrollView.layoutIfNeeded()
       self.scrollView.isScrollEnabled = false
       let isVisible = self.visaCheckoutCheckbox.isSelected
       self.visaCheckoutContainerHeight.constant = isVisible ? self.suitcase0Button.frame.height : 0
@@ -240,6 +242,8 @@ class AirticketSearchView: UIView {
   }
   
   private func animateConstraintChanging() {
+    endEditing(true)
+    scrollView.layoutIfNeeded()
     self.scrollView.isScrollEnabled = false
     UIView.animate(withDuration: 0.3, animations: {
       self.layoutIfNeeded()
@@ -327,6 +331,8 @@ class AirticketSearchView: UIView {
     showAdditionalInfoButton.isHidden = isVisible
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
+    endEditing(true)
+    scrollView.layoutIfNeeded()
     scrollView.isScrollEnabled = false
     UIView.animate(withDuration: 0.3, animations: { 
       self.view.layoutIfNeeded()
