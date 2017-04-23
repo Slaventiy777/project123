@@ -10,6 +10,7 @@ import UIKit
 
 class AirticketSearchView: UIView {
   fileprivate let animationDuration = 0.3
+  private var additionalInfoHeightConst: CGFloat = 0.0
   
   weak var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
     didSet {
@@ -55,7 +56,7 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var directFlightCheckbox: CheckboxView!
   @IBOutlet weak var visaCheckoutCheckbox: CheckboxView!
   
-  @IBOutlet weak var visaCheckoutContainerHeight: NSLayoutConstraint!
+  @IBOutlet weak var commentsTopOffset: NSLayoutConstraint!
   @IBOutlet weak var visaCheckoutContainer: UIView!
 
   @IBOutlet weak var dateVisaCheckoutButton: UIButton!
@@ -69,6 +70,7 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var aditionalInfoView: UIView!
   
   @IBOutlet weak internal var searchButton: UIButton!
+  @IBOutlet weak var searchButtonBottomOffset: NSLayoutConstraint!
   
   var isCityResultHidden = true
   
@@ -136,13 +138,17 @@ class AirticketSearchView: UIView {
     
     visaCheckoutCheckbox.onStateChangedAction = { _ in
       
+      let isVisible = self.visaCheckoutCheckbox.isSelected
+      let visaCheckoutContainerHeight = self.suitcase0Button.frame.height
+      let newCommentsTopOffset = isVisible ? visaCheckoutContainerHeight + self.getActualSize(20) + 15 : self.getActualSize(20)
+      self.commentsTopOffset.constant = newCommentsTopOffset
+      if self.additionalInfoHeight.constant != 0 {
+        self.additionalInfoHeight.constant = isVisible ? self.additionalInfoHeightConst + visaCheckoutContainerHeight + self.getActualSize(20) : self.additionalInfoHeightConst //self.suitcase0Button.frame.height is visaCheckoutContainer height
+      }
+
       self.endEditing(true)
       self.scrollView.layoutIfNeeded()
       self.scrollView.isScrollEnabled = false
-      let isVisible = self.visaCheckoutCheckbox.isSelected
-      self.visaCheckoutContainerHeight.constant = isVisible ? self.suitcase0Button.frame.height : 0
-//      self.additionalInfoHeight.constant = self.additionalInfoHeight.constant + self.visaCheckoutContainerHeight.constant
-      
       UIView.animate(withDuration: 0.2, animations: {
         self.visaCheckoutContainer.alpha = isVisible ? 1 : 0
         self.view.layoutIfNeeded()
@@ -241,7 +247,7 @@ class AirticketSearchView: UIView {
     isCityResultHidden = true
   }
   
-  private func animateConstraintChanging() {
+  fileprivate func animateConstraintChanging() {
     endEditing(true)
     scrollView.layoutIfNeeded()
     self.scrollView.isScrollEnabled = false
@@ -327,6 +333,10 @@ class AirticketSearchView: UIView {
   }
   
   private func makeAdditionalInfo(isVisible: Bool) {
+    if self.additionalInfoHeightConst == 0 {  //move to
+      self.additionalInfoHeightConst = self.aditionalInfoView.frame.height
+    }
+
     hideAdditionalInfoButton.isHidden = !isVisible
     showAdditionalInfoButton.isHidden = isVisible
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
@@ -429,6 +439,19 @@ extension AirticketSearchView: UIGestureRecognizerDelegate {
 }
 
 extension AirticketSearchView: UITextViewDelegate {
+  
+  //FIXME: dont work
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    let keyboardHeight = view.frame.width / 2
+    searchButtonBottomOffset.constant = 30 + keyboardHeight
+    animateConstraintChanging()
+  }
+  
+  //FIXME: dont work
+  func textViewDidEndEditing(_ textView: UITextView) {
+    searchButtonBottomOffset.constant = 30
+    animateConstraintChanging()
+  }
   
   func textViewDidChange(_ textView: UITextView) {
     let MIN_TEXT_VIEW_HEIGHT: CGFloat = 40
