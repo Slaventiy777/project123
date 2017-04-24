@@ -26,5 +26,8 @@ protocol SearchCityViewDelegate: class {
   func chooseDirectFlight(_ isSelect: Bool)
   func chooseVisaCheckout(_ isSelect: Bool)
   
+  func addListenersKeyboard()
+  func removeListenersKeyboard()
+  
   func search()
 }

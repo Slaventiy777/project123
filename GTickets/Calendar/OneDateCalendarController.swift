@@ -67,7 +67,12 @@ class OneDateCalendarController: UIViewController, CalendarDelegate, FSCalendarD
   }
   
   func close() {
-    dismiss(animated: true, completion: nil)
+    guard let parent = parent as? AirticketSearchViewController else {
+      dismiss(animated: true, completion: nil)
+      return
+    }
+    
+    parent.removeAsChildViewController(self)
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

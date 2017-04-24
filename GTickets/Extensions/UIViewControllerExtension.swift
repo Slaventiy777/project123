@@ -19,4 +19,30 @@ extension UIViewController {
     return storyboardInstancePrivate()
   }
   
+  func addAsChildViewController(_ viewController: UIViewController) {
+    // Add Child View Controller
+    addChildViewController(viewController)
+    
+    // Add Child View as Subview
+    view.addSubview(viewController.view)
+    
+    // Configure Child View
+    viewController.view.frame = view.bounds
+    viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    
+    // Notify Child View Controller
+    viewController.didMove(toParentViewController: self)
+  }
+  
+  func removeAsChildViewController(_ viewController: UIViewController) {
+    // Notify Child View Controller
+    viewController.willMove(toParentViewController: nil)
+    
+    // Remove Child View From Superview
+    viewController.view.removeFromSuperview()
+    
+    // Notify Child View Controller
+    viewController.removeFromParentViewController()
+  }
+  
 }

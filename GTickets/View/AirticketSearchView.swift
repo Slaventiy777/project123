@@ -125,6 +125,11 @@ class AirticketSearchView: UIView {
     setTitleDates(type: .visa, from: model.dateVisaCheckout, to: nil)
     daysOfStayLabel.text = "\(model.visaDays.rawValue)"
     commentsTextView.text = model.comments
+    
+    if commentsTextView.text == nil || commentsTextView.text.isEmpty {
+      commentsTextView.text = "Комментарий..."
+      commentsTextView.textColor = .lightGray
+    }
   }
   
   private func update() {
@@ -344,10 +349,17 @@ class AirticketSearchView: UIView {
     additionalInfoButtonCenterY.constant = isVisible ? -additionalInfoButtonCenterYConst : additionalInfoButtonCenterYConst
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
+    if isVisible {
+      scrollView.layoutIfNeeded()
+      let bottomOffset = CGPoint(x: 0,
+                                 y: scrollView.contentSize.height - scrollView.bounds.size.height)
+      scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
     endEditing(true)
-    scrollView.layoutIfNeeded()
+    //scrollView.layoutIfNeeded()
     scrollView.isScrollEnabled = false
-    UIView.animate(withDuration: 0.3, animations: {
+    UIView.animate(withDuration: 0.5, animations: {
       self.view.layoutIfNeeded()
       self.aditionalInfoView.alpha = isVisible ? 1 : 0
     }) { _ in
@@ -426,6 +438,30 @@ class AirticketSearchView: UIView {
     delegate?.search()
   }
   
+  func keyboardWillShow(notification: NSNotification) {
+    if let keyboardRectValue = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      let keyboardHeight = keyboardRectValue.height
+      
+      searchButtonBottomOffset.constant += keyboardHeight
+      scrollView.layoutIfNeeded()
+      
+      let bottomOffset = CGPoint(x: 0,
+                                 y: scrollView.contentSize.height - scrollView.bounds.size.height)
+      scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if let keyboardRectValue = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      let keyboardHeight = keyboardRectValue.height
+      
+      searchButtonBottomOffset.constant -= keyboardHeight
+      scrollView.layoutIfNeeded()
+      
+      delegate?.removeListenersKeyboard()
+    }
+  }
+  
 }
 
 extension AirticketSearchView: UIGestureRecognizerDelegate {
@@ -447,24 +483,37 @@ extension AirticketSearchView: UIGestureRecognizerDelegate {
 
 extension AirticketSearchView: UITextViewDelegate {
   
-  //FIXME: dont work
   func textViewDidBeginEditing(_ textView: UITextView) {
-    let keyboardHeight = view.frame.width / 2
-    searchButtonBottomOffset.constant = 30 + keyboardHeight
-    animateConstraintChanging()
+    if (textView.text == "Комментарий...") {
+      textView.text = ""
+      textView.textColor = .white
+    }
+    
+    textView.becomeFirstResponder()
   }
   
-  //FIXME: dont work
   func textViewDidEndEditing(_ textView: UITextView) {
-    searchButtonBottomOffset.constant = 30
-    animateConstraintChanging()
+    if (textView.text == "") {
+      textView.text = "Комментарий..."
+      textView.textColor = .lightGray
+    }
+    
+    textView.resignFirstResponder()
   }
   
+  func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    delegate?.addListenersKeyboard()
+    
+    return true
+  }
+    
   func textViewDidChange(_ textView: UITextView) {
     let MIN_TEXT_VIEW_HEIGHT: CGFloat = 40
     let MAX_TEXT_VIEW_HEIGHT: CGFloat = 266
+    
     let fixedWidth = textView.frame.size.width
     textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+    
     let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
     var newFrame = textView.frame
     newFrame.size = CGSize(width: max(newSize.width, fixedWidth),
@@ -473,10 +522,20 @@ extension AirticketSearchView: UITextViewDelegate {
     if newFrame.height != textView.frame.height {
       scrollView.isScrollEnabled = false
       textView.frame = newFrame
+      commentsHeight.constant = newFrame.height
       view.layoutIfNeeded()
       additionalInfoHeight.constant = aditionalInfoView.frame.height
       scrollView.isScrollEnabled = true
     }
     
   }
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    let limitCharacters = 300
+    
+    let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+    let numberOfChars = newText.characters.count
+    return numberOfChars < limitCharacters
+  }
+  
 }

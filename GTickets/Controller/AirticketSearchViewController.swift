@@ -80,7 +80,7 @@ class AirticketSearchViewController: UIViewController {
     
     makeSearchCityControllers()
   }
-
+  
   private func makeSearchCityControllers() {
     makeSearchCityController(searchCity: &fromSearchCity, viewContainer: viewContent.fromSearchResultContainer)
     makeSearchCityController(searchCity: &toSearchCity, viewContainer: viewContent.toSearchResultContainer)
@@ -101,7 +101,7 @@ class AirticketSearchViewController: UIViewController {
       searchCity.delegate = self
     }
   }
-
+  
 }
 
 extension AirticketSearchViewController: SearchCityViewDelegate {
@@ -171,7 +171,11 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController?.calendarView = calendarViewGT
 
     }
-    present(dateController!, animated: true, completion: nil)
+    
+    if let dateController = dateController {
+      addAsChildViewController(dateController)
+      //present(dateController!, animated: true, completion: nil)
+    }
     
   }
 
@@ -189,7 +193,11 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController?.calendarView = calendarViewGT
 
     }
-    present(dateController!, animated: true, completion: nil)
+    
+    if let dateController = dateController {
+      addAsChildViewController(dateController)
+      //present(dateController!, animated: true, completion: nil)
+    }
     
   }
 
@@ -205,65 +213,38 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     dataSearch.isVisaCheckout = isSelect
   }
   
+  fileprivate func makeAlert(type: AlertType) -> () -> () {
+    return { [weak self] in
+      guard let strongSelf = self else {
+        return
+      }
+      
+      guard let alertViewController = AlertViewController.storyboardInstance() else {
+        return
+      }
+      
+      if let alertView = alertViewController.view as? AlertView {
+        alertView.alertType = type
+      }
+      
+      strongSelf.addAsChildViewController(alertViewController)
+    }
+  }
+  
   fileprivate func validationInfo() -> (isOk: Bool, competition: () -> ()) {
     
     // Check of city from / to
     guard let fromCity = dataSearch.fromCity, !fromCity.isEmpty,
       let toCity = dataSearch.toCity, !toCity.isEmpty else {
         
-        return (isOk: false, competition: { [weak self] in
-          guard let strongSelf = self else {
-            return
-          }
-          
-          guard let alertViewController = AlertViewController.storyboardInstance() else {
-            return
-          }
-          
-          if let alertView = alertViewController.view as? AlertView {
-            alertView.alertType = AlertType.error
-          }
-          
-          strongSelf.present(alertViewController, animated: true, completion: nil)
-        })
+        return (isOk: false,
+                competition: makeAlert(type: AlertType.error(subtitle: nil)))
     }
     
     // Check of departure date
     guard let _ = dataSearch.fromDepartureDate else {
-      return (isOk: false, competition: { [weak self] in
-        guard let strongSelf = self else {
-          return
-        }
-        
-        guard let alertViewController = AlertViewController.storyboardInstance() else {
-          return
-        }
-        
-        if let alertView = alertViewController.view as? AlertView {
-          alertView.alertType = AlertType.datesError
-        }
-        
-        strongSelf.present(alertViewController, animated: true, completion: nil)
-      })
-    }
-    
-    // Check of return date
-    guard let _ = dataSearch.fromReturnDate else {
-      return (isOk: false, competition: { [weak self] in
-        guard let strongSelf = self else {
-          return
-        }
-        
-        guard let alertViewController = AlertViewController.storyboardInstance() else {
-          return
-        }
-        
-        if let alertView = alertViewController.view as? AlertView {
-          alertView.alertType = AlertType.datesError
-        }
-        
-        strongSelf.present(alertViewController, animated: true, completion: nil)
-      })
+      return (isOk: false,
+              competition: makeAlert(type: AlertType.datesError))
     }
     
     return (isOk: true, competition: {})
@@ -278,25 +259,33 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       return
     }
     
-    RequestManager.post(urlPath: "/api/order", params: dataSearch.dictionary()) { [weak self] json in
+    let callback: (_ data: Any) -> () = { [weak self] json in
       guard let strongSelf = self else {
         return
       }
       
       //TODO: do something (for example auth)
       
-      guard let alertViewController = AlertViewController.storyboardInstance() else {
-        return
-      }
-      
-      if let alertView = alertViewController.view as? AlertView {
-        alertView.alertType = AlertType.donePurple
-      }
-      
-      strongSelf.present(alertViewController, animated: true, completion: nil)
+      strongSelf.makeAlert(type: AlertType.donePurple)()
     }
+
+    
+    RequestManager.post(urlPath: RequestManager.apiOrder,
+                        params: dataSearch.dictionary(),
+                        callback: callback)
+
   }
 
+  func addListenersKeyboard() {
+    NotificationCenter.default.addObserver(viewContent, selector: #selector(AirticketSearchView.keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(viewContent, selector: #selector(AirticketSearchView.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+  }
+  
+  func removeListenersKeyboard() {
+    NotificationCenter.default.removeObserver(viewContent, name: .UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.removeObserver(viewContent, name: .UIKeyboardWillHide, object: nil)
+  }
+  
 }
 
 extension AirticketSearchViewController: AirticketSearchDateDelegate {
@@ -338,6 +327,7 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
       picker.alpha = 0
       picker.isHidden = false
       picker.reloadAllComponents()
+      picker.selectRow(picker.numberOfRows(inComponent: 0) / 2, inComponent: 0, animated: true)
       
       UIView.animate(withDuration: 0.3) {
         self.pickerTitle.alpha = 1
