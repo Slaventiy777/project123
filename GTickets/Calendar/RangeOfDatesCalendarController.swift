@@ -70,7 +70,12 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   }
   
   func close() {
-    dismiss(animated: true, completion: nil)
+    guard let parent = parent as? AirticketSearchViewController else {
+      dismiss(animated: true, completion: nil)
+      return
+    }
+    
+    parent.removeAsChildViewController(self)
   }
   
   // MARK:- FSCalendarDataSource

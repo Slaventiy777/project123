@@ -125,6 +125,11 @@ class AirticketSearchView: UIView {
     setTitleDates(type: .visa, from: model.dateVisaCheckout, to: nil)
     daysOfStayLabel.text = "\(model.visaDays.rawValue)"
     commentsTextView.text = model.comments
+    
+    if commentsTextView.text == nil || commentsTextView.text.isEmpty {
+      commentsTextView.text = "Комментарий..."
+      commentsTextView.textColor = .lightGray
+    }
   }
   
   private func update() {
@@ -345,10 +350,17 @@ class AirticketSearchView: UIView {
     additionalInfoButtonCenterY.constant = isVisible ? additionalInfoButtonCenterYConst : -additionalInfoButtonCenterYConst
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
+    if isVisible {
+      scrollView.layoutIfNeeded()
+      let bottomOffset = CGPoint(x: 0,
+                                 y: scrollView.contentSize.height - scrollView.bounds.size.height)
+      scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
     endEditing(true)
-    scrollView.layoutIfNeeded()
+    //scrollView.layoutIfNeeded()
     scrollView.isScrollEnabled = false
-    UIView.animate(withDuration: 0.3, animations: {
+    UIView.animate(withDuration: 0.5, animations: {
       self.view.layoutIfNeeded()
       self.aditionalInfoView.alpha = isVisible ? 1 : 0
     }) { _ in
@@ -471,6 +483,24 @@ extension AirticketSearchView: UIGestureRecognizerDelegate {
 }
 
 extension AirticketSearchView: UITextViewDelegate {
+  
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if (textView.text == "Комментарий...") {
+      textView.text = ""
+      textView.textColor = .white
+    }
+    
+    textView.becomeFirstResponder()
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if (textView.text == "") {
+      textView.text = "Комментарий..."
+      textView.textColor = .lightGray
+    }
+    
+    textView.resignFirstResponder()
+  }
   
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
     delegate?.addListenersKeyboard()

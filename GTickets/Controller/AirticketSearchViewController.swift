@@ -171,7 +171,11 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController?.calendarView = calendarViewGT
 
     }
-    present(dateController!, animated: true, completion: nil)
+    
+    if let dateController = dateController {
+      addAsChildViewController(dateController)
+      //present(dateController!, animated: true, completion: nil)
+    }
     
   }
 
@@ -189,7 +193,11 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController?.calendarView = calendarViewGT
 
     }
-    present(dateController!, animated: true, completion: nil)
+    
+    if let dateController = dateController {
+      addAsChildViewController(dateController)
+      //present(dateController!, animated: true, completion: nil)
+    }
     
   }
 
@@ -319,6 +327,7 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
       picker.alpha = 0
       picker.isHidden = false
       picker.reloadAllComponents()
+      picker.selectRow(picker.numberOfRows(inComponent: 0) / 2, inComponent: 0, animated: true)
       
       UIView.animate(withDuration: 0.3) {
         self.pickerTitle.alpha = 1
