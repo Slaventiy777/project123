@@ -32,8 +32,8 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var fromSearchResultContainerHeight: NSLayoutConstraint!
   @IBOutlet weak var toSearchResultContainerHeight: NSLayoutConstraint!
   
-  @IBOutlet weak var departureButton: UIButton!
-  @IBOutlet weak var returnButton: UIButton!
+  @IBOutlet weak var departureButton: CityButton!
+  @IBOutlet weak var returnButton: CityButton!
   
   @IBOutlet weak var additionalInfoButton: UIButton!
     @IBOutlet weak var additionalInfoButtonCenterY: NSLayoutConstraint!

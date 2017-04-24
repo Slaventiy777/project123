@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cc5-Ha-BZm">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="535"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9H-9M-rDh" userLabel="logo container">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
@@ -118,16 +118,19 @@
                                                 </constraints>
                                             </containerView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-l9-2t3">
-                                                <rect key="frame" x="45.5" y="304.5" width="284" height="53.5"/>
+                                                <rect key="frame" x="45.5" y="304.5" width="284" height="53"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-SK-F1b">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="53.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-SK-F1b" customClass="CityButton" customModule="GTickets" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="53"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="0RD-Zo-KZN"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="23"/>
                                                         <state key="normal" title="Туда">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -139,6 +142,9 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="higlightBackgroundColor">
+                                                                <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -149,14 +155,17 @@
                                                             <action selector="chooseDispatchDate" destination="eoc-rY-d8b" eventType="touchUpInside" id="QQQ-lk-HUz"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dto-mv-yTF">
-                                                        <rect key="frame" x="154" y="0.0" width="130" height="53.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dto-mv-yTF" customClass="CityButton" customModule="GTickets" customModuleProvider="target">
+                                                        <rect key="frame" x="154" y="0.0" width="130" height="53"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="kcH-IT-iUe"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="23"/>
                                                         <state key="normal" title="Обратно">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="highlighted">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -174,6 +183,9 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="higlightBackgroundColor">
+                                                                <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -187,13 +199,13 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVv-pw-bSJ" userLabel="AditionalButtonOffsetView">
-                                                <rect key="frame" x="45.5" y="358" width="284" height="18.5"/>
+                                                <rect key="frame" x="45.5" y="357.5" width="284" height="18.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dVv-pw-bSJ" secondAttribute="height" multiplier="308:20" id="3uD-jL-wAm"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A51-5g-NaN">
-                                                <rect key="frame" x="45.5" y="376.5" width="284" height="55"/>
+                                                <rect key="frame" x="45.5" y="376" width="284" height="55"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-uc-jfU">
                                                         <rect key="frame" x="133" y="34.5" width="18" height="20"/>
@@ -208,7 +220,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f4-wg-0qd">
-                                                        <rect key="frame" x="35" y="18" width="215.5" height="19.5"/>
+                                                        <rect key="frame" x="34.5" y="18" width="215.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="15"/>
                                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -223,7 +235,7 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-c3-M5k">
-                                                <rect key="frame" x="45.5" y="431.5" width="284" height="0.0"/>
+                                                <rect key="frame" x="45.5" y="431" width="284" height="0.0"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQC-D2-0dy">
                                                         <rect key="frame" x="0.0" y="0.0" width="284" height="367"/>
@@ -244,13 +256,13 @@
                                                                                 <rect key="frame" x="27.5" y="0.0" width="80" height="40"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6Y-8L-YHa">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="40"/>
                                                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-Mr-r1U">
-                                                                                        <rect key="frame" x="40" y="0.0" width="40" height="40"/>
+                                                                                        <rect key="frame" x="39.5" y="0.0" width="40.5" height="40"/>
                                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="bwU-Mr-r1U" secondAttribute="height" multiplier="1:1" id="gUf-1Z-suF"/>
@@ -313,13 +325,13 @@
                                                                                 <rect key="frame" x="35.5" y="0.0" width="116" height="40"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бизнес" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-nP-zCc">
-                                                                                        <rect key="frame" x="0.5" y="0.0" width="75.5" height="40"/>
+                                                                                        <rect key="frame" x="0.5" y="0.0" width="76" height="40"/>
                                                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="20"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-b9-7Ib">
-                                                                                        <rect key="frame" x="76" y="0.0" width="40.5" height="40"/>
+                                                                                        <rect key="frame" x="76.5" y="0.0" width="40" height="40"/>
                                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="mH5-b9-7Ib" secondAttribute="height" multiplier="1:1" id="Pth-kb-VVJ"/>
@@ -618,19 +630,19 @@
                                                                 </constraints>
                                                             </view>
                                                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyX-Xg-fMZ">
-                                                                <rect key="frame" x="0.0" y="217" width="284" height="41"/>
+                                                                <rect key="frame" x="0.0" y="217" width="284" height="40.5"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi3-KZ-ioN">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="40.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VisaDate" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-rJ-BGm">
-                                                                                <rect key="frame" x="0.0" y="9" width="22" height="22"/>
+                                                                                <rect key="frame" x="0.0" y="9.5" width="22" height="22"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="7jr-rJ-BGm" secondAttribute="height" multiplier="1:1" id="iHO-O2-CtX"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-th-irq">
-                                                                                <rect key="frame" x="30" y="0.0" width="118" height="41"/>
+                                                                                <rect key="frame" x="30" y="0.0" width="119" height="40.5"/>
                                                                                 <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="18"/>
                                                                                 <state key="normal" title="09.02">
                                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -662,32 +674,32 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIH-v2-uVa">
-                                                                        <rect key="frame" x="173" y="0.0" width="111" height="41"/>
+                                                                        <rect key="frame" x="174" y="0.0" width="110" height="40.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VisaDays" translatesAutoresizingMaskIntoConstraints="NO" id="BVS-E8-IvH">
-                                                                                <rect key="frame" x="0.0" y="9" width="21.5" height="22"/>
+                                                                                <rect key="frame" x="0.0" y="9.5" width="21.5" height="22"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="BVS-E8-IvH" secondAttribute="height" multiplier="1:1" id="XZn-eM-xtd"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vem-ks-azi">
-                                                                                <rect key="frame" x="29.5" y="0.0" width="82" height="41"/>
+                                                                                <rect key="frame" x="29.5" y="0.0" width="81" height="40.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-a4-aGJ">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="40.5" height="40.5"/>
                                                                                         <fontDescription key="fontDescription" name="FuturaPT-Book" family="Futura PT" pointSize="19"/>
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-Vl-YVE">
-                                                                                        <rect key="frame" x="41" y="0.0" width="41" height="41"/>
+                                                                                        <rect key="frame" x="40.5" y="0.0" width="40.5" height="40.5"/>
                                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="Kog-Vl-YVE" secondAttribute="height" id="kAS-0G-tTy"/>
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLB-lY-KmV">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="41"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="40.5"/>
                                                                                         <connections>
                                                                                             <action selector="chooseDaysOfStay" destination="eoc-rY-d8b" eventType="touchUpInside" id="tIX-az-ptm"/>
                                                                                         </connections>
@@ -806,13 +818,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYb-j8-8KQ" userLabel="DoneButtonOffsetView">
-                                                <rect key="frame" x="45.5" y="431.5" width="284" height="27.5"/>
+                                                <rect key="frame" x="45.5" y="431" width="284" height="27.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="HYb-j8-8KQ" secondAttribute="height" multiplier="308:30" id="oLN-By-w6B"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-JR-Dbb" customClass="GradientView" customModule="GTickets" customModuleProvider="target">
-                                                <rect key="frame" x="118" y="459" width="139.5" height="46.5"/>
+                                                <rect key="frame" x="118" y="458.5" width="139.5" height="46.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZu-vh-XhD">
                                                         <rect key="frame" x="0.0" y="0.0" width="139.5" height="46.5"/>

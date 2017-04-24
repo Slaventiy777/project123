@@ -234,17 +234,22 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
   fileprivate func validationInfo() -> (isOk: Bool, competition: () -> ()) {
     
     // Check of city from / to
-    guard let fromCity = dataSearch.fromCity, !fromCity.isEmpty,
-      let toCity = dataSearch.toCity, !toCity.isEmpty else {
-        
+    guard let fromCity = dataSearch.fromCity, !fromCity.isEmpty else {
         return (isOk: false,
-                competition: makeAlert(type: AlertType.error(subtitle: nil)))
+                competition: makeAlert(type: AlertType.error(subtitle: "Выберите город вылета")))
     }
+
+    // Check of city from / to
+    guard let toCity = dataSearch.toCity, !toCity.isEmpty else {
+        return (isOk: false,
+                competition: makeAlert(type: AlertType.error(subtitle: "Выберите город прилёта")))
+    }
+
     
     // Check of departure date
     guard let _ = dataSearch.fromDepartureDate else {
       return (isOk: false,
-              competition: makeAlert(type: AlertType.datesError))
+              competition: makeAlert(type: AlertType.error(subtitle: "Выберите дату вылета или диапазон дат")))
     }
     
     return (isOk: true, competition: {})
@@ -327,7 +332,17 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
       picker.alpha = 0
       picker.isHidden = false
       picker.reloadAllComponents()
-      picker.selectRow(picker.numberOfRows(inComponent: 0) / 2, inComponent: 0, animated: true)
+      
+      var currentRow = 0
+      if currentTypePicker == .passenger {
+        currentRow = dataSearch.numberOfPassengers.rawValue-1
+      } else if currentTypePicker == .comfortClass {
+        currentRow = dataSearch.comfortClass.rawValue-1
+      } else if currentTypePicker == .visaDays {
+        currentRow = dataSearch.visaDays.pickerRawValue
+      }
+
+      picker.selectRow(currentRow, inComponent: 0, animated: true)
       
       UIView.animate(withDuration: 0.3) {
         self.pickerTitle.alpha = 1

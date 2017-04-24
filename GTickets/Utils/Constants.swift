@@ -138,6 +138,19 @@ enum VisaDays: Int {
     return array.count
   }
   
+  var pickerRawValue: Int {
+    switch self {
+    case .thirty:
+      return 0
+    case .fortyFive:
+      return 1
+    case .sixty:
+      return 2
+    case .ninety:
+      return 3
+    }
+  }
+  
 }
 
 enum TypePicker {

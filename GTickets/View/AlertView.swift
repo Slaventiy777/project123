@@ -12,7 +12,6 @@ enum AlertType {
   case airplane
   case doneGreen
   case donePurple
-  case datesError
   case error(subtitle: String?)
   
   var image: UIImage? {
@@ -25,8 +24,6 @@ enum AlertType {
       nameImage = "AlertDoneGreen"
     case .donePurple:
       nameImage = "AlertDonePurple"
-    case .datesError:
-      fallthrough
     case .error:
       nameImage = "AlertError"
     }
@@ -42,8 +39,6 @@ enum AlertType {
       return "Ура!"
     case .donePurple:
       return "Спасибо за оплату!"
-    case .datesError:
-      fallthrough
     case .error:
       return "Упс..."
     }
@@ -55,8 +50,6 @@ enum AlertType {
       return UIColor(red: 94 / 255, green: 40 / 255, blue: 212 / 255, alpha: 1)
     case .doneGreen:
       return UIColor(red: 0, green: 158 / 255, blue: 11 / 255, alpha: 1)
-    case .datesError:
-      fallthrough
     case .error:
       return UIColor(red: 255 / 255, green: 68 / 255, blue: 68 / 255, alpha: 1)
     }
@@ -76,8 +69,6 @@ enum AlertType {
       }
       
       return subtitle
-    case .datesError:
-      return "Выберите диапазон дат для подбора билета"
     }
   }
   
@@ -85,7 +76,7 @@ enum AlertType {
     switch self {
     case .airplane, .doneGreen, .donePurple:
       return "ГОТОВО!"
-    case .datesError, .error:
+    case .error:
       return "ЗАКРЫТЬ!"
     }
   }
@@ -97,7 +88,7 @@ enum AlertType {
               UIColor(red: 23/255, green: 97/255, blue: 153/255, alpha: 1)]
     case .doneGreen:
       return [UIColor(red: 0, green: 158/255, blue: 11/255, alpha: 1)]
-    case .datesError, .error:
+    case .error:
       return [UIColor(red: 255/255, green: 68/255, blue: 68/255, alpha: 1)]
     }
   }
