@@ -140,10 +140,10 @@ class AirticketSearchView: UIView {
       
       let isVisible = self.visaCheckoutCheckbox.isSelected
       let visaCheckoutContainerHeight = self.suitcase0Button.frame.height
-      let newCommentsTopOffset = isVisible ? visaCheckoutContainerHeight + self.getActualSize(20) + 15 : self.getActualSize(20)
+      let newCommentsTopOffset = isVisible ? visaCheckoutContainerHeight + getActualSize(20) + 15 : getActualSize(20)
       self.commentsTopOffset.constant = newCommentsTopOffset
       if self.additionalInfoHeight.constant != 0 {
-        self.additionalInfoHeight.constant = isVisible ? self.additionalInfoHeightConst + visaCheckoutContainerHeight + self.getActualSize(20) : self.additionalInfoHeightConst //self.suitcase0Button.frame.height is visaCheckoutContainer height
+        self.additionalInfoHeight.constant = isVisible ? self.additionalInfoHeightConst + visaCheckoutContainerHeight + getActualSize(20) : self.additionalInfoHeightConst //self.suitcase0Button.frame.height is visaCheckoutContainer height
       }
 
       self.endEditing(true)
@@ -158,15 +158,24 @@ class AirticketSearchView: UIView {
       //delegate?.
     }
     
+    updateFonts()
+    
+    let inset = getActualSize(23)
+    toTextField.setPaddingPoints(inset)
+    fromTextField.setPaddingPoints(inset)
+    
+  }
+  
+  private func updateFonts() {
     fromTextField.font = getActualFont(fromTextField.font!)
     toTextField.font = getActualFont(toTextField.font!)
     departureButton.titleLabel?.font = getActualFont((departureButton.titleLabel?.font)!)
     returnButton.titleLabel?.font = getActualFont((returnButton.titleLabel?.font)!)
-//    additionalInfoLabel.font = getActualFont(additionalInfoLabel.font)
+    //    additionalInfoLabel.font = getActualFont(additionalInfoLabel.font)
     
     directFlightCheckbox.info.font = getActualFont(directFlightCheckbox.info.font)
     visaCheckoutCheckbox.info.font = getActualFont(visaCheckoutCheckbox.info.font)
-//    dateVisaCheckoutButton.titleLabel?.font = getActualFont((dateVisaCheckoutButton.titleLabel?.font)!)
+    //    dateVisaCheckoutButton.titleLabel?.font = getActualFont((dateVisaCheckoutButton.titleLabel?.font)!)
     commentsTextView.font = getActualFont(commentsTextView.font!)
     suitcase0Button.titleLabel?.font = getActualFont((suitcase0Button.titleLabel?.font)!)
     suitcase1Button.titleLabel?.font = getActualFont((suitcase1Button.titleLabel?.font)!)
@@ -174,16 +183,6 @@ class AirticketSearchView: UIView {
     comfortClassLabel.font = getActualFont(comfortClassLabel.font)
     countPeopleLabel.font = getActualFont(countPeopleLabel.font)
     searchButton.titleLabel?.font = getActualFont((searchButton.titleLabel?.font)!)
-    
-  }
-  
-  private func getActualFont(_ font: UIFont) -> UIFont! {
-    let fontName = font.fontName
-    return UIFont(name: fontName, size: getActualSize(font.pointSize) )!
-  }
-  
-  private func getActualSize(_ size: CGFloat) -> CGFloat {
-    return size / 414 * UIScreen.main.bounds.size.width
   }
   
   @IBAction func swapCityTextFieldsAction(_ button: UIButton) {

@@ -14,6 +14,8 @@
 		5C1797261E8833F000751910 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1797251E8833F000751910 /* UIManager.swift */; };
 		5C1797281E8C0C7E00751910 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */; };
 		5C1A2CE41EABBDD5008C8AE7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */; };
+		5C211F5A1EAE88EA00922379 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C211F591EAE88EA00922379 /* UITextFieldExtension.swift */; };
+		5C211F5C1EAE89AE00922379 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C211F5B1EAE89AE00922379 /* Global.swift */; };
 		5C256D7B1EA7E08A003E1276 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */; };
 		5C8E294B1E80747800206EF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294A1E80747800206EF0 /* GradientView.swift */; };
 		5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E294C1E80748200206EF0 /* AlertView.swift */; };
@@ -119,6 +121,8 @@
 		5C1797251E8833F000751910 /* UIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		5C1797271E8C0C7E00751910 /* AlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
 		5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5C211F591EAE88EA00922379 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		5C211F5B1EAE89AE00922379 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		5C256D7A1EA7E08A003E1276 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5C8E294A1E80747800206EF0 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5C8E294C1E80748200206EF0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 			children = (
 				5C1797251E8833F000751910 /* UIManager.swift */,
 				5C8E294A1E80747800206EF0 /* GradientView.swift */,
+				5C211F5B1EAE89AE00922379 /* Global.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				F93A58491E91815500148AB8 /* CGColorExtension.swift */,
 				F90F00E41E94411E00B796E3 /* UIViewExtension.swift */,
 				5C1A2CE31EABBDD5008C8AE7 /* DateExtension.swift */,
+				5C211F591EAE88EA00922379 /* UITextFieldExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -705,6 +711,7 @@
 				F919BDAF1E97CF5700FFB678 /* AirticketSearchPickerDelegate.swift in Sources */,
 				5C1797261E8833F000751910 /* UIManager.swift in Sources */,
 				5CEC35591E957BD7004B69DA /* FSCalendarDelegationFactory.m in Sources */,
+				5C211F5A1EAE88EA00922379 /* UITextFieldExtension.swift in Sources */,
 				5C1797201E87FD7800751910 /* SearchViewCell.swift in Sources */,
 				5C9754561E9162430073D282 /* TextField.swift in Sources */,
 				5CEC355A1E957BD7004B69DA /* FSCalendarDelegationProxy.m in Sources */,
@@ -723,6 +730,7 @@
 				5CEC355C1E957BD7004B69DA /* FSCalendarHeaderView.m in Sources */,
 				5C8E294D1E80748200206EF0 /* AlertView.swift in Sources */,
 				F9508CD21E7F28FC0064D071 /* BuyingTipsViewController.swift in Sources */,
+				5C211F5C1EAE89AE00922379 /* Global.swift in Sources */,
 				F957FBD71E8CF26F006B6825 /* UIViewControllerExtension.swift in Sources */,
 				5CEC355E1E957BD7004B69DA /* FSCalendarStickyHeader.m in Sources */,
 				F904A5321E7DDEE400911C67 /* OrderViewController.swift in Sources */,

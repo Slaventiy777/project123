@@ -1014,18 +1014,20 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="qNC-mv-7dS" firstAttribute="leading" secondItem="oMr-Ip-7Kj" secondAttribute="leading" constant="10" id="9xL-96-Ur0"/>
-                                                <constraint firstAttribute="trailing" secondItem="byY-Cg-ey7" secondAttribute="trailing" constant="10" id="BHq-we-lQA"/>
+                                                <constraint firstItem="byY-Cg-ey7" firstAttribute="trailing" secondItem="qNC-mv-7dS" secondAttribute="trailing" id="Jww-Wf-uDJ"/>
                                                 <constraint firstItem="qNC-mv-7dS" firstAttribute="top" secondItem="oMr-Ip-7Kj" secondAttribute="top" constant="5" id="OCq-WF-cD0"/>
+                                                <constraint firstItem="byY-Cg-ey7" firstAttribute="leading" secondItem="qNC-mv-7dS" secondAttribute="leading" id="a2I-gk-cQE"/>
                                                 <constraint firstAttribute="bottom" secondItem="byY-Cg-ey7" secondAttribute="bottom" priority="250" constant="10" id="f45-o1-HsN"/>
                                                 <constraint firstAttribute="trailing" secondItem="qNC-mv-7dS" secondAttribute="trailing" constant="10" id="jT9-HA-afh"/>
                                                 <constraint firstItem="byY-Cg-ey7" firstAttribute="top" secondItem="qNC-mv-7dS" secondAttribute="bottom" constant="2" id="qHa-Cd-G9J"/>
-                                                <constraint firstItem="byY-Cg-ey7" firstAttribute="leading" secondItem="oMr-Ip-7Kj" secondAttribute="leading" constant="10" id="zR3-7C-ORr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="airport" destination="byY-Cg-ey7" id="rYJ-DR-wKF"/>
                                             <outlet property="city" destination="qNC-mv-7dS" id="ySl-Zo-wqg"/>
+                                            <outlet property="cityLeftOffset" destination="9xL-96-Ur0" id="ZVb-BV-j0a"/>
+                                            <outlet property="cityRightOffset" destination="jT9-HA-afh" id="hIJ-pq-AAN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
