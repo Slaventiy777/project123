@@ -180,16 +180,16 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   private func roundEdgesOf(cell: FSCalendarCell, selectionType: SelectionType) -> SelectionType {
     var newSelectionType = selectionType
       if let indexPath = calendarView.calendar.getCollectionView().indexPath(for: cell) {
-        if selectionType == .leftBorder && indexPath.row == 0 {
+        if selectionType == .rightBorder && indexPath.row % 7 == 0 {
           newSelectionType = .single
         }
         
-        if selectionType == .rightBorder && (indexPath.row+1) % 7 == 0 {
+        if selectionType == .leftBorder && (indexPath.row+1) % 7 == 0 {
           newSelectionType = .single
         }
 
         if selectionType == .middle {
-          if indexPath.row == 0 {
+          if indexPath.row % 7 == 0 {
             newSelectionType = .leftBorder
           } else if (indexPath.row+1) % 7 == 0 /*calendarView.calendar.getCollectionView().numberOfItems(inSection: (indexPath.section))-1*/ {
             newSelectionType = .rightBorder

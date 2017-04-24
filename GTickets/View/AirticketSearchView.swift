@@ -317,7 +317,7 @@ class AirticketSearchView: UIView {
       textButton = textButton.isEmpty ? "Обратно" : textButton
       returnButton.setTitle(textButton, for: .normal)
     case .visa:
-      textButton = textButton.isEmpty ? "          " : textButton
+      textButton = textButton.isEmpty ? "Дата входа" : textButton
       dateVisaCheckoutButton.setTitle(textButton, for: .normal)
     }
   }
@@ -342,7 +342,7 @@ class AirticketSearchView: UIView {
       self.additionalInfoButton.transform = CGAffineTransform(rotationAngle: angleRotate)
     })
 
-    additionalInfoButtonCenterY.constant = isVisible ? additionalInfoButtonCenterYConst : -additionalInfoButtonCenterYConst
+    additionalInfoButtonCenterY.constant = isVisible ? -additionalInfoButtonCenterYConst : additionalInfoButtonCenterYConst
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
     
     endEditing(true)
