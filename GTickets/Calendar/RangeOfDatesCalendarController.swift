@@ -75,6 +75,7 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
       return
     }
     
+    delegate?.enableGestureRecognizers(isEnable: true)
     parent.removeAsChildViewController(self)
   }
   

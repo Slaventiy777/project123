@@ -72,6 +72,7 @@ class OneDateCalendarController: UIViewController, CalendarDelegate, FSCalendarD
       return
     }
     
+    delegate?.enableGestureRecognizers(isEnable: true)
     parent.removeAsChildViewController(self)
   }
   
