@@ -142,188 +142,190 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
     // Custom today circle
     //diyCell.circleImageView.isHidden = true//!self.gregorian.isDateInToday(date)
     // Configure selection layer
+    
+    
+    var selectionType = SelectionType.none
+    
     if position == .current {
-      
-      var selectionType = SelectionType.none
-      
-      if calendarView.calendar.selectedDates.contains(date) {
-        let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
-        let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
-        if calendarView.calendar.selectedDates.contains(date) {
-          if calendarView.calendar.selectedDates.contains(previousDate) && calendarView.calendar.selectedDates.contains(nextDate) {
-            selectionType = .middle
-          }
-          else if calendarView.calendar.selectedDates.contains(previousDate) && calendarView.calendar.selectedDates.contains(date) {
-            selectionType = .rightBorder
-          }
-          else if calendarView.calendar.selectedDates.contains(nextDate) {
-            selectionType = .leftBorder
-//            if
-          }
-          else {
-            selectionType = .single
-          }
-          selectionType = roundEdgesOf(cell: cell, selectionType: selectionType)
-        }
-        
-      }
-      else {
-        selectionType = .none
-      }
-      if selectionType == .none {
-        diyCell.selectionLayer.isHidden = true
-        return
-      }
-      diyCell.selectionLayer.isHidden = false
-      diyCell.selectionType = selectionType
-      
+      cell.titleLabel.textColor = UIColor.white
     } else {
-      //            diyCell.circleImageView.isHidden = true
-      diyCell.selectionLayer.isHidden = true
+      cell.titleLabel.textColor = UIColor.lightGray
     }
-  }
-  
-  private func roundEdgesOf(cell: FSCalendarCell, selectionType: SelectionType) -> SelectionType {
-    var newSelectionType = selectionType
-      if let indexPath = calendarView.calendar.getCollectionView().indexPath(for: cell) {
-        if selectionType == .rightBorder && indexPath.row % 7 == 0 {
-          newSelectionType = .single
+    
+    if calendarView.calendar.selectedDates.contains(date) {
+      let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
+      let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
+      if calendarView.calendar.selectedDates.contains(date) {
+        if calendarView.calendar.selectedDates.contains(previousDate) && calendarView.calendar.selectedDates.contains(nextDate) {
+          selectionType = .middle
         }
-        
-        if selectionType == .leftBorder && (indexPath.row+1) % 7 == 0 {
-          newSelectionType = .single
+        else if calendarView.calendar.selectedDates.contains(previousDate) && calendarView.calendar.selectedDates.contains(date) {
+          selectionType = .rightBorder
         }
-
-        if selectionType == .middle {
-          if indexPath.row % 7 == 0 {
-            newSelectionType = .leftBorder
-          } else if (indexPath.row+1) % 7 == 0 /*calendarView.calendar.getCollectionView().numberOfItems(inSection: (indexPath.section))-1*/ {
-            newSelectionType = .rightBorder
-          }
+        else if calendarView.calendar.selectedDates.contains(nextDate) {
+          selectionType = .leftBorder
+          //            if
         }
-        
-        return newSelectionType
+        else {
+          selectionType = .single
+          cell.titleLabel.textColor = UIColor.white
+        }
+        selectionType = roundEdgesOf(cell: cell, selectionType: selectionType)
       }
+    }
     
-    return selectionType
-  }
-  
-  
-  //MARK - Mine
-  
-  fileprivate var dateFrom: Date?
-  fileprivate var dateTo: Date?
-  
-  private func selectDate(date: Date) {
-    self.updateRangeOfSelectedDates(newDate: date)
     
-    if dateTo == nil {
-      self.configureVisibleCells()
+    
+    if selectionType == .none {
+      diyCell.selectionLayer.isHidden = true
       return
     }
+    diyCell.selectionLayer.isHidden = false
+    diyCell.selectionType = selectionType
     
-    var dates: [Date] = []
-    var datesDifference: Int = self.datesDifference(firstDate: dateFrom!, secondDate: dateTo!)!
+}
+
+private func roundEdgesOf(cell: FSCalendarCell, selectionType: SelectionType) -> SelectionType {
+  var newSelectionType = selectionType
+  if let indexPath = calendarView.calendar.getCollectionView().indexPath(for: cell) {
+    if selectionType == .rightBorder && indexPath.row % 7 == 0 {
+      newSelectionType = .single
+    }
     
-    for i in 0...abs(datesDifference) {
-      dates.insert(self.gregorian.date(byAdding: .day, value: datesDifference, to: dateFrom!)!, at: i)
-      if datesDifference < 0 {
-        datesDifference = datesDifference + 1
-      } else {
-        datesDifference = datesDifference - 1
+    if selectionType == .leftBorder && (indexPath.row+1) % 7 == 0 {
+      newSelectionType = .single
+    }
+    
+    if selectionType == .middle {
+      if indexPath.row % 7 == 0 {
+        newSelectionType = .leftBorder
+      } else if (indexPath.row+1) % 7 == 0 /*calendarView.calendar.getCollectionView().numberOfItems(inSection: (indexPath.section))-1*/ {
+        newSelectionType = .rightBorder
       }
     }
     
-    dates.forEach { (date) in
-      calendarView.calendar.select(date, scrollToDate: false)
-    }
-    
+    return newSelectionType
   }
   
-  func deselectDate(date: Date) {
-    if dateFrom != nil && dateTo != nil {
-      deselectRangeOfDates(withNewDate: date - 1)
-      
-      if date == dateFrom {
-        dateTo = nil
-      } else {
-        dateTo = date
-      }
-      calendarView.calendar.select(date)
+  return selectionType
+}
+
+
+//MARK - Mine
+
+fileprivate var dateFrom: Date?
+fileprivate var dateTo: Date?
+
+private func selectDate(date: Date) {
+  self.updateRangeOfSelectedDates(newDate: date)
+  
+  if dateTo == nil {
+    self.configureVisibleCells()
+    return
+  }
+  
+  var dates: [Date] = []
+  var datesDifference: Int = self.datesDifference(firstDate: dateFrom!, secondDate: dateTo!)!
+  
+  for i in 0...abs(datesDifference) {
+    dates.insert(self.gregorian.date(byAdding: .day, value: datesDifference, to: dateFrom!)!, at: i)
+    if datesDifference < 0 {
+      datesDifference = datesDifference + 1
     } else {
-      dateFrom = nil
+      datesDifference = datesDifference - 1
+    }
+  }
+  
+  dates.forEach { (date) in
+    calendarView.calendar.select(date, scrollToDate: false)
+  }
+  
+}
+
+func deselectDate(date: Date) {
+  if dateFrom != nil && dateTo != nil {
+    deselectRangeOfDates(withNewDate: date - 1)
+    
+    if date == dateFrom {
       dateTo = nil
-      calendarView.calendar.deselect(date)
+    } else {
+      dateTo = date
     }
-    
+    calendarView.calendar.select(date)
+  } else {
+    dateFrom = nil
+    dateTo = nil
+    calendarView.calendar.deselect(date)
   }
   
-  private func deselectRangeOfDates(withNewDate date: Date) {
-    let fmt = DateFormatter()
-    fmt.dateFormat = "dd/MM/yyyy"
-    let currentCalendar = Calendar.current
-    var dateFromRemoveSelection = date
-    while dateFromRemoveSelection <= dateTo! {
-      //            print(fmt.string(from: dateFromRemoveSelection))
-      dateFromRemoveSelection = currentCalendar.date(byAdding: .day, value: 1, to: dateFromRemoveSelection)!
-      calendarView.calendar.deselect(dateFromRemoveSelection)
-    }
+}
+
+private func deselectRangeOfDates(withNewDate date: Date) {
+  let fmt = DateFormatter()
+  fmt.dateFormat = "dd/MM/yyyy"
+  let currentCalendar = Calendar.current
+  var dateFromRemoveSelection = date
+  while dateFromRemoveSelection <= dateTo! {
+    //            print(fmt.string(from: dateFromRemoveSelection))
+    dateFromRemoveSelection = currentCalendar.date(byAdding: .day, value: 1, to: dateFromRemoveSelection)!
+    calendarView.calendar.deselect(dateFromRemoveSelection)
+  }
+}
+
+private func updateRangeOfSelectedDates(newDate: Date!) {
+  if dateFrom == nil && dateTo == nil {
+    dateFrom = newDate
+  } else if dateFrom != nil && dateTo == nil {
+    dateTo = newDate
+    checkDates()
+  } else if dateFrom != nil && dateTo != nil {
+    deselectRangeOfDates(withNewDate: dateFrom! - 1)
+    dateFrom = newDate
+    dateTo = nil
   }
   
-  private func updateRangeOfSelectedDates(newDate: Date!) {
-    if dateFrom == nil && dateTo == nil {
-      dateFrom = newDate
-    } else if dateFrom != nil && dateTo == nil {
-      dateTo = newDate
-      checkDates()
-    } else if dateFrom != nil && dateTo != nil {
-      deselectRangeOfDates(withNewDate: dateFrom! - 1)
-      dateFrom = newDate
-      dateTo = nil
-    }
-    
-//    if dateFrom == nil && dateTo == nil {
-//      self.dateFrom = newDate
-//    } else if dateFrom == nil && dateTo != nil {
-//      self.dateFrom = newDate
-//      self.checkDates()
-//    } else if dateFrom != nil && dateTo == nil {
-//      self.dateTo = newDate
-//      self.checkDates()
-//    } else if dateFrom != nil && dateTo != nil {
-//      if newDate! < dateFrom! {
-//        dateFrom = newDate
-//      } else {
-//        dateTo = newDate
-//      }
-//    }
+  //    if dateFrom == nil && dateTo == nil {
+  //      self.dateFrom = newDate
+  //    } else if dateFrom == nil && dateTo != nil {
+  //      self.dateFrom = newDate
+  //      self.checkDates()
+  //    } else if dateFrom != nil && dateTo == nil {
+  //      self.dateTo = newDate
+  //      self.checkDates()
+  //    } else if dateFrom != nil && dateTo != nil {
+  //      if newDate! < dateFrom! {
+  //        dateFrom = newDate
+  //      } else {
+  //        dateTo = newDate
+  //      }
+  //    }
+}
+
+private func checkDates() {
+  if dateFrom != nil && dateTo != nil && dateTo! < dateFrom! {
+    let bufferDate = dateFrom
+    dateFrom = dateTo
+    dateTo = bufferDate
   }
+  //    if dateFrom == dateTo {
+  //      dateTo = nil
+  //    }
+}
+
+private func datesDifference(firstDate: Date, secondDate: Date) -> Int? {
+  let calendar = NSCalendar.current as NSCalendar
   
-  private func checkDates() {
-    if dateFrom != nil && dateTo != nil && dateTo! < dateFrom! {
-      let bufferDate = dateFrom
-      dateFrom = dateTo
-      dateTo = bufferDate
-    }
-//    if dateFrom == dateTo {
-//      dateTo = nil
-//    }
-  }
+  // Replace the hour (time) of both dates with 00:00
+  let date1 = calendar.startOfDay(for: firstDate)
+  let date2 = calendar.startOfDay(for: secondDate)
   
-  private func datesDifference(firstDate: Date, secondDate: Date) -> Int? {
-    let calendar = NSCalendar.current as NSCalendar
-    
-    // Replace the hour (time) of both dates with 00:00
-    let date1 = calendar.startOfDay(for: firstDate)
-    let date2 = calendar.startOfDay(for: secondDate)
-    
-    let flags = NSCalendar.Unit.day
-    let components = calendar.components(flags, from: date1, to: date2, options: [])
-    
-    return components.day
-  }
+  let flags = NSCalendar.Unit.day
+  let components = calendar.components(flags, from: date1, to: date2, options: [])
   
-  
-  
-  
+  return components.day
+}
+
+
+
+
 }

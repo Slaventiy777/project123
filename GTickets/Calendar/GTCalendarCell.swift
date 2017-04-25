@@ -66,7 +66,6 @@ class GTCalendarCell: FSCalendarCell {
 //      self.circleImageView.frame = self.contentView.bounds
       self.backgroundView?.frame = self.bounds.insetBy(dx: 1, dy: 1)
       self.selectionLayer.frame = self.contentView.bounds
-      self.titleLabel.textColor = UIColor.white
       
       let offset: CGFloat = 4
       let selectionLayerHeight = self.selectionLayer.frame.width / 2 - offset*2
@@ -92,9 +91,9 @@ class GTCalendarCell: FSCalendarCell {
         super.configureAppearance()
         self.eventIndicator.isHidden = true
         // Override the build-in appearance configuration
-        if self.isPlaceholder {
-            self.titleLabel.textColor = UIColor.lightGray
-        }
+//        if self.isPlaceholder {
+//            self.titleLabel.textColor = UIColor.lightGray
+//        }
     }
     
 }
