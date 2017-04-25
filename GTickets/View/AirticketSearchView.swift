@@ -344,6 +344,7 @@ class AirticketSearchView: UIView {
 
     additionalInfoButtonCenterY.constant = isVisible ? -additionalInfoButtonCenterYConst : additionalInfoButtonCenterYConst
     additionalInfoHeight.constant = isVisible ? aditionalInfoView.frame.height : 0
+    aditionalInfoView.superview?.clipsToBounds = !isVisible
     
     if isVisible {
       scrollView.layoutIfNeeded()
