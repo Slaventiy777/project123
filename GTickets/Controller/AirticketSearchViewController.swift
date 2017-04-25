@@ -327,19 +327,23 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
     currentTypePicker = type
     
     if let snapshotView = view.snapshotView(afterScreenUpdates: false) {
-      snapshotView.addSubview(pickerTitle)
+      pickerTitle.text = type.title
+      pickerTitle.textColor = UIColor.black.withAlphaComponent(0.5)
+      pickerTitle.font = UIFont(name: "FuturaPT-Book", size: 18)
+      pickerTitle.alpha = 0
+      pickerTitle.isHidden = false
+
+      pickerTitle.frame = CGRect(x: 0, y: view.frame.height/3*2, width: view.frame.width, height: 50)
+
+      picker.frame = CGRect(x: 0, y: view.frame.height/3*2, width: view.frame.width, height: view.frame.height/3)
       snapshotView.addSubview(picker)
+      
+      snapshotView.addSubview(pickerTitle)
       
       let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hidePicker))
       snapshotView.addGestureRecognizer(gestureRecognizer)
       
       view.addSubview(snapshotView)
-      
-      pickerTitle.text = type.title
-      pickerTitle.textColor = UIColor.black.withAlphaComponent(0.5)
-      pickerTitle.font = UIFont(name: "FuturaPT-Book", size: 17)
-      pickerTitle.alpha = 0
-      pickerTitle.isHidden = false
       
       picker.alpha = 0
       picker.isHidden = false
