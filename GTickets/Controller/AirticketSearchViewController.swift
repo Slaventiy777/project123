@@ -274,7 +274,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       
       //TODO: do something (for example auth)
       
-      strongSelf.makeAlert(type: AlertType.donePurple)()
+      strongSelf.makeAlert(type: AlertType.airplane)()
     }
 
     
