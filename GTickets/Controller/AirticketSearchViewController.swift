@@ -10,6 +10,7 @@ import UIKit
 
 protocol AirticketSearchDateDelegate: class {
   func setDates(type: TypeDate, from: Date?, to: Date?)
+  func enableGestureRecognizers(isEnable: Bool)
 }
 
 class AirticketSearchViewController: UIViewController {
@@ -173,8 +174,9 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     }
     
     if let dateController = dateController {
+      enableGestureRecognizers(isEnable: false)
       addAsChildViewController(dateController)
-      //present(dateController!, animated: true, completion: nil)
+      //present(dateController, animated: true, completion: nil)
     }
     
   }
@@ -195,6 +197,7 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
     }
     
     if let dateController = dateController {
+      enableGestureRecognizers(isEnable: false)
       addAsChildViewController(dateController)
       //present(dateController!, animated: true, completion: nil)
     }
@@ -309,6 +312,12 @@ extension AirticketSearchViewController: AirticketSearchDateDelegate {
     
     viewContent.setTitleDates(type: type, from: from, to: to)
   }
+  
+  func enableGestureRecognizers(isEnable: Bool) {
+    viewContent.gestureRecognizers?.forEach {
+      $0.isEnabled = isEnable
+    }
+  }
 
 }
 
@@ -320,6 +329,9 @@ extension AirticketSearchViewController: AirticketSearchPickerDelegate {
     if let snapshotView = view.snapshotView(afterScreenUpdates: false) {
       snapshotView.addSubview(pickerTitle)
       snapshotView.addSubview(picker)
+      
+      let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hidePicker))
+      snapshotView.addGestureRecognizer(gestureRecognizer)
       
       view.addSubview(snapshotView)
       
@@ -413,10 +425,15 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
       viewContent.daysOfStayLabel.text = "\(dataSearch.visaDays.rawValue)"
     }
     
+    hidePicker()
+  }
+  
+  @objc fileprivate func hidePicker() {
+  
     picker.superview?.removeFromSuperview()
     pickerTitle.removeFromSuperview()
     picker.removeFromSuperview()
-    
+
     UIView.animate(withDuration: 0.3, animations: {
       self.pickerTitle.alpha = 0
       self.picker.alpha = 0
@@ -424,7 +441,7 @@ extension AirticketSearchViewController: UIPickerViewDelegate {
       self.pickerTitle.isHidden = true
       self.picker.isHidden = true
     })
-
+    
   }
 
 }
