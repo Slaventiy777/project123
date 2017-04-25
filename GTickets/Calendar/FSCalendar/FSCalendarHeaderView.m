@@ -71,13 +71,13 @@
 - (void) addButtons {
     UIButton* prevButton = [[UIButton alloc] init];
     [prevButton addTarget:self action:@selector(goToPrevMonthAction:) forControlEvents:UIControlEventTouchUpInside];
-    [prevButton setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
+    [prevButton setImage:[UIImage imageNamed:@"BackIcon"] forState:UIControlStateNormal];
     [self addSubview:prevButton];
     self.toPrevMonth = prevButton;
     
     UIButton* nextButton = [[UIButton alloc] init];
     [nextButton addTarget:self action:@selector(goToNextMonthAction:) forControlEvents:UIControlEventTouchUpInside];
-    [nextButton setImage:[UIImage imageNamed:@"next_icon"] forState:UIControlStateNormal];
+    [nextButton setImage:[UIImage imageNamed:@"NextIcon"] forState:UIControlStateNormal];
     [self addSubview:nextButton];
     self.toNextMonth = nextButton;
 }
