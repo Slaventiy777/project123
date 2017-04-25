@@ -10,7 +10,6 @@ import UIKit
 
 class AirticketSearchView: UIView {
   fileprivate let animationDuration = 0.3
-  private var additionalInfoHeightConst: CGFloat = 0.0
   
   weak var delegate: (SearchCityViewDelegate & AirticketSearchPickerDelegate)? {
     didSet {
@@ -148,13 +147,14 @@ class AirticketSearchView: UIView {
       let newCommentsTopOffset = isVisible ? visaCheckoutContainerHeight + getActualSize(20) + 15 : getActualSize(20)
       self.commentsTopOffset.constant = newCommentsTopOffset
       if self.additionalInfoHeight.constant != 0 {
-        self.additionalInfoHeight.constant = isVisible ? self.additionalInfoHeightConst + visaCheckoutContainerHeight + getActualSize(20) : self.additionalInfoHeightConst //self.suitcase0Button.frame.height is visaCheckoutContainer height
+        self.view.layoutIfNeeded()
+        self.additionalInfoHeight.constant = self.aditionalInfoView.frame.height
       }
 
       self.endEditing(true)
       self.scrollView.layoutIfNeeded()
       self.scrollView.isScrollEnabled = false
-      UIView.animate(withDuration: 0.2, animations: {
+      UIView.animate(withDuration: 0.3, animations: {
         self.visaCheckoutContainer.alpha = isVisible ? 1 : 0
         self.view.layoutIfNeeded()
       }, completion: { _ in
@@ -335,10 +335,6 @@ class AirticketSearchView: UIView {
   }
     
   private func makeAdditionalInfo(isVisible: Bool) {
-    if self.additionalInfoHeightConst == 0 {  //TODO: move to
-        self.additionalInfoHeightConst = self.aditionalInfoView.frame.height
-    }
-
     let additionalInfoButtonCenterYConst: CGFloat = 17
 
     UIView.animate(withDuration:0.3, animations: { () -> Void in
