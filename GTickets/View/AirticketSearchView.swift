@@ -46,7 +46,6 @@ class AirticketSearchView: UIView {
   
   @IBOutlet weak var comfortClassLabel: UILabel!
   @IBOutlet weak var comfortClassImage: UIImageView!
-  @IBOutlet weak var comfortClassPickerView: UIPickerView!
   
   @IBOutlet weak var suitcase0Button: UIButton!
   @IBOutlet weak var suitcase1Button: UIButton!
@@ -55,8 +54,7 @@ class AirticketSearchView: UIView {
   @IBOutlet weak var directFlightCheckbox: CheckboxView!
   @IBOutlet weak var visaCheckoutCheckbox: CheckboxView!
   
-  @IBOutlet weak var commentsTopOffset: NSLayoutConstraint!
-  @IBOutlet weak var visaCheckoutContainer: UIView!
+  @IBOutlet weak var visaCheckoutContainerHeight: NSLayoutConstraint!
 
   @IBOutlet weak var dateVisaCheckoutButton: UIButton!
   
@@ -126,8 +124,9 @@ class AirticketSearchView: UIView {
     commentsTextView.text = model.comments
     
     if commentsTextView.text == nil || commentsTextView.text.isEmpty {
-      commentsTextView.text = "Комментарий..."
-      commentsTextView.textColor = .lightGray
+      commentsTextView.text = "Комментарий"
+      commentsTextView.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
+      commentsTextView.textContainerInset = UIEdgeInsetsMake(19, 19, 19, 19)
     }
   }
   
@@ -143,9 +142,8 @@ class AirticketSearchView: UIView {
     visaCheckoutCheckbox.onStateChangedAction = { _ in
       
       let isVisible = self.visaCheckoutCheckbox.isSelected
-      let visaCheckoutContainerHeight = self.suitcase0Button.frame.height
-      let newCommentsTopOffset = isVisible ? visaCheckoutContainerHeight + getActualSize(20) + 15 : getActualSize(20)
-      self.commentsTopOffset.constant = newCommentsTopOffset
+      let visaCheckoutContainerHeight = isVisible ? self.suitcase0Button.frame.height + 15 : 0 //15 top offset of visaCheckoutContainer
+      self.visaCheckoutContainerHeight.constant = visaCheckoutContainerHeight
       if self.additionalInfoHeight.constant != 0 {
         self.view.layoutIfNeeded()
         self.additionalInfoHeight.constant = self.aditionalInfoView.frame.height
@@ -155,7 +153,6 @@ class AirticketSearchView: UIView {
       self.scrollView.layoutIfNeeded()
       self.scrollView.isScrollEnabled = false
       UIView.animate(withDuration: 0.3, animations: {
-        self.visaCheckoutContainer.alpha = isVisible ? 1 : 0
         self.view.layoutIfNeeded()
       }, completion: { _ in
         self.scrollView.isScrollEnabled = true
@@ -315,14 +312,25 @@ class AirticketSearchView: UIView {
     
     switch type {
     case .departure:
+      updateCalendarButtonTextColor(text: textButton, button: departureButton)
       textButton = textButton.isEmpty ? "Туда" : textButton
       departureButton.setTitle(textButton, for: .normal)
     case .return:
+      updateCalendarButtonTextColor(text: textButton, button: returnButton)
       textButton = textButton.isEmpty ? "Обратно" : textButton
       returnButton.setTitle(textButton, for: .normal)
     case .visa:
+      updateCalendarButtonTextColor(text: textButton, button: dateVisaCheckoutButton)
       textButton = textButton.isEmpty ? "Дата входа" : textButton
       dateVisaCheckoutButton.setTitle(textButton, for: .normal)
+    }
+  }
+  
+  private func updateCalendarButtonTextColor(text: String, button: UIButton) {
+    if text.isEmpty {
+      button.setTitleColor(UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1), for: .normal)
+    } else {
+      button.setTitleColor(UIColor.white, for: .normal)
     }
   }
   
@@ -505,7 +513,7 @@ extension AirticketSearchView: UITextViewDelegate {
   }
     
   func textViewDidChange(_ textView: UITextView) {
-    let MIN_TEXT_VIEW_HEIGHT: CGFloat = 40
+    let MIN_TEXT_VIEW_HEIGHT: CGFloat = 60
     let MAX_TEXT_VIEW_HEIGHT: CGFloat = 266
     
     let fixedWidth = textView.frame.size.width

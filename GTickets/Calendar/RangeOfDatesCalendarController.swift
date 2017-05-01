@@ -214,28 +214,24 @@ private func selectDate(date: Date) {
 
 func deselectDate(date: Date) {
   if dateFrom != nil && dateTo != nil {
-    deselectRangeOfDates(withNewDate: date - 1)
-    
-    if date == dateFrom {
-      dateTo = nil
-    } else {
-      dateTo = date
-    }
+    deselectRangeOfDates(dateStart: dateFrom!-1, dateEnd: dateTo!)
+    dateFrom = nil
+    dateTo = nil
+    selectDate(date: date)
     calendarView.calendar.select(date)
   } else {
     dateFrom = nil
     dateTo = nil
     calendarView.calendar.deselect(date)
   }
-  
 }
 
-private func deselectRangeOfDates(withNewDate date: Date) {
+  private func deselectRangeOfDates(dateStart: Date, dateEnd: Date) {
   let fmt = DateFormatter()
   fmt.dateFormat = "dd/MM/yyyy"
   let currentCalendar = Calendar.current
-  var dateFromRemoveSelection = date
-  while dateFromRemoveSelection <= dateTo! {
+  var dateFromRemoveSelection = dateStart
+  while dateFromRemoveSelection <= dateEnd {
     //            print(fmt.string(from: dateFromRemoveSelection))
     dateFromRemoveSelection = currentCalendar.date(byAdding: .day, value: 1, to: dateFromRemoveSelection)!
     calendarView.calendar.deselect(dateFromRemoveSelection)
@@ -249,26 +245,10 @@ private func updateRangeOfSelectedDates(newDate: Date!) {
     dateTo = newDate
     checkDates()
   } else if dateFrom != nil && dateTo != nil {
-    deselectRangeOfDates(withNewDate: dateFrom! - 1)
+    deselectRangeOfDates(dateStart: dateFrom! - 1, dateEnd: dateTo!)
     dateFrom = newDate
     dateTo = nil
   }
-  
-  //    if dateFrom == nil && dateTo == nil {
-  //      self.dateFrom = newDate
-  //    } else if dateFrom == nil && dateTo != nil {
-  //      self.dateFrom = newDate
-  //      self.checkDates()
-  //    } else if dateFrom != nil && dateTo == nil {
-  //      self.dateTo = newDate
-  //      self.checkDates()
-  //    } else if dateFrom != nil && dateTo != nil {
-  //      if newDate! < dateFrom! {
-  //        dateFrom = newDate
-  //      } else {
-  //        dateTo = newDate
-  //      }
-  //    }
 }
 
 private func checkDates() {

@@ -324,6 +324,7 @@ extension AirticketSearchViewController: AirticketSearchDateDelegate {
 extension AirticketSearchViewController: AirticketSearchPickerDelegate {
 
   func showPicker(type: TypePicker) {
+    viewContent.endEditing(true)
     currentTypePicker = type
     
     if let snapshotView = view.snapshotView(afterScreenUpdates: false) {
