@@ -74,7 +74,7 @@
     [prevButton setImage:[UIImage imageNamed:@"BackIcon"] forState:UIControlStateNormal];
     [self addSubview:prevButton];
     self.toPrevMonth = prevButton;
-    
+  
     UIButton* nextButton = [[UIButton alloc] init];
     [nextButton addTarget:self action:@selector(goToNextMonthAction:) forControlEvents:UIControlEventTouchUpInside];
     [nextButton setImage:[UIImage imageNamed:@"NextIcon"] forState:UIControlStateNormal];
@@ -84,10 +84,16 @@
 
 - (IBAction)goToPrevMonthAction:(id)sender {
 //    - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+  NSIndexPath* first = self.calendar.collectionView.indexPathsForVisibleItems.firstObject;
+  NSIndexPath* actual = [NSIndexPath indexPathForItem:first.item-1 inSection:first.section-1];
+  [self.calendar.collectionView scrollToItemAtIndexPath:actual atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//  self.calendar.calculator.nu
 }
 
 - (IBAction)goToNextMonthAction:(id)sender {
-    
+  NSIndexPath* first = self.calendar.collectionView.indexPathsForVisibleItems.lastObject;
+  NSIndexPath* actual = [NSIndexPath indexPathForItem:first.item+1 inSection:first.section+1];
+  [self.calendar.collectionView scrollToItemAtIndexPath:actual atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 }
 
 - (void)layoutSubviews

@@ -1259,7 +1259,7 @@ void FSCalendarRunLoopCallback(CFRunLoopObserverRef observer, CFRunLoopActivity 
             headerView.scrollEnabled = _scrollEnabled;
             [_contentView addSubview:headerView];
             self.calendarHeaderView = headerView;
-            
+//           [self.layer insertSublayer:self.calendarHeaderView.layer atIndex:0];
         }
         
         if (!_calendarWeekdayView) {
