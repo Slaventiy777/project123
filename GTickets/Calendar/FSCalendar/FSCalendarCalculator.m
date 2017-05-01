@@ -94,87 +94,44 @@
     return date;
 }
 
-- (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath scope:(FSCalendarScope)scope
+- (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath
 {
     if (!indexPath) return nil;
-    switch (scope) {
-        case FSCalendarScopeMonth: {
             NSDate *head = [self monthHeadForSection:indexPath.section];
             NSUInteger daysOffset = indexPath.item;
             NSDate *date = [self.gregorian dateByAddingUnit:NSCalendarUnitDay value:daysOffset toDate:head options:0];
             return date;
-            break;
-        }
-        case FSCalendarScopeWeek: {
-            NSDate *currentPage = [self weekForSection:indexPath.section];
-            NSDate *date = [self.gregorian dateByAddingUnit:NSCalendarUnitDay value:indexPath.item toDate:currentPage options:0];
-            return date;
-        }
-    }
     return nil;
-}
-
-- (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath
-{
-    if (!indexPath) return nil;
-    return [self dateForIndexPath:indexPath scope:self.calendar.transitionCoordinator.representingScope];
 }
 
 - (NSIndexPath *)indexPathForDate:(NSDate *)date
 {
-    return [self indexPathForDate:date atMonthPosition:FSCalendarMonthPositionCurrent scope:self.calendar.transitionCoordinator.representingScope];
-}
-
-- (NSIndexPath *)indexPathForDate:(NSDate *)date scope:(FSCalendarScope)scope
-{
-    return [self indexPathForDate:date atMonthPosition:FSCalendarMonthPositionCurrent scope:scope];
-}
-
-- (NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position scope:(FSCalendarScope)scope
-{
-    if (!date) return nil;
-    NSInteger item = 0;
-    NSInteger section = 0;
-    switch (scope) {
-        case FSCalendarScopeMonth: {
-            section = [self.gregorian components:NSCalendarUnitMonth fromDate:[self.gregorian fs_firstDayOfMonth:self.minimumDate] toDate:[self.gregorian fs_firstDayOfMonth:date] options:0].month;
-            if (position == FSCalendarMonthPositionPrevious) {
-                section++;
-            } else if (position == FSCalendarMonthPositionNext) {
-                section--;
-            }
-            NSDate *head = [self monthHeadForSection:section];
-            item = [self.gregorian components:NSCalendarUnitDay fromDate:head toDate:date options:0].day;
-            break;
-        }
-        case FSCalendarScopeWeek: {
-            section = [self.gregorian components:NSCalendarUnitWeekOfYear fromDate:[self.gregorian fs_firstDayOfWeek:self.minimumDate] toDate:[self.gregorian fs_firstDayOfWeek:date] options:0].weekOfYear;
-            item = (([self.gregorian component:NSCalendarUnitWeekday fromDate:date] - self.gregorian.firstWeekday) + 7) % 7;
-            break;
-        }
-    }
-    if (item < 0 || section < 0) {
-        return nil;
-    }
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-    return indexPath;
+    return [self indexPathForDate:date atMonthPosition:FSCalendarMonthPositionCurrent];
 }
 
 - (NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position
 {
-    return [self indexPathForDate:date atMonthPosition:position scope:self.calendar.transitionCoordinator.representingScope];
+  if (!date) return nil;
+  NSInteger item = 0;
+  NSInteger section = 0;
+  section = [self.gregorian components:NSCalendarUnitMonth fromDate:[self.gregorian fs_firstDayOfMonth:self.minimumDate] toDate:[self.gregorian fs_firstDayOfMonth:date] options:0].month;
+  if (position == FSCalendarMonthPositionPrevious) {
+    section++;
+  } else if (position == FSCalendarMonthPositionNext) {
+    section--;
+  }
+  NSDate *head = [self monthHeadForSection:section];
+  item = [self.gregorian components:NSCalendarUnitDay fromDate:head toDate:date options:0].day;
+  if (item < 0 || section < 0) {
+    return nil;
+  }
+  NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+  return indexPath;
 }
 
 - (NSDate *)pageForSection:(NSInteger)section
 {
-    switch (self.calendar.transitionCoordinator.representingScope) {
-        case FSCalendarScopeWeek:
-            return [self.gregorian fs_middleDayOfWeek:[self weekForSection:section]];
-        case FSCalendarScopeMonth:
-            return [self monthForSection:section];
-        default:
-            break;
-    }
+  return [self monthForSection:section];
 }
 
 - (NSDate *)monthForSection:(NSInteger)section
@@ -218,18 +175,7 @@
 
 - (NSInteger)numberOfSections
 {
-    if (self.calendar.transitionCoordinator.transition == FSCalendarTransitionWeekToMonth) {
-        return self.numberOfMonths;
-    } else {
-        switch (self.calendar.transitionCoordinator.representingScope) {
-            case FSCalendarScopeMonth: {
-                return self.numberOfMonths;
-            }
-            case FSCalendarScopeWeek: {
-                return self.numberOfWeeks;
-            }
-        }
-    }
+  return self.numberOfMonths;
 }
 
 - (NSInteger)numberOfHeadPlaceholdersForMonth:(NSDate *)month
@@ -260,7 +206,6 @@
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section
 {
-    if (self.calendar.transitionCoordinator.representingScope == FSCalendarScopeWeek) return 1;
     NSDate *month = [self monthForSection:section];
     return [self numberOfRowsInMonth:month];
 }
@@ -268,9 +213,6 @@
 - (FSCalendarMonthPosition)monthPositionForIndexPath:(NSIndexPath *)indexPath
 {
     if (!indexPath) return FSCalendarMonthPositionNotFound;
-    if (self.calendar.transitionCoordinator.representingScope == FSCalendarScopeWeek) {
-        return FSCalendarMonthPositionCurrent;
-    }
     NSDate *date = [self dateForIndexPath:indexPath];
     NSDate *page = [self pageForSection:indexPath.section];
     NSComparisonResult comparison = [self.gregorian compareDate:date toDate:page toUnitGranularity:NSCalendarUnitMonth];

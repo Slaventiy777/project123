@@ -28,11 +28,6 @@ FOUNDATION_EXPORT double FSCalendarVersionNumber;
 //! Project version string for FSCalendar.
 FOUNDATION_EXPORT const unsigned char FSCalendarVersionString[];
 
-typedef NS_ENUM(NSUInteger, FSCalendarScope) {
-    FSCalendarScopeMonth,
-    FSCalendarScopeWeek
-};
-
 typedef NS_ENUM(NSUInteger, FSCalendarScrollDirection) {
     FSCalendarScrollDirectionVertical,
     FSCalendarScrollDirectionHorizontal
@@ -307,28 +302,6 @@ IB_DESIGNABLE
 @property (assign, nonatomic) FSCalendarScrollDirection scrollDirection;
 
 /**
- * The scope of calendar, change scope will trigger an inner frame change, make sure the frame has been correctly adjusted in 
- *
- *    - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated;
- */
-@property (assign, nonatomic) FSCalendarScope scope;
-
-/**
- A UIPanGestureRecognizer instance which enables the control of scope on the whole day-area. Not available if the scrollDirection is vertical.
- 
- @deprecated Use -handleScopeGesture: instead
- 
- e.g.
- 
-    UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:calendar action:@selector(handleScopeGesture:)];
-    [calendar addGestureRecognizer:scopeGesture];
- 
- @see DIYExample
- @see FSCalendarScopeExample
- */
-@property (readonly, nonatomic) UIPanGestureRecognizer *scopeGesture FSCalendarDeprecated(handleScopeGesture:);
-
-/**
  * A UILongPressGestureRecognizer instance which enables the swipe-to-choose feature of the calendar.
  *
  * e.g.
@@ -396,22 +369,6 @@ IB_DESIGNABLE
 @property (assign, nonatomic) IBInspectable BOOL scrollEnabled;
 
 /**
- A Boolean value that determines whether the calendar should show a handle for control the scope. Default is NO;
- 
- @deprecated Use -handleScopeGesture: instead
- 
- e.g.
- 
-    UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendar action:@selector(handleScopeGesture:)];
-    scopeGesture.delegate = ...
-    [anyOtherView addGestureRecognizer:scopeGesture];
- 
- @see FSCalendarScopeExample
- 
- */
-@property (assign, nonatomic) IBInspectable BOOL showsScopeHandle FSCalendarDeprecated(handleScopeGesture:);
-
-/**
  The multiplier of line height while paging enabled is NO. Default is 1.0;
  */
 @property (assign, nonatomic) IBInspectable CGFloat lineHeightMultiplier;
@@ -445,14 +402,6 @@ IB_DESIGNABLE
  Reload the dates and appearance of the calendar.
  */
 - (void)reloadData;
-
-/**
- Change the scope of the calendar. Make sure `-calendar:boundingRectWillChange:animated` is correctly adopted.
- 
- @param scope The target scope to change.
- @param animated YES if you want to animate the scoping; NO if the change should be immediate.
- */
-- (void)setScope:(FSCalendarScope)scope animated:(BOOL)animated;
 
 /**
  Selects a given date in the calendar.
@@ -546,13 +495,6 @@ IB_DESIGNABLE
  Invalidates the current appearance of the calendar and triggers an update during the next update cycle.
  */
 - (void)setNeedsConfigureAppearance;
-
-/**
- An action selector for UIPanGestureRecognizer instance to control the scope transition
- 
- @param sender A UIPanGestureRecognizer instance which controls the scope of the calendar
- */
-- (void)handleScopeGesture:(UIPanGestureRecognizer *)sender;
 
 @end
 

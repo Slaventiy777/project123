@@ -17,7 +17,6 @@
 #import "FSCalendarStickyHeader.h"
 #import "FSCalendarCollectionView.h"
 #import "FSCalendarCollectionViewLayout.h"
-#import "FSCalendarScopeHandle.h"
 #import "FSCalendarCalculator.h"
 #import "FSCalendarTransitionCoordinator.h"
 #import "FSCalendarDelegationProxy.h"
@@ -25,7 +24,6 @@
 @interface FSCalendar (Dynamic)
 
 @property (readonly, nonatomic) FSCalendarCollectionView *collectionView;
-@property (readonly, nonatomic) FSCalendarScopeHandle *scopeHandle;
 @property (readonly, nonatomic) FSCalendarCollectionViewLayout *collectionViewLayout;
 @property (readonly, nonatomic) FSCalendarTransitionCoordinator *transitionCoordinator;
 @property (readonly, nonatomic) FSCalendarCalculator *calculator;
@@ -50,7 +48,7 @@
 - (BOOL)isPageInRange:(NSDate *)page;
 - (BOOL)isDateInRange:(NSDate *)date;
 
-- (CGSize)sizeThatFits:(CGSize)size scope:(FSCalendarScope)scope;
+- (CGSize)sizeThatFits:(CGSize)size;
 
 @end
 

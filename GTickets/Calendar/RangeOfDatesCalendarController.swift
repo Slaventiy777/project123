@@ -58,10 +58,6 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
     self.calendarView.calendar.allowsMultipleSelection = true
     self.calendarView.calendar.register(GTCalendarCell.self, forCellReuseIdentifier: "cell")
     self.calendarView.calendar.swipeToChooseGesture.isEnabled = true // Swipe-To-Choose
-    
-    let scopeGesture = UIPanGestureRecognizer(target: self.calendarView.calendar, action: #selector(self.calendarView.calendar.handleScopeGesture(_:)));
-    self.calendarView.calendar.addGestureRecognizer(scopeGesture)
-    
     self.calendarView.updateView()
   }
   
@@ -170,7 +166,6 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
           selectionType = .single
           cell.titleLabel.textColor = UIColor.white
         }
-        selectionType = roundEdgesOf(cell: cell, selectionType: selectionType)
       }
     }
     
@@ -183,31 +178,6 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
     diyCell.selectionLayer.isHidden = false
     diyCell.selectionType = selectionType
     
-}
-
-private func roundEdgesOf(cell: FSCalendarCell, selectionType: SelectionType) -> SelectionType {
-  var newSelectionType = selectionType
-  if let indexPath = calendarView.calendar.getCollectionView().indexPath(for: cell) {
-    if selectionType == .rightBorder && indexPath.row % 7 == 0 {
-      newSelectionType = .single
-    }
-    
-    if selectionType == .leftBorder && (indexPath.row+1) % 7 == 0 {
-      newSelectionType = .single
-    }
-    
-    if selectionType == .middle {
-      if indexPath.row % 7 == 0 {
-        newSelectionType = .leftBorder
-      } else if (indexPath.row+1) % 7 == 0 /*calendarView.calendar.getCollectionView().numberOfItems(inSection: (indexPath.section))-1*/ {
-        newSelectionType = .rightBorder
-      }
-    }
-    
-    return newSelectionType
-  }
-  
-  return selectionType
 }
 
 

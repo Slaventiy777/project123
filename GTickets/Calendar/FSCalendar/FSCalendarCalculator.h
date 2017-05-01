@@ -33,11 +33,8 @@ typedef struct FSCalendarCoordinate FSCalendarCoordinate;
 - (NSDate *)safeDateForDate:(NSDate *)date;
 
 - (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath;
-- (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath scope:(FSCalendarScope)scope;
 - (NSIndexPath *)indexPathForDate:(NSDate *)date;
-- (NSIndexPath *)indexPathForDate:(NSDate *)date scope:(FSCalendarScope)scope;
 - (NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position;
-- (NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position scope:(FSCalendarScope)scope;
 
 - (NSDate *)pageForSection:(NSInteger)section;
 - (NSDate *)weekForSection:(NSInteger)section;

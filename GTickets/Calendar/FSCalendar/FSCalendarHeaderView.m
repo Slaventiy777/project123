@@ -126,36 +126,23 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    switch (self.calendar.transitionCoordinator.representingScope) {
-        case FSCalendarScopeMonth: {
-            switch (_scrollDirection) {
-                case UICollectionViewScrollDirectionVertical: {
-                    NSDate *minimumPage = [_calendar.gregorian fs_firstDayOfMonth:_calendar.minimumDate];
-                    NSInteger months = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:self.calendar.maximumDate options:0].month + 1;
-                    return months;
-                }
-                case UICollectionViewScrollDirectionHorizontal: {
-                    // 2 more pages to prevent scrollView from auto bouncing while push/present to other UIViewController
-                    NSDate *minimumPage = [_calendar.gregorian fs_firstDayOfMonth:_calendar.minimumDate];
-                    NSInteger months = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:self.calendar.maximumDate options:0].month + 1;
-                    return months + 2;
-                }
-                default: {
-                    break;
-                }
-            }
-            break;
-        }
-        case FSCalendarScopeWeek: {
-            NSDate *minimumPage = [self.calendar.gregorian fs_firstDayOfMonth:_calendar.minimumDate];
-            NSInteger weeks = [self.calendar.gregorian components:NSCalendarUnitWeekOfYear fromDate:minimumPage toDate:self.calendar.maximumDate options:0].weekOfYear + 1;
-            return weeks + 2;
-        }
-        default: {
-            break;
-        }
+  switch (_scrollDirection) {
+    case UICollectionViewScrollDirectionVertical: {
+      NSDate *minimumPage = [_calendar.gregorian fs_firstDayOfMonth:_calendar.minimumDate];
+      NSInteger months = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:self.calendar.maximumDate options:0].month + 1;
+      return months;
     }
-    return 0;
+    case UICollectionViewScrollDirectionHorizontal: {
+      // 2 more pages to prevent scrollView from auto bouncing while push/present to other UIViewController
+      NSDate *minimumPage = [_calendar.gregorian fs_firstDayOfMonth:_calendar.minimumDate];
+      NSInteger months = [self.calendar.gregorian components:NSCalendarUnitMonth fromDate:minimumPage toDate:self.calendar.maximumDate options:0].month + 1;
+      return months + 2;
+    }
+    default: {
+      break;
+    }
+  }
+  return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -247,36 +234,17 @@
     _calendar.formatter.dateFormat = appearance.headerDateFormat;
     BOOL usesUpperCase = YES;   //(appearance.caseOptions & 15) == FSCalendarCaseOptionsHeaderUsesUpperCase;
     NSString *text = nil;
-    switch (self.calendar.transitionCoordinator.representingScope) {
-        case FSCalendarScopeMonth: {
-            if (_scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-                // 多出的两项需要制空
                 if ((indexPath.item == 0 || indexPath.item == [self.collectionView numberOfItemsInSection:0] - 1)) {
                     text = nil;
                 } else {
                     NSDate *date = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitMonth value:indexPath.item-1 toDate:self.calendar.minimumDate options:0];
-                    text = [_calendar.formatter stringFromDate:date];
+                  NSDateFormatter *mf = [[NSDateFormatter alloc] init];
+                  [mf setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"]];
+                  [mf setDateFormat:@"LLLL"];
+                  text = [mf stringFromDate:date];
+                  [mf setDateFormat:@"yyyy"];
+                  text = [NSString stringWithFormat:@"%@ %@", text, [mf stringFromDate:date]];
                 }
-            } else {
-                NSDate *date = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitMonth value:indexPath.item toDate:self.calendar.minimumDate options:0];
-                text = [_calendar.formatter stringFromDate:date];
-            }
-            break;
-        }
-        case FSCalendarScopeWeek: {
-            if ((indexPath.item == 0 || indexPath.item == [self.collectionView numberOfItemsInSection:0] - 1)) {
-                text = nil;
-            } else {
-                NSDate *firstPage = [self.calendar.gregorian fs_middleDayOfWeek:self.calendar.minimumDate];
-                NSDate *date = [self.calendar.gregorian dateByAddingUnit:NSCalendarUnitWeekOfYear value:indexPath.item-1 toDate:firstPage options:0];
-                text = [_calendar.formatter stringFromDate:date];
-            }
-            break;
-        }
-        default: {
-            break;
-        }
-    }
     text = usesUpperCase ? text.uppercaseString : text;
     cell.titleLabel.text = text;
     [cell setNeedsLayout];
