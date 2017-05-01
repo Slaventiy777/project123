@@ -193,7 +193,14 @@ extension AirticketSearchViewController: SearchCityViewDelegate {
       dateController = RangeOfDatesCalendarController(type: type)
       dateController?.delegate = self
       dateController?.calendarView = calendarViewGT
-
+      
+      if dateController == dispatchDateController {
+        dispatchDateController?.calendarView.titleLabelText = "ВИБЕРИТЕ ДАТУ ПРИБЫТИЯ"
+      } else if dateController == arrivalDateController {
+        arrivalDateController?.calendarView.titleLabelText = "ВИБЕРИТЕ ДАТУ ОТПРАВЛЕНИЯ"
+      } else if dateController == visaCheckoutDateController {
+        visaCheckoutDateController?.calendarView.titleLabelText = "ВИБЕРИТЕ ДАТУ ВХОДА В СТРАНУ"
+      }
     }
     
     if let dateController = dateController {

@@ -48,6 +48,12 @@ class GTCalendarView: UIView {
     }
   }
   
+  var titleLabelText: String = "" {
+    didSet {
+      titleLabel.text = titleLabelText
+    }
+  }
+  
   @IBOutlet weak var calendar: FSCalendar!
   
   @IBAction func toLastMonthAction(_ sender: AnyObject) {
