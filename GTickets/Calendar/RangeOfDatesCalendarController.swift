@@ -105,6 +105,11 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    if (calendar.today != nil) && date < calendar.today! {
+      calendarView.calendar.deselect(date)
+      return
+    }
+    
     self.selectDate(date: date)
     self.configureVisibleCells()
     self.calendarView.selectedDates = [self.dateFrom, self.dateTo]
@@ -142,12 +147,6 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
     
     var selectionType = SelectionType.none
     
-    if position == .current {
-      cell.titleLabel.textColor = UIColor.white
-    } else {
-      cell.titleLabel.textColor = UIColor.lightGray
-    }
-    
     if calendarView.calendar.selectedDates.contains(date) {
       let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
       let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
@@ -164,12 +163,10 @@ class RangeOfDatesCalendarController: UIViewController, CalendarDelegate, FSCale
         }
         else {
           selectionType = .single
-          cell.titleLabel.textColor = UIColor.white
         }
       }
+      cell.titleLabel.textColor = UIColor.white
     }
-    
-    
     
     if selectionType == .none {
       diyCell.selectionLayer.isHidden = true
@@ -209,7 +206,6 @@ private func selectDate(date: Date) {
   dates.forEach { (date) in
     calendarView.calendar.select(date, scrollToDate: false)
   }
-  
 }
 
 func deselectDate(date: Date) {

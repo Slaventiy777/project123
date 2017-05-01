@@ -241,11 +241,11 @@
 //                                                    cornerRadius:CGRectGetWidth(_shapeLayer.bounds)*0.5*self.borderRadius].CGPath;
         
         CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:
-                          CGRectMake(0,//(self.contentView.frame.size.width - _shapeLayer.bounds.size.width) / 2,
-                                     (self.contentView.frame.size.height - _shapeLayer.bounds.size.height) / 2,
-                                     _shapeLayer.bounds.size.width,
-                                     _shapeLayer.bounds.size.height)
-                                                    cornerRadius:_shapeLayer.bounds.size.width/2].CGPath;
+                          CGRectMake(0,//(self.contentView.frame.size.width - _shapeLayer.frame.size.width) / 2,
+                                     (self.contentView.frame.size.height - _shapeLayer.frame.size.height) / 2,
+                                     _shapeLayer.frame.size.width,
+                                     _shapeLayer.frame.size.height)
+                                                    cornerRadius:_shapeLayer.frame.size.width/2].CGPath;
 
         if (!CGPathEqualToPath(_shapeLayer.path, path)) {
             _shapeLayer.path = path;
@@ -276,8 +276,11 @@
         }
         return dictionary[@(FSCalendarCellStateSelected)];
     }
-    if (self.dateIsToday && [[dictionary allKeys] containsObject:@(FSCalendarCellStateToday)]) {
-        return dictionary[@(FSCalendarCellStateToday)];
+//    if (self.dateIsToday && [[dictionary allKeys] containsObject:@(FSCalendarCellStateToday)]) {
+//        return dictionary[@(FSCalendarCellStateToday)];
+//    }
+    if (self.dateLessToday && [[dictionary allKeys] containsObject:@(FSCalendarCellStateDisabled)]) {
+      return dictionary[@(FSCalendarCellStateDisabled)];
     }
     if (self.placeholder && [[dictionary allKeys] containsObject:@(FSCalendarCellStatePlaceholder)]) {
         return dictionary[@(FSCalendarCellStatePlaceholder)];

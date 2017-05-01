@@ -78,7 +78,7 @@ class DIYCalendarCell: FSCalendarCell {
             self.selectionLayer.fillColor = UIColor.black.cgColor
             let diameter: CGFloat = min(self.selectionLayer.frame.height, self.selectionLayer.frame.width)
             self.selectionLayer.path = UIBezierPath(ovalIn: CGRect(x: self.contentView.frame.width / 2 - diameter / 2, y: self.contentView.frame.height / 2 - diameter / 2, width: diameter, height: diameter)).cgPath
-        }
+        }      
     }
     
     func updateMiddleSelectionLayer() {
