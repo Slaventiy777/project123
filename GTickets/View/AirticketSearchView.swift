@@ -126,7 +126,7 @@ class AirticketSearchView: UIView {
     if commentsTextView.text == nil || commentsTextView.text.isEmpty {
       commentsTextView.text = "Комментарий"
       commentsTextView.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
-      commentsTextView.textContainerInset = UIEdgeInsetsMake(19, 19, 19, 19)
+      commentsTextView.textContainerInset = UIEdgeInsetsMake(17, 17, 17, 17)
     }
   }
   
